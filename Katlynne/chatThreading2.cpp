@@ -13,6 +13,8 @@ int e;
 char message1 [] = "Packet 1, wanting to see if received packet is the same as sent packet";
 char message2 [] = "Packet 2, broadcast test";
 char my_packet[100];
+string test = "";
+string input;
 
 void setup()
 {
@@ -59,8 +61,7 @@ void setup()
 void loop2(void)
 {
 	// Send message1 and print the result
-    string input = "";
-    getline(cin,input);
+    
     char inputArray [input.length() + 1];
     strcpy(inputArray, input.c_str());
     
@@ -101,15 +102,36 @@ void loop(void)
     printf("Receive packet with ACK, state %d\n",e);
   }
 }
+void inputloop(void)
+{
+  while (true){
+    getline(cin,input);
+    cout << input;
+    
+  }
+}
+
+void rtloop(void)
+{
+
+  while (true){
+    cout << "a" << endl;
+    if (input.length() != 0){
+      loop();
+    }
+    else {
+      loop2();
+      cout << input.length();
+      }
+  }
+}
 
 int main (){
   setup();
-  while (true){
-    std::thread t1(loop,void);
-    std::thread t2(loop2,void);
+    std::thread t1(inputloop);
+    std::thread t2(rtloop);
     t1.join();
     t2.join();
     
-  }
 	return (0);
 }
