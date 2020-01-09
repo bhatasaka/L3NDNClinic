@@ -1,16 +1,19 @@
 // Simple C++ program -- displays text
 
-// Header file - requreid for terminal input and output
+// Header file - required for terminal input and output
 #include <iostream>
+#include <string>
 #include <ndn-cxx/face.hpp>
 #include <ndn-cxx/security/key-chain.hpp>
 #include <ndn-cxx/security/signing-helpers.hpp>
 
+
 // placeholder: global variable list
+std::string consumeMessageGlobal;
 
 // Function declaration
 std::string getUsername();
-std::string getChatPartner();
+std::string getChatPartner(std::string myUsername);
 
 // This class is taken from the NDN tutorial "Trivial Consumer", and modified by Jason Stauffer
 // Enclosing code in ndn simplifies coding (can also use `using namespace ndn`)
@@ -55,6 +58,7 @@ private:
   onData(const Interest&, const Data& data) const
   {
     std::cout << "Received Data " << data << std::endl;
+    // consumeMessageGlobal = data;
   }
 
   void
@@ -79,10 +83,10 @@ class Producer
 {
 public:
   void
-  run()
+  run(std::string message)
   {
     m_face.setInterestFilter("/ndn/l3clinic/chat",
-                             bind(&Producer::onInterest, this, _1, _2),
+                             bind(&Producer::onInterest, this, _1, _2, message),
                              nullptr, // RegisterPrefixSuccessCallback is optional
                              bind(&Producer::onRegisterFailed, this, _1, _2));
     m_face.processEvents();
@@ -90,11 +94,11 @@ public:
 
 private:
   void
-  onInterest(const InterestFilter&, const Interest& interest)
+  onInterest(const InterestFilter&, const Interest& interest, std::string message)
   {
     std::cout << ">> I: " << interest << std::endl;
 
-    static const std::string content("Hello, world!");
+    static const std::string content(message); // Want to change this to a variable input to the producer
 
     // Create Data packet
     auto data = make_shared<Data>(interest.getName());
@@ -138,12 +142,13 @@ int main() {
 	std::string recievedMessage;
 	bool messageRecieved;
 	
+	// Gets input from the user to determine the user name for the chat
 	username = getUsername();
 	
 	std::cout << "Username confirmed. Entering chat..." << std::endl;
 	
 	// Look for a valid chat request from another user
-	otherUser = getChatPartner();
+	otherUser = getChatPartner(username);
 	std::cout << "Joining chat with: " << otherUser << std::endl;
 	
 	while ( true ) {
@@ -165,23 +170,47 @@ int main() {
 }
 
 // Function searches for a chat partner and returns a string containing their name
-std::string getChatPartner() {
-	std::string username;
+std::string getChatPartner(std::string myUsername) {
+	std::string otherUsername;
+	bool otherUsernameValid = false;
 	
-	// Start by checking if any active searches for a chat
-	// ndn::examples::Consumer consumer;
-	// consumer.run();
+	while (otherUsernameValid == false) {
+		// Produce myUsername
+		try {
+			ndn::examples::Producer producer;
+			producer.run(myUsername); // add "myUsername" as an input
+		}
+		catch (const std::exception& e) {
+			std::cerr << "ERROR: " << e.what() << std::endl;
+		}
+		
+		// Consume otherUsername
+		try {
+			ndn::examples::Consumer consumer;
+			consumer.run(); // add a return  for "otherUsername"
+			otherUsername = consumeMessageGlobal;
+		}
+		catch (const std::exception& e) {
+			std::cerr << "ERROR: " << e.what() << std::endl;
+		}
+		
+		// Check if the username is valid
+		// This will be a check for specific things in the returned string
+		otherUsernameValid = true;
+	}
 	
-	username = "Bob";
+	// Depending on method of returning data, may need to do additional work here
+	// Parse out the string to only the desired data
 	
-	// if no active chat requests
-	// ndn::examples::Producer producer;
-	// producer.run();
+	// This line is temporary logic, overwrites all previous work done on the otherUsername
+	// This will be deleted once the above logic is working
+	otherUsername = "bob";
 	
-	return username;
+	return otherUsername;
 }
 
 // Get user input to pick a username, and returns that name
+// The final version may want to change this to just use the name of the pi rather than entering a username
 std::string getUsername() {
 	std::string username;
 	char confirm;
