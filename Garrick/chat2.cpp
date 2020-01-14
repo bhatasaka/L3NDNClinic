@@ -1,4 +1,4 @@
-//Chat via commmand line
+//Chat program using Acknowledges and manual toggle
 
 
 #include <iostream> 
@@ -8,6 +8,7 @@ using namespace std;
 
 
 int e;
+char my_packet[100]; //Used in recieve function
 
 char message1 [] = "Packet 1, wanting to see if received packet is the same as sent packet";
 char message2 [] = "Packet 2, broadcast test";
@@ -54,7 +55,7 @@ void setup()
   delay(1000);
 }
 
-void loop(void)
+void loopTransmit(void)
 {
 	// Send message1 and print the result
     string input = "";
@@ -66,6 +67,7 @@ void loop(void)
     {
       e = sx1272.sendPacketTimeoutACK(BROADCAST_0, inputArray);
       cout << "data was sent:" <<  input << endl;
+     // toggleFunction();
     }
     else
     {
@@ -78,15 +80,61 @@ void loop(void)
         e = sx1272.sendPacketTimeoutACK(BROADCAST_0, outputArray);
         currentOffset += 99;
         cout << "data was sent:" <<  outputArray << endl;
+      
       }
+     // toggleFunction();
     }
 }
 
-int main (){
-  setup();
-  while (true){
-    loop();
+void loopRecieve(void)
+{
+  // Receive message
+  e = sx1272.receivePacketTimeoutACK(10000);
+  if ( e == 0 )
+  {
+    printf("Receive packet with ACK, state %d\n",e);
+
+    for (unsigned int i = 0; i < sx1272.packet_received.length; i++)
+    {
+      my_packet[i] = (char)sx1272.packet_received.data[i];
+    }
+    printf("Message: %s\n", my_packet);
     
   }
+  else {
+    printf("Receive packet with ACK, state %d\n",e);
+  }
+  //toggleFuction();
+}
+
+
+
+void toggleFunction(void)
+{
+  string input = "";
+  cout << "Would you like to send or recieve a transmission? (s/r)" << endl;
+  cin >> input;
+  //Transmission mode loop
+  if(input.compare("s") == 0){
+    while (true){
+      loopTransmit();
+    }
+  }
+  //Recieve mode loops
+  if(input.compare("r") == 0){
+    while(true){
+      loopRecieve();
+    }
+  }
+  
+  
+  
+} 
+
+
+int main (){
+  setup();
+  toggleFunction();
+
 	return (0);
 }
