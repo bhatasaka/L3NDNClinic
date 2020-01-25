@@ -7,7 +7,6 @@
 #include <ndn-cxx/security/key-chain.hpp>
 #include <ndn-cxx/security/signing-helpers.hpp>
 
-
 // placeholder: global variable list
 std::string consumeMessageGlobal;
 

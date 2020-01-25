@@ -1,5 +1,5 @@
 CC=clang++
-CFLAGS=-I. -std=c++14 -Wall -lboost_system -lndn-cxx
+CFLAGS=-I. -std=c++14 -Wall -lboost_system -lndn-cxx -g
 TARGET=chat
 OBJ = $(TARGET).o
 DEPS = 
