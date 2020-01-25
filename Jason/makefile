@@ -1,6 +1,6 @@
 CC=clang++
 CFLAGS=-I. -std=c++14 -Wall -lboost_system -lndn-cxx
-TARGET=chat
+TARGET=NDNchat
 OBJ = $(TARGET).o
 DEPS = 
 

@@ -8,13 +8,15 @@
 #include <ndn-cxx/security/signing-helpers.hpp>
 
 
-// placeholder: global variable list
-std::string consumeMessageGlobal;
-bool messageValid;
+// declare struct to use in program
+struct ndnMessage {
+	std::string message;
+	std::string user;
+};
 
 // Function declaration
+void sendMessages(std::string username);
 std::string getUsername();
-std::string getChatPartner(std::string myUsername);
 
 // This class is taken from the NDN tutorial "Trivial Consumer", and modified by Jason Stauffer
 // Enclosing code in ndn simplifies coding (can also use `using namespace ndn`)
@@ -59,34 +61,32 @@ private:
   onData(const Interest&, const Data& data) const
   {
     std::cout << "Received Data " << data << std::endl;
-	// consumeMessageGlobal = getPayload(data);
-	consumeMessageGlobal = "Data Received";
-	messageValid = true;
   }
 
   void
   onNack(const Interest&, const lp::Nack& nack) const
   {
     std::cout << "Received Nack with reason " << nack.getReason() << std::endl;
-	consumeMessageGlobal = "Nack Received";
-	messageValid = false;
   }
 
   void
   onTimeout(const Interest& interest) const
   {
     std::cout << "Timeout for " << interest << std::endl;
-	consumeMessageGlobal = "Data Timeout";
-	messageValid = false;
   }
   
   // This segment of code was written by Bryan Hatasaka, convert type "data" to string
-  std::string getPayload(const Data & data)
+  ndnMessage getPayload(const Data & data)
   {
     const char* start = reinterpret_cast<const char *>(data.getContent().value());
     long length = data.getContent().value_size();
     std::string ret(start, length);
-    return ret;
+    
+    ndnMessage ndn_message;
+    ndn_message.user = ret.substr(0, ret.find("\r\n"));
+    ndn_message.message = ret.substr(ret.find("\r\n")+2, ret.length());
+    return ndn_message;
+    
   }
 
 private:
@@ -99,7 +99,7 @@ class Producer
 {
 public:
   void
-  run(std::string message)
+  run(ndnMessage message)
   {
     m_face.setInterestFilter("/ndn/l3clinic/chat",
                              bind(&Producer::onInterest, this, _1, _2, message),
@@ -110,11 +110,14 @@ public:
 
 private:
   void
-  onInterest(const InterestFilter&, const Interest& interest, std::string message)
+  onInterest(const InterestFilter&, const Interest& interest, ndnMessage message)
   {
-    std::cout << ">> I: " << interest << std::endl;
+    // std::cout << ">> I: " << interest << std::endl;
+	
+    //static const ndnMessage content = message;
+    //static const std::string content(message.message);
 
-    static const std::string content(message); // Want to change this to a variable input to the producer
+	std::string content = message.user + "\r\n" + message.message;
 
     // Create Data packet
     auto data = make_shared<Data>(interest.getName());
@@ -129,7 +132,7 @@ private:
     // m_keyChain.sign(*data, signingWithSha256());
 
     // Return Data packet to the requester
-    std::cout << "<< D: " << *data << std::endl;
+    // std::cout << "<< D: " << *data << std::endl;
     m_face.put(*data);
   }
 
@@ -151,88 +154,63 @@ private:
 
 // Main Function
 int main() {
-	// local variable list (variables for MAIN)
-	std::string username;
-	std::string otherUser;
-	std::string sendMessage;
-	std::string recievedMessage;
-	bool messageRecieved;
+	std::string user;
+	// Threading
+	// 0 - Main
 	
 	// Gets input from the user to determine the user name for the chat
-	username = getUsername();
+	user = getUsername(); // In final version of this program, if possible it will be best to just get the name of the pi (ie pi1, pi2, etc.) rather than user input
 	
+	// Status to user that username has been accepted
 	std::cout << "Username confirmed. Entering chat..." << std::endl;
 	
-	// Look for a valid chat request from another user
-	otherUser = getChatPartner(username);
-	std::cout << "Joining chat with: " << otherUser << std::endl;
+	// thread 1 - Producer
+	sendMessages(user);
+	// thread 2 - Consumer
+	// recieveMessages(); // Printing of messages to terminal handled internally in this function, no return type
 	
-	while ( true ) {
-		// Check for message from other user
-		messageRecieved = true;
-		// recievedMessage = "This is an arbitrary response";
-		try {
-			ndn::examples::Consumer consumer;
-			consumer.run(); // add a return  for "otherUsername"
-			recievedMessage = consumeMessageGlobal;
-		}
-		catch (const std::exception& e) {
-			std::cerr << "ERROR: " << e.what() << std::endl;
-		}
-		
-		if ( messageRecieved ) {
-			std::cout << otherUser << ": " << recievedMessage << std::endl;
-			messageRecieved = false;
-		}
-		
-		// Send a response
-		std::cout << username << ": ";
-		std::getline (std::cin, sendMessage);
-	}
-	
-	return 0;
 }
 
-// Function searches for a chat partner and returns a string containing their name
-std::string getChatPartner(std::string myUsername) {
-	std::string otherUsername;
-	bool otherUsernameValid = false;
+/*
+void recieveMessages() {
+	ndnMessage msgRecieve; // Create a structure for the user name and message recieved from other pi
+	Consumer getter; // Create a consumer object that is used to consume the desired message
 	
-	while (otherUsernameValid == false) {
-		// Produce myUsername
-		try {
-			ndn::examples::Producer producer;
-			producer.run(myUsername); // add "myUsername" as an input
-		}
-		catch (const std::exception& e) {
-			std::cerr << "ERROR: " << e.what() << std::endl;
-		}
+	while (true) {
+		data = getter.run();
 		
-		// Consume otherUsername
-		try {
-			ndn::examples::Consumer consumer;
-			consumer.run(); // add a return  for "otherUsername"
-		}
-		catch (const std::exception& e) {
-			std::cerr << "ERROR: " << e.what() << std::endl;
-		}
+		msgRecieve = (ndnMessage)data;
 		
-		if ( messageValid ) {
-			otherUsername = consumeMessageGlobal;
-		}
-		else {
-			otherUsername = "Default";
-		}
-		
-		// Check if the username is valid
-		// This will be a check for specific things in the returned string
-		otherUsernameValid = true;
+		std::cout << msgRecieve.user << ": " << msgRecieve.message << endl;
 	}
+}
+*/
+
+void sendMessages(std::string username) {
+	ndnMessage msgSend; // Create a structure for the user name and message sent from this pi
+	ndn::examples::Producer sender; // Create a producer object that is used to produce the desired message
 	
-	// Depending on method of returning data, may need to do additional work here
-	// Parse out the string to only the desired data
+	// Set the username of the sender to the username determined when entering the chat program
+	msgSend.user = username;
 	
-	return otherUsername;
+	while (true) {
+		// Take message input from user, "getLine" allows spaces in the message between words
+		// std::getline(std::cin, msgSend.message);
+		std::cin.ignore();
+		std::getline(std::cin, msgSend.message);
+		
+		// Add an empty line at the end of the message (makes it print nicer)
+		msgSend.message = msgSend.message += "\n";
+		
+		// Debug tool, can be deleted
+		//std::cout << "The program thinks you typed: " << msgSend.message << std::endl;
+		
+		// uses the producer to send the message
+		// Note - currently assumed message is small enough to send. There may be size limits to take into account in future messages
+		sender.run(msgSend);
+		std::cout << "The user name entered is: " << msgSend.user << std::endl;
+		std::cout << "The message entered is: " << msgSend.message << std::endl;
+	}
 }
 
 // Get user input to pick a username, and returns that name
@@ -241,31 +219,31 @@ std::string getUsername() {
 	std::string username;
 	char confirm;
 	
-	// Create name label to jump back in code to the point where the username is chosen
-	createName:
-	
-	// recieve username
-	std::cout << "Please enter your username: ";
-	std::getline(std::cin, username);
-	
-	// Confirm username
-	std::cout << "Your username is: " << username << std::endl;
-	
-	// Confirm name label to jump back in code to the point where the username is confirmed
-	confirmName:
-	
-	std::cout << "Confirm username? (type y/n): ";
-	std::cin >> confirm;
-	
-	// If username confirmed, return it. If username is denied, go back to recreate it. If unknown input, warn the user and try again
-	if ( confirm == 'y' ) {
-		return username;
-	}
-	else if ( confirm == 'n' ) {
-		goto createName;
-	}
-	else {
-		std::cout << "WARNING - invalid input" << std::endl;
-		goto confirmName;
+	while (true) {
+		// recieve username
+		std::cout << "Please enter your username: ";
+		// std::cin.ignore();
+		std::getline(std::cin, username);
+		// Confirm username
+		std::cout << "Your username is: " << username << std::endl;
+			
+		while (true) {
+			// Allow user to confirm username
+			std::cout << "Confirm username? (type y/n): ";
+			// std::cin.ignore();
+			std::cin >> confirm;
+			
+			// If username confirmed, return it. If username is denied, go back to recreate it. If unknown input, warn the user and try again
+			if ( confirm == 'y' ) {
+				return username;
+			}
+			else if ( confirm == 'n' ) {
+				username = "";
+				break;
+			}
+			else {
+				std::cout << "WARNING - invalid input" << std::endl;
+			}
+		}
 	}
 }
