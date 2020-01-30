@@ -3,6 +3,8 @@
 
 #include <iostream>
 #include <bitset>
+#include <stdlib.h>
+#include <time.h>
 #include "arduPiLoRa.h"
 using namespace std;
 
@@ -60,11 +62,12 @@ void loop(void)
 	// Send message1 and print the result
     string input = "";
     getline(cin,input);
+    srand(time(0));
     char inputArray [input.length() + 1];
     strcpy(inputArray, input.c_str());
     int v= rand() % 128;
     bitset<8> identity= bitset<8>(v);
-    cout << identity;
+    cout << v << identity;
     unsigned long i = identity.to_ulong(); 
     char c = static_cast<char>( i );
     cout << c << endl;
@@ -77,6 +80,9 @@ void loop(void)
       outputArray[1]= num[0];
       outputArray[2]=num[1];
       strcat(outputArray, inputArray);
+      outputArray[1]=static_cast<char>( 0 );
+      cout << bitset<8>(outputArray[0]);
+      cout << bitset<8>(outputArray[1]);
       e = sx1272.sendPacketTimeoutACK(BROADCAST_0, outputArray);
       cout << "data was sent:" <<  outputArray << endl;
       for (int i=0; i<input.length()+3; i++){
@@ -108,6 +114,7 @@ void loop(void)
     char d = static_cast<char>( z );
         outputArray[0] = c;
       outputArray[1]= d;
+      cout << bitset<8>(outputArray[1]);
         memcpy(outputArray+2, inputArray + currentOffset,247);
         outputArray[249] = 0;
         e = sx1272.sendPacketTimeoutACK(BROADCAST_0, outputArray);
