@@ -16,6 +16,7 @@ struct ndnMessage {
 
 // Function declaration
 void sendMessages(std::string username);
+void receiveMessages();
 std::string getUsername();
 
 // This class is taken from the NDN tutorial "Trivial Consumer", and modified by Jason Stauffer
@@ -32,11 +33,11 @@ public:
   {
 	// Specify the name for the interest
     Name interestName("/ndn/l3clinic/chat");
-    // Append NDN version number to the interested
-    interestName.appendVersion();
+    // Append NDN version number to the interest
+    // interestName.appendVersion();
 	
 	// Print the interest name to the terminal
-	std::cout << "Creating interest: " << interestName << std::endl;
+	// std::cout << "Creating interest: " << interestName << std::endl;
 	
 	// Create an interested with the interest name specified
     Interest interest(interestName);
@@ -46,7 +47,7 @@ public:
     interest.setMustBeFresh(true);
     interest.setInterestLifetime(6_s); // The default is 4 seconds
 
-    std::cout << "Sending Interest " << interest << std::endl;
+    // std::cout << "Sending Interest " << interest << std::endl;
     m_face.expressInterest(interest,
                            bind(&Consumer::onData, this,  _1, _2),
                            bind(&Consumer::onNack, this, _1, _2),
@@ -60,13 +61,18 @@ private:
   void
   onData(const Interest&, const Data& data) const
   {
-    std::cout << "Received Data " << data << std::endl;
+	ndnMessage message;
+    // std::cout << "Received Data " << data << std::endl;
+    message = getPayload(data);
+    std::cout << message.user << ": " << message.message << std::endl;
   }
 
   void
   onNack(const Interest&, const lp::Nack& nack) const
   {
-    std::cout << "Received Nack with reason " << nack.getReason() << std::endl;
+    // if nack.getReason() != "NoRoute"
+	//	std::cout << "Received Nack with reason " << nack.getReason() << std::endl;
+	// }
   }
 
   void
@@ -75,8 +81,8 @@ private:
     std::cout << "Timeout for " << interest << std::endl;
   }
   
-  // This segment of code was written by Bryan Hatasaka, convert type "data" to string
-  ndnMessage getPayload(const Data & data)
+  // This segment of code was written by Bryan Hatasaka, convert type "data" to ndnMessage
+  ndnMessage getPayload(const Data & data) const
   {
     const char* start = reinterpret_cast<const char *>(data.getContent().value());
     long length = data.getContent().value_size();
@@ -165,26 +171,22 @@ int main() {
 	std::cout << "Username confirmed. Entering chat..." << std::endl;
 	
 	// thread 1 - Producer
-	sendMessages(user);
+	// sendMessages(user);
 	// thread 2 - Consumer
-	// recieveMessages(); // Printing of messages to terminal handled internally in this function, no return type
+	receiveMessages(); // Printing of messages to terminal handled internally in this function, no return type
 	
 }
 
-/*
-void recieveMessages() {
+void receiveMessages() {
 	ndnMessage msgRecieve; // Create a structure for the user name and message recieved from other pi
-	Consumer getter; // Create a consumer object that is used to consume the desired message
+	ndn::examples::Consumer getter; // Create a consumer object that is used to consume the desired message
 	
 	while (true) {
-		data = getter.run();
+		getter.run();
 		
-		msgRecieve = (ndnMessage)data;
-		
-		std::cout << msgRecieve.user << ": " << msgRecieve.message << endl;
+		// std::cout << msgRecieve.user << ": " << msgRecieve.message << endl;
 	}
 }
-*/
 
 void sendMessages(std::string username) {
 	ndnMessage msgSend; // Create a structure for the user name and message sent from this pi
