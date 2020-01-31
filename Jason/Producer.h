@@ -14,13 +14,15 @@
 class Producer
 {
 public:
-    void run(ndnMessage message);
+    void run();
+    void setMessage(ndnMessage _message);
 
 private:
     ndn::Face m_face;
     ndn::KeyChain m_keyChain;
+    ndnMessage message;
 
-    void onInterest(const ndn::InterestFilter &, const ndn::Interest &interest, ndnMessage message);
+    void onInterest(const ndn::InterestFilter &, const ndn::Interest &interest);
 
     void onRegisterFailed(const ndn::Name &prefix, const std::string &reason);
 };

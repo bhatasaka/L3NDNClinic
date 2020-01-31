@@ -1,5 +1,6 @@
 CC=clang++
-CFLAGS= -std=c++14 -Wall -lboost_system -lndn-cxx
+CFLAGS= -std=c++14 -Wall
+LFLAGS= -lboost_system -lndn-cxx -pthread
 TARGET=NDNchat
 OBJ = $(TARGET).o Producer.o Consumer.o
 DEPS = Producer.h Consumer.h NDNchat.h
@@ -8,7 +9,7 @@ DEPS = Producer.h Consumer.h NDNchat.h
 	$(CC) -c -o $@ $< $(CFLAGS)
 
 $(TARGET): $(OBJ)
-	$(CC) -o $@ $^ $(CFLAGS)
+	$(CC) -o $@ $^ $(CFLAGS) $(LFLAGS)
 
 clean:
 	rm -f *.o $(TARGET)

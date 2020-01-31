@@ -6,6 +6,7 @@
 #include <ndn-cxx/face.hpp>
 #include <ndn-cxx/security/key-chain.hpp>
 #include <ndn-cxx/security/signing-helpers.hpp>
+#include <thread>
 #include "Consumer.h"
 #include "Producer.h"
 #include "NDNchat.h"
@@ -24,9 +25,14 @@ int main()
   std::cout << "Username confirmed. Entering chat..." << std::endl;
 
   // thread 1 - Producer
-  // sendMessages(user);
+  std::thread sendThread(sendMessages, user);
   // thread 2 - Consumer
-  receiveMessages(); // Printing of messages to terminal handled internally in this function, no return type
+  // receiveMessages(); // Printing of messages to terminal handled internally in this function, no return type
+  std::thread receiveThread(receiveMessages);
+
+  // functions don't return so this shouldn't be called
+  sendThread.join();
+  receiveThread.join();
 }
 
 void receiveMessages()
@@ -50,24 +56,25 @@ void sendMessages(std::string username)
   // Set the username of the sender to the username determined when entering the chat program
   msgSend.user = username;
 
+  std::cin.ignore();
   while (true)
   {
     // Take message input from user, "getLine" allows spaces in the message between words
     // std::getline(std::cin, msgSend.message);
-    std::cin.ignore();
     std::getline(std::cin, msgSend.message);
 
-    // Add an empty line at the end of the message (makes it print nicer)
-    msgSend.message = msgSend.message += "\n";
+    msgSend.message = msgSend.message;
 
     // Debug tool, can be deleted
-    //std::cout << "The program thinks you typed: " << msgSend.message << std::endl;
+    // std::cout << "The program thinks you typed: " << msgSend.message << std::endl;
+
+    sender.setMessage(msgSend);
 
     // uses the producer to send the message
     // Note - currently assumed message is small enough to send. There may be size limits to take into account in future messages
-    sender.run(msgSend);
-    std::cout << "The user name entered is: " << msgSend.user << std::endl;
-    std::cout << "The message entered is: " << msgSend.message << std::endl;
+    // sender.run();
+    // std::cout << "The user name entered is: " << msgSend.user << std::endl;
+    // std::cout << "The message entered is: " << msgSend.message << std::endl;
   }
 }
 
