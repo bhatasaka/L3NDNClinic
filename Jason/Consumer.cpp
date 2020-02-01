@@ -37,7 +37,7 @@ void Consumer::onData(const ndn::Interest &, const ndn::Data &data) const
   // std::cout << "Received ndn::Data " << data << std::endl;
   message = getPayload(data);
   std::cout << message.user << ": " << message.message << std::endl;
-  std::this_thread::sleep_for(std::chrono::milliseconds(100));
+  std::this_thread::sleep_for(std::chrono::milliseconds(500));
 }
 
 void Consumer::onNack(const ndn::Interest &, const ndn::lp::Nack &nack) const
@@ -49,7 +49,7 @@ void Consumer::onNack(const ndn::Interest &, const ndn::lp::Nack &nack) const
 
 void Consumer::onTimeout(const ndn::Interest &interest) const
 {
-  std::cout << "Timeout for " << interest << std::endl;
+  // std::cout << "Timeout for " << interest << std::endl;
 }
 
 // This segment of code was written by Bryan Hatasaka, convert type "data" to ndnMessage
