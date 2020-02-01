@@ -25,7 +25,7 @@ void setup()
   printf("Setting power ON: state %d\n", e);
 
   // Set transmission mode
-  e |= sx1272.setMode(4);
+  e |= sx1272.setMode(10);
   printf("Setting Mode: state %d\n", e);
 
   // Set header
@@ -33,7 +33,7 @@ void setup()
   printf("Setting Header ON: state %d\n", e);
 
   // Select frequency channel
-  e |= sx1272.setChannel(CH_01_900);
+  e |= sx1272.setChannel(CH_00_900);
   printf("Setting Channel: state %d\n", e);
 
   // Set CRC
@@ -114,11 +114,12 @@ void loop(void)
         outputArray[0] = c;
       outputArray[1]= d;
         memcpy(outputArray+2, inputArray + currentOffset,247);
-        outputArray[249] = 0;
+        outputArray[249]='\0';
+        cout << bitset<8>(outputArray[1]);
         e = sx1272.sendPacketTimeoutACK(BROADCAST_0, outputArray);
         currentOffset += 247;
         cout << "data was sent:" <<  outputArray << endl;
-        delay(300);
+        delay(2000);
         B +=1;
       }
     }
