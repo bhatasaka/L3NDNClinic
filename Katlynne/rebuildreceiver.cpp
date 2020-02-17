@@ -41,7 +41,7 @@ void setup()
   printf("Setting power ON: state %d\n", e);
   
   // Set transmission mode
-  e |= sx1272.setMode(4);
+  e |= sx1272.setMode(10);
   printf("Setting Mode: state %d\n", e);
   
   // Set header
@@ -49,7 +49,7 @@ void setup()
   printf("Setting Header ON: state %d\n", e);
   
   // Select frequency channel
-  e |= sx1272.setChannel(CH_01_900);
+  e |= sx1272.setChannel(CH_00_900);
   printf("Setting Channel: state %d\n", e);
   
   // Set CRC
@@ -88,7 +88,7 @@ void loop(void)
     {
       my_packet[i] = (char)sx1272.packet_received.data[i];
     }
-    cout << my_packet;
+    //cout << my_packet;
     identity = my_packet[0];
     //bitset<8> id = bitset<8>(my_packet[0]);
     if (((uint8_t)identity) & 0x80 == 1){  
@@ -98,7 +98,7 @@ void loop(void)
     }
     else{
       bitset<8> packets =bitset<8>(my_packet[1]);
-      cout << packets<< "\n";
+      //cout << packets<< "\n";
       bitset<4> A;
       A[0]= packets[4];
       A[1]= packets[5];
@@ -110,55 +110,58 @@ void loop(void)
       B[2]= packets[2];
       B[3]= packets[3];
       int packetnumb =(int)(A.to_ulong());
-      cout <<B;
+      //cout <<B;
       
         //identity = id;
         packetlength = (int)(B.to_ulong());
-        cout << packetlength;
+        //cout << packetlength;
       if(packetlength ==0){
         return;
       }
       char message[(packetlength+1)*247+1];
-      cout << sizeof(message);
-      
+      //cout << sizeof(message);
+      memcpy(message,my_packet+2, sizeof(my_packet)-2);
       for(int idx = 0; idx < packetlength; idx++)
       {
-        message[idx-1] = my_packet[idx];
+        //message[idx-1] = my_packet[idx];
         
       }
-      message[packetlength]='\0';
+      message[sizeof(message)]='\0';
       //cout << message << '\n';
       // variable to handle the current packet number we're on
       
-      for(int idx = 1; idx < packetlength; idx++) {
+      for(int idx = 1; idx < packetlength+1; idx++) {
         do{
         e = sx1272.receivePacketTimeoutACK(10000);
       }while(e!=0);
         char current_id = (char)sx1272.packet_received.data[0];
-        int current_packet_num = uint32_t(((uint8_t)sx1272.packet_received.data[1]) & 0xF0);
+        int current_packet_num = uint32_t(((uint8_t)sx1272.packet_received.data[1]) & 0xF0) >> 4;
+        //cout << current_packet_num;
         if(current_id != identity)
         {
           error = true;
+          cout << "not correct packet";
           break;
         }
+        
         if(idx != current_packet_num){
           error =true;
+          cout << "not correct number";
           break;
         }
-      for (unsigned int i = 0; i < sx1272.packet_received.length; i++)
+        memcpy(message+(idx*247),sx1272.packet_received.data+2, sizeof(my_packet)-2);
+      //for (unsigned int i = 2; i < sx1272.packet_received.length; i++)
     {
-      message[(idx*247)+i] = (char)sx1272.packet_received.data[i];
+      //message[(idx*247)+i] = (char)sx1272.packet_received.data[i];
     }
         // check that we're on the net packet number
         // concatenate the new data to message
+        //cout << message << '\n';
+      }
         cout << message << '\n';
-      }
-      if(!error){
-        cout << message << '\n';
-      }
-      else{
-        cout << "Dropped Message";
-      }
+      //else{
+        //cout << "Dropped Message";
+      //}
       
       // check that error is false still, if it's not
       // then trhow away message
