@@ -1,7 +1,8 @@
 CC:=/usr/local/clang_8.0.0/bin/clang++
-AR:=ar
+AR:=/usr/bin/ar
 CFLAGS:= -lrt -lpthread -lstdc++
 TARGET:=chatThreading
+LORA_LIB:=loralib
 OBJ:=
 DEPS:=
 BUILD_DIR:=build
@@ -45,7 +46,7 @@ $(TARGET): main
 		-o $(TARGET)
 
 library: main
-	$(AR) rcvs lib_$(TARGET).a \
+	$(AR) rcvs lib_$(LORA_LIB).a \
 		$(BUILD_DIR)/arduPiLoRa.o \
 		$(BUILD_DIR)/arduPiUART.o \
 		$(BUILD_DIR)/arduPiUtils.o \
@@ -54,7 +55,7 @@ library: main
 
 withlib: library
 	$(CC) $(CFLAGS) $(BUILD_DIR)/$(TARGET).o \
-		-L. -l_$(TARGET).a
+		-L. -l_$(LORA_LIB) \
 		-o $(TARGET)
 
 clean:
