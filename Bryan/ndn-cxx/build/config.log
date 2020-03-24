@@ -1,0 +1,1607 @@
+# project ndn-cxx (0.6.6) configured on Sun Mar 15 14:06:10 2020 by
+# waf 2.0.14 (abi 20, python 20711f0 on linux2)
+# using ./waf configure
+#
+----------------------------------------
+Setting top to
+/mnt/c/Users/Bryan/Google Drive/School/NDN/ndn-cxx
+----------------------------------------
+Setting out to
+/mnt/c/Users/Bryan/Google Drive/School/NDN/ndn-cxx/build
+----------------------------------------
+Building static library
+no
+----------------------------------------
+Building shared library
+yes
+----------------------------------------
+Checking for 'g++' (C++ compiler)
+find program=['g++', 'c++'] paths=['/home/bhatasaka/.cargo/bin', '/home/bhatasaka/.local/bin', '/usr/local/sbin', '/usr/local/bin', '/usr/sbin', '/usr/bin', '/sbin', '/bin', '/usr/games', '/usr/local/games', '/mnt/c/Program Files (x86)/Python38-32/Scripts/', '/mnt/c/Program Files (x86)/Python38-32/', '/mnt/c/Python27/', '/mnt/c/Python27/Scripts', '/mnt/c/Program Files (x86)/Common Files/Oracle/Java/javapath', '/mnt/c/Windows/system32', '/mnt/c/Windows', '/mnt/c/Windows/System32/Wbem', '/mnt/c/Windows/System32/WindowsPowerShell/v1.0/', '/mnt/c/Windows/System32/OpenSSH/', '/mnt/c/Program Files/Microsoft VS Code/bin', '/mnt/c/Program Files/NVIDIA Corporation/NVIDIA NvDLISR', '/mnt/c/ProgramData/chocolatey/bin', '/mnt/c/Program Files (x86)/vim/vim80', '/mnt/c/Program Files/PuTTY/', '/mnt/c/Go/bin', '/mnt/c/Program Files (x86)/NVIDIA Corporation/PhysX/Common', '/mnt/c/Program Files/mingw-w64/x86_64-8.1.0-posix-seh-rt_v6-rev0/mingw64/bin', '/mnt/c/Program Files/dotnet/', '/mnt/c/Program Files/Microsoft SQL Server/130/Tools/Binn/', '/mnt/c/Program Files/Microsoft SQL Server/Client SDK/ODBC/170/Tools/Binn/', '/mnt/c/Program Files (x86)/Microsoft SQL Server/150/DTS/Binn/', '/mnt/c/WINDOWS/system32', '/mnt/c/WINDOWS', '/mnt/c/WINDOWS/System32/Wbem', '/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/', '/mnt/c/WINDOWS/System32/OpenSSH/', '/mnt/c/Program Files/Git/cmd', '/mnt/c/Program Files/Microsoft SQL Server/Client SDK/ODBC/130/Tools/Binn/', '/mnt/c/Program Files (x86)/Microsoft SQL Server/140/Tools/Binn/', '/mnt/c/Program Files/Microsoft SQL Server/140/Tools/Binn/', '/mnt/c/Program Files/Microsoft SQL Server/140/DTS/Binn/', '/mnt/c/Program Files/nodejs/', '/mnt/c/Users/Bryan/AppData/Local/Microsoft/WindowsApps', '/mnt/c/Program Files (x86)/Microsoft Visual Studio/2017/BuildTools/VC/Tools/MSVC/14.16.27023/bin/Hostx64/x64/cl.exe', '/mnt/c/Program Files (x86)/Microsoft Visual Studio/2017/BuildTools/MSBuild.exe', '/mnt/c/Users/Bryan/go/bin', '/mnt/c/ProgramData/chocolatey/lib/mingw/tools/install/mingw64/bin', '/mnt/c/Program Files/STLink/bin', '/mnt/c/Program Files (x86)/GnuWin32/bin', '/mnt/c/Program Files/avr8-gnu-toolchain/bin', '/mnt/c/Program Files (x86)/Arduino/hardware/tools/avr/bin', '/mnt/c/Users/Bryan/AppData/Roaming/npm', '/mnt/c/Users/Bryan/.dotnet/tools', '/snap/bin', '~/libs/bin'] var='CXX' -> ['clang++']
+['clang++', '-dM', '-E', '-']
+out: #define _LP64 1
+#define __ATOMIC_ACQUIRE 2
+#define __ATOMIC_ACQ_REL 4
+#define __ATOMIC_CONSUME 1
+#define __ATOMIC_RELAXED 0
+#define __ATOMIC_RELEASE 3
+#define __ATOMIC_SEQ_CST 5
+#define __BIGGEST_ALIGNMENT__ 16
+#define __BYTE_ORDER__ __ORDER_LITTLE_ENDIAN__
+#define __CHAR16_TYPE__ unsigned short
+#define __CHAR32_TYPE__ unsigned int
+#define __CHAR_BIT__ 8
+#define __CLANG_ATOMIC_BOOL_LOCK_FREE 2
+#define __CLANG_ATOMIC_CHAR16_T_LOCK_FREE 2
+#define __CLANG_ATOMIC_CHAR32_T_LOCK_FREE 2
+#define __CLANG_ATOMIC_CHAR_LOCK_FREE 2
+#define __CLANG_ATOMIC_INT_LOCK_FREE 2
+#define __CLANG_ATOMIC_LLONG_LOCK_FREE 2
+#define __CLANG_ATOMIC_LONG_LOCK_FREE 2
+#define __CLANG_ATOMIC_POINTER_LOCK_FREE 2
+#define __CLANG_ATOMIC_SHORT_LOCK_FREE 2
+#define __CLANG_ATOMIC_WCHAR_T_LOCK_FREE 2
+#define __CONSTANT_CFSTRINGS__ 1
+#define __DBL_DECIMAL_DIG__ 17
+#define __DBL_DENORM_MIN__ 4.9406564584124654e-324
+#define __DBL_DIG__ 15
+#define __DBL_EPSILON__ 2.2204460492503131e-16
+#define __DBL_HAS_DENORM__ 1
+#define __DBL_HAS_INFINITY__ 1
+#define __DBL_HAS_QUIET_NAN__ 1
+#define __DBL_MANT_DIG__ 53
+#define __DBL_MAX_10_EXP__ 308
+#define __DBL_MAX_EXP__ 1024
+#define __DBL_MAX__ 1.7976931348623157e+308
+#define __DBL_MIN_10_EXP__ (-307)
+#define __DBL_MIN_EXP__ (-1021)
+#define __DBL_MIN__ 2.2250738585072014e-308
+#define __DECIMAL_DIG__ __LDBL_DECIMAL_DIG__
+#define __ELF__ 1
+#define __FINITE_MATH_ONLY__ 0
+#define __FLOAT128__ 1
+#define __FLT_DECIMAL_DIG__ 9
+#define __FLT_DENORM_MIN__ 1.40129846e-45F
+#define __FLT_DIG__ 6
+#define __FLT_EPSILON__ 1.19209290e-7F
+#define __FLT_EVAL_METHOD__ 0
+#define __FLT_HAS_DENORM__ 1
+#define __FLT_HAS_INFINITY__ 1
+#define __FLT_HAS_QUIET_NAN__ 1
+#define __FLT_MANT_DIG__ 24
+#define __FLT_MAX_10_EXP__ 38
+#define __FLT_MAX_EXP__ 128
+#define __FLT_MAX__ 3.40282347e+38F
+#define __FLT_MIN_10_EXP__ (-37)
+#define __FLT_MIN_EXP__ (-125)
+#define __FLT_MIN__ 1.17549435e-38F
+#define __FLT_RADIX__ 2
+#define __FXSR__ 1
+#define __GCC_ASM_FLAG_OUTPUTS__ 1
+#define __GCC_ATOMIC_BOOL_LOCK_FREE 2
+#define __GCC_ATOMIC_CHAR16_T_LOCK_FREE 2
+#define __GCC_ATOMIC_CHAR32_T_LOCK_FREE 2
+#define __GCC_ATOMIC_CHAR_LOCK_FREE 2
+#define __GCC_ATOMIC_INT_LOCK_FREE 2
+#define __GCC_ATOMIC_LLONG_LOCK_FREE 2
+#define __GCC_ATOMIC_LONG_LOCK_FREE 2
+#define __GCC_ATOMIC_POINTER_LOCK_FREE 2
+#define __GCC_ATOMIC_SHORT_LOCK_FREE 2
+#define __GCC_ATOMIC_TEST_AND_SET_TRUEVAL 1
+#define __GCC_ATOMIC_WCHAR_T_LOCK_FREE 2
+#define __GCC_HAVE_SYNC_COMPARE_AND_SWAP_1 1
+#define __GCC_HAVE_SYNC_COMPARE_AND_SWAP_2 1
+#define __GCC_HAVE_SYNC_COMPARE_AND_SWAP_4 1
+#define __GCC_HAVE_SYNC_COMPARE_AND_SWAP_8 1
+#define __GNUC_MINOR__ 2
+#define __GNUC_PATCHLEVEL__ 1
+#define __GNUC_STDC_INLINE__ 1
+#define __GNUC__ 4
+#define __GXX_ABI_VERSION 1002
+#define __INT16_C_SUFFIX__ 
+#define __INT16_FMTd__ "hd"
+#define __INT16_FMTi__ "hi"
+#define __INT16_MAX__ 32767
+#define __INT16_TYPE__ short
+#define __INT32_C_SUFFIX__ 
+#define __INT32_FMTd__ "d"
+#define __INT32_FMTi__ "i"
+#define __INT32_MAX__ 2147483647
+#define __INT32_TYPE__ int
+#define __INT64_C_SUFFIX__ L
+#define __INT64_FMTd__ "ld"
+#define __INT64_FMTi__ "li"
+#define __INT64_MAX__ 9223372036854775807L
+#define __INT64_TYPE__ long int
+#define __INT8_C_SUFFIX__ 
+#define __INT8_FMTd__ "hhd"
+#define __INT8_FMTi__ "hhi"
+#define __INT8_MAX__ 127
+#define __INT8_TYPE__ signed char
+#define __INTMAX_C_SUFFIX__ L
+#define __INTMAX_FMTd__ "ld"
+#define __INTMAX_FMTi__ "li"
+#define __INTMAX_MAX__ 9223372036854775807L
+#define __INTMAX_TYPE__ long int
+#define __INTMAX_WIDTH__ 64
+#define __INTPTR_FMTd__ "ld"
+#define __INTPTR_FMTi__ "li"
+#define __INTPTR_MAX__ 9223372036854775807L
+#define __INTPTR_TYPE__ long int
+#define __INTPTR_WIDTH__ 64
+#define __INT_FAST16_FMTd__ "hd"
+#define __INT_FAST16_FMTi__ "hi"
+#define __INT_FAST16_MAX__ 32767
+#define __INT_FAST16_TYPE__ short
+#define __INT_FAST32_FMTd__ "d"
+#define __INT_FAST32_FMTi__ "i"
+#define __INT_FAST32_MAX__ 2147483647
+#define __INT_FAST32_TYPE__ int
+#define __INT_FAST64_FMTd__ "ld"
+#define __INT_FAST64_FMTi__ "li"
+#define __INT_FAST64_MAX__ 9223372036854775807L
+#define __INT_FAST64_TYPE__ long int
+#define __INT_FAST8_FMTd__ "hhd"
+#define __INT_FAST8_FMTi__ "hhi"
+#define __INT_FAST8_MAX__ 127
+#define __INT_FAST8_TYPE__ signed char
+#define __INT_LEAST16_FMTd__ "hd"
+#define __INT_LEAST16_FMTi__ "hi"
+#define __INT_LEAST16_MAX__ 32767
+#define __INT_LEAST16_TYPE__ short
+#define __INT_LEAST32_FMTd__ "d"
+#define __INT_LEAST32_FMTi__ "i"
+#define __INT_LEAST32_MAX__ 2147483647
+#define __INT_LEAST32_TYPE__ int
+#define __INT_LEAST64_FMTd__ "ld"
+#define __INT_LEAST64_FMTi__ "li"
+#define __INT_LEAST64_MAX__ 9223372036854775807L
+#define __INT_LEAST64_TYPE__ long int
+#define __INT_LEAST8_FMTd__ "hhd"
+#define __INT_LEAST8_FMTi__ "hhi"
+#define __INT_LEAST8_MAX__ 127
+#define __INT_LEAST8_TYPE__ signed char
+#define __INT_MAX__ 2147483647
+#define __LDBL_DECIMAL_DIG__ 21
+#define __LDBL_DENORM_MIN__ 3.64519953188247460253e-4951L
+#define __LDBL_DIG__ 18
+#define __LDBL_EPSILON__ 1.08420217248550443401e-19L
+#define __LDBL_HAS_DENORM__ 1
+#define __LDBL_HAS_INFINITY__ 1
+#define __LDBL_HAS_QUIET_NAN__ 1
+#define __LDBL_MANT_DIG__ 64
+#define __LDBL_MAX_10_EXP__ 4932
+#define __LDBL_MAX_EXP__ 16384
+#define __LDBL_MAX__ 1.18973149535723176502e+4932L
+#define __LDBL_MIN_10_EXP__ (-4931)
+#define __LDBL_MIN_EXP__ (-16381)
+#define __LDBL_MIN__ 3.36210314311209350626e-4932L
+#define __LITTLE_ENDIAN__ 1
+#define __LONG_LONG_MAX__ 9223372036854775807LL
+#define __LONG_MAX__ 9223372036854775807L
+#define __LP64__ 1
+#define __MMX__ 1
+#define __NO_INLINE__ 1
+#define __NO_MATH_INLINES 1
+#define __OBJC_BOOL_IS_BOOL 0
+#define __OPENCL_MEMORY_SCOPE_ALL_SVM_DEVICES 3
+#define __OPENCL_MEMORY_SCOPE_DEVICE 2
+#define __OPENCL_MEMORY_SCOPE_SUB_GROUP 4
+#define __OPENCL_MEMORY_SCOPE_WORK_GROUP 1
+#define __OPENCL_MEMORY_SCOPE_WORK_ITEM 0
+#define __ORDER_BIG_ENDIAN__ 4321
+#define __ORDER_LITTLE_ENDIAN__ 1234
+#define __ORDER_PDP_ENDIAN__ 3412
+#define __POINTER_WIDTH__ 64
+#define __PRAGMA_REDEFINE_EXTNAME 1
+#define __PTRDIFF_FMTd__ "ld"
+#define __PTRDIFF_FMTi__ "li"
+#define __PTRDIFF_MAX__ 9223372036854775807L
+#define __PTRDIFF_TYPE__ long int
+#define __PTRDIFF_WIDTH__ 64
+#define __REGISTER_PREFIX__ 
+#define __SCHAR_MAX__ 127
+#define __SEG_FS 1
+#define __SEG_GS 1
+#define __SHRT_MAX__ 32767
+#define __SIG_ATOMIC_MAX__ 2147483647
+#define __SIG_ATOMIC_WIDTH__ 32
+#define __SIZEOF_DOUBLE__ 8
+#define __SIZEOF_FLOAT128__ 16
+#define __SIZEOF_FLOAT__ 4
+#define __SIZEOF_INT128__ 16
+#define __SIZEOF_INT__ 4
+#define __SIZEOF_LONG_DOUBLE__ 16
+#define __SIZEOF_LONG_LONG__ 8
+#define __SIZEOF_LONG__ 8
+#define __SIZEOF_POINTER__ 8
+#define __SIZEOF_PTRDIFF_T__ 8
+#define __SIZEOF_SHORT__ 2
+#define __SIZEOF_SIZE_T__ 8
+#define __SIZEOF_WCHAR_T__ 4
+#define __SIZEOF_WINT_T__ 4
+#define __SIZE_FMTX__ "lX"
+#define __SIZE_FMTo__ "lo"
+#define __SIZE_FMTu__ "lu"
+#define __SIZE_FMTx__ "lx"
+#define __SIZE_MAX__ 18446744073709551615UL
+#define __SIZE_TYPE__ long unsigned int
+#define __SIZE_WIDTH__ 64
+#define __SSE2_MATH__ 1
+#define __SSE2__ 1
+#define __SSE_MATH__ 1
+#define __SSE__ 1
+#define __STDC_HOSTED__ 1
+#define __STDC_UTF_16__ 1
+#define __STDC_UTF_32__ 1
+#define __STDC_VERSION__ 201112L
+#define __STDC__ 1
+#define __UINT16_C_SUFFIX__ 
+#define __UINT16_FMTX__ "hX"
+#define __UINT16_FMTo__ "ho"
+#define __UINT16_FMTu__ "hu"
+#define __UINT16_FMTx__ "hx"
+#define __UINT16_MAX__ 65535
+#define __UINT16_TYPE__ unsigned short
+#define __UINT32_C_SUFFIX__ U
+#define __UINT32_FMTX__ "X"
+#define __UINT32_FMTo__ "o"
+#define __UINT32_FMTu__ "u"
+#define __UINT32_FMTx__ "x"
+#define __UINT32_MAX__ 4294967295U
+#define __UINT32_TYPE__ unsigned int
+#define __UINT64_C_SUFFIX__ UL
+#define __UINT64_FMTX__ "lX"
+#define __UINT64_FMTo__ "lo"
+#define __UINT64_FMTu__ "lu"
+#define __UINT64_FMTx__ "lx"
+#define __UINT64_MAX__ 18446744073709551615UL
+#define __UINT64_TYPE__ long unsigned int
+#define __UINT8_C_SUFFIX__ 
+#define __UINT8_FMTX__ "hhX"
+#define __UINT8_FMTo__ "hho"
+#define __UINT8_FMTu__ "hhu"
+#define __UINT8_FMTx__ "hhx"
+#define __UINT8_MAX__ 255
+#define __UINT8_TYPE__ unsigned char
+#define __UINTMAX_C_SUFFIX__ UL
+#define __UINTMAX_FMTX__ "lX"
+#define __UINTMAX_FMTo__ "lo"
+#define __UINTMAX_FMTu__ "lu"
+#define __UINTMAX_FMTx__ "lx"
+#define __UINTMAX_MAX__ 18446744073709551615UL
+#define __UINTMAX_TYPE__ long unsigned int
+#define __UINTMAX_WIDTH__ 64
+#define __UINTPTR_FMTX__ "lX"
+#define __UINTPTR_FMTo__ "lo"
+#define __UINTPTR_FMTu__ "lu"
+#define __UINTPTR_FMTx__ "lx"
+#define __UINTPTR_MAX__ 18446744073709551615UL
+#define __UINTPTR_TYPE__ long unsigned int
+#define __UINTPTR_WIDTH__ 64
+#define __UINT_FAST16_FMTX__ "hX"
+#define __UINT_FAST16_FMTo__ "ho"
+#define __UINT_FAST16_FMTu__ "hu"
+#define __UINT_FAST16_FMTx__ "hx"
+#define __UINT_FAST16_MAX__ 65535
+#define __UINT_FAST16_TYPE__ unsigned short
+#define __UINT_FAST32_FMTX__ "X"
+#define __UINT_FAST32_FMTo__ "o"
+#define __UINT_FAST32_FMTu__ "u"
+#define __UINT_FAST32_FMTx__ "x"
+#define __UINT_FAST32_MAX__ 4294967295U
+#define __UINT_FAST32_TYPE__ unsigned int
+#define __UINT_FAST64_FMTX__ "lX"
+#define __UINT_FAST64_FMTo__ "lo"
+#define __UINT_FAST64_FMTu__ "lu"
+#define __UINT_FAST64_FMTx__ "lx"
+#define __UINT_FAST64_MAX__ 18446744073709551615UL
+#define __UINT_FAST64_TYPE__ long unsigned int
+#define __UINT_FAST8_FMTX__ "hhX"
+#define __UINT_FAST8_FMTo__ "hho"
+#define __UINT_FAST8_FMTu__ "hhu"
+#define __UINT_FAST8_FMTx__ "hhx"
+#define __UINT_FAST8_MAX__ 255
+#define __UINT_FAST8_TYPE__ unsigned char
+#define __UINT_LEAST16_FMTX__ "hX"
+#define __UINT_LEAST16_FMTo__ "ho"
+#define __UINT_LEAST16_FMTu__ "hu"
+#define __UINT_LEAST16_FMTx__ "hx"
+#define __UINT_LEAST16_MAX__ 65535
+#define __UINT_LEAST16_TYPE__ unsigned short
+#define __UINT_LEAST32_FMTX__ "X"
+#define __UINT_LEAST32_FMTo__ "o"
+#define __UINT_LEAST32_FMTu__ "u"
+#define __UINT_LEAST32_FMTx__ "x"
+#define __UINT_LEAST32_MAX__ 4294967295U
+#define __UINT_LEAST32_TYPE__ unsigned int
+#define __UINT_LEAST64_FMTX__ "lX"
+#define __UINT_LEAST64_FMTo__ "lo"
+#define __UINT_LEAST64_FMTu__ "lu"
+#define __UINT_LEAST64_FMTx__ "lx"
+#define __UINT_LEAST64_MAX__ 18446744073709551615UL
+#define __UINT_LEAST64_TYPE__ long unsigned int
+#define __UINT_LEAST8_FMTX__ "hhX"
+#define __UINT_LEAST8_FMTo__ "hho"
+#define __UINT_LEAST8_FMTu__ "hhu"
+#define __UINT_LEAST8_FMTx__ "hhx"
+#define __UINT_LEAST8_MAX__ 255
+#define __UINT_LEAST8_TYPE__ unsigned char
+#define __USER_LABEL_PREFIX__ 
+#define __VERSION__ "Clang 9.0.0 (tags/RELEASE_900/final)"
+#define __WCHAR_MAX__ 2147483647
+#define __WCHAR_TYPE__ int
+#define __WCHAR_WIDTH__ 32
+#define __WINT_MAX__ 4294967295U
+#define __WINT_TYPE__ unsigned int
+#define __WINT_UNSIGNED__ 1
+#define __WINT_WIDTH__ 32
+#define __amd64 1
+#define __amd64__ 1
+#define __clang__ 1
+#define __clang_major__ 9
+#define __clang_minor__ 0
+#define __clang_patchlevel__ 0
+#define __clang_version__ "9.0.0 (tags/RELEASE_900/final)"
+#define __code_model_small_ 1
+#define __gnu_linux__ 1
+#define __k8 1
+#define __k8__ 1
+#define __linux 1
+#define __linux__ 1
+#define __llvm__ 1
+#define __seg_fs __attribute__((address_space(257)))
+#define __seg_gs __attribute__((address_space(256)))
+#define __tune_k8__ 1
+#define __unix 1
+#define __unix__ 1
+#define __x86_64 1
+#define __x86_64__ 1
+#define linux 1
+#define unix 1
+
+from /mnt/c/Users/Bryan/Google Drive/School/NDN/ndn-cxx: Could not find gcc/g++ (only Clang), if renamed try eg: CC=gcc48 CXX=g++48 waf configure
+not found
+----------------------------------------
+Checking for 'clang++' (C++ compiler)
+find program=['clang++'] paths=['/home/bhatasaka/.cargo/bin', '/home/bhatasaka/.local/bin', '/usr/local/sbin', '/usr/local/bin', '/usr/sbin', '/usr/bin', '/sbin', '/bin', '/usr/games', '/usr/local/games', '/mnt/c/Program Files (x86)/Python38-32/Scripts/', '/mnt/c/Program Files (x86)/Python38-32/', '/mnt/c/Python27/', '/mnt/c/Python27/Scripts', '/mnt/c/Program Files (x86)/Common Files/Oracle/Java/javapath', '/mnt/c/Windows/system32', '/mnt/c/Windows', '/mnt/c/Windows/System32/Wbem', '/mnt/c/Windows/System32/WindowsPowerShell/v1.0/', '/mnt/c/Windows/System32/OpenSSH/', '/mnt/c/Program Files/Microsoft VS Code/bin', '/mnt/c/Program Files/NVIDIA Corporation/NVIDIA NvDLISR', '/mnt/c/ProgramData/chocolatey/bin', '/mnt/c/Program Files (x86)/vim/vim80', '/mnt/c/Program Files/PuTTY/', '/mnt/c/Go/bin', '/mnt/c/Program Files (x86)/NVIDIA Corporation/PhysX/Common', '/mnt/c/Program Files/mingw-w64/x86_64-8.1.0-posix-seh-rt_v6-rev0/mingw64/bin', '/mnt/c/Program Files/dotnet/', '/mnt/c/Program Files/Microsoft SQL Server/130/Tools/Binn/', '/mnt/c/Program Files/Microsoft SQL Server/Client SDK/ODBC/170/Tools/Binn/', '/mnt/c/Program Files (x86)/Microsoft SQL Server/150/DTS/Binn/', '/mnt/c/WINDOWS/system32', '/mnt/c/WINDOWS', '/mnt/c/WINDOWS/System32/Wbem', '/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/', '/mnt/c/WINDOWS/System32/OpenSSH/', '/mnt/c/Program Files/Git/cmd', '/mnt/c/Program Files/Microsoft SQL Server/Client SDK/ODBC/130/Tools/Binn/', '/mnt/c/Program Files (x86)/Microsoft SQL Server/140/Tools/Binn/', '/mnt/c/Program Files/Microsoft SQL Server/140/Tools/Binn/', '/mnt/c/Program Files/Microsoft SQL Server/140/DTS/Binn/', '/mnt/c/Program Files/nodejs/', '/mnt/c/Users/Bryan/AppData/Local/Microsoft/WindowsApps', '/mnt/c/Program Files (x86)/Microsoft Visual Studio/2017/BuildTools/VC/Tools/MSVC/14.16.27023/bin/Hostx64/x64/cl.exe', '/mnt/c/Program Files (x86)/Microsoft Visual Studio/2017/BuildTools/MSBuild.exe', '/mnt/c/Users/Bryan/go/bin', '/mnt/c/ProgramData/chocolatey/lib/mingw/tools/install/mingw64/bin', '/mnt/c/Program Files/STLink/bin', '/mnt/c/Program Files (x86)/GnuWin32/bin', '/mnt/c/Program Files/avr8-gnu-toolchain/bin', '/mnt/c/Program Files (x86)/Arduino/hardware/tools/avr/bin', '/mnt/c/Users/Bryan/AppData/Roaming/npm', '/mnt/c/Users/Bryan/.dotnet/tools', '/snap/bin', '~/libs/bin'] var='CXX' -> ['clang++']
+['clang++', '-dM', '-E', '-']
+out: #define _LP64 1
+#define __ATOMIC_ACQUIRE 2
+#define __ATOMIC_ACQ_REL 4
+#define __ATOMIC_CONSUME 1
+#define __ATOMIC_RELAXED 0
+#define __ATOMIC_RELEASE 3
+#define __ATOMIC_SEQ_CST 5
+#define __BIGGEST_ALIGNMENT__ 16
+#define __BYTE_ORDER__ __ORDER_LITTLE_ENDIAN__
+#define __CHAR16_TYPE__ unsigned short
+#define __CHAR32_TYPE__ unsigned int
+#define __CHAR_BIT__ 8
+#define __CLANG_ATOMIC_BOOL_LOCK_FREE 2
+#define __CLANG_ATOMIC_CHAR16_T_LOCK_FREE 2
+#define __CLANG_ATOMIC_CHAR32_T_LOCK_FREE 2
+#define __CLANG_ATOMIC_CHAR_LOCK_FREE 2
+#define __CLANG_ATOMIC_INT_LOCK_FREE 2
+#define __CLANG_ATOMIC_LLONG_LOCK_FREE 2
+#define __CLANG_ATOMIC_LONG_LOCK_FREE 2
+#define __CLANG_ATOMIC_POINTER_LOCK_FREE 2
+#define __CLANG_ATOMIC_SHORT_LOCK_FREE 2
+#define __CLANG_ATOMIC_WCHAR_T_LOCK_FREE 2
+#define __CONSTANT_CFSTRINGS__ 1
+#define __DBL_DECIMAL_DIG__ 17
+#define __DBL_DENORM_MIN__ 4.9406564584124654e-324
+#define __DBL_DIG__ 15
+#define __DBL_EPSILON__ 2.2204460492503131e-16
+#define __DBL_HAS_DENORM__ 1
+#define __DBL_HAS_INFINITY__ 1
+#define __DBL_HAS_QUIET_NAN__ 1
+#define __DBL_MANT_DIG__ 53
+#define __DBL_MAX_10_EXP__ 308
+#define __DBL_MAX_EXP__ 1024
+#define __DBL_MAX__ 1.7976931348623157e+308
+#define __DBL_MIN_10_EXP__ (-307)
+#define __DBL_MIN_EXP__ (-1021)
+#define __DBL_MIN__ 2.2250738585072014e-308
+#define __DECIMAL_DIG__ __LDBL_DECIMAL_DIG__
+#define __ELF__ 1
+#define __FINITE_MATH_ONLY__ 0
+#define __FLOAT128__ 1
+#define __FLT_DECIMAL_DIG__ 9
+#define __FLT_DENORM_MIN__ 1.40129846e-45F
+#define __FLT_DIG__ 6
+#define __FLT_EPSILON__ 1.19209290e-7F
+#define __FLT_EVAL_METHOD__ 0
+#define __FLT_HAS_DENORM__ 1
+#define __FLT_HAS_INFINITY__ 1
+#define __FLT_HAS_QUIET_NAN__ 1
+#define __FLT_MANT_DIG__ 24
+#define __FLT_MAX_10_EXP__ 38
+#define __FLT_MAX_EXP__ 128
+#define __FLT_MAX__ 3.40282347e+38F
+#define __FLT_MIN_10_EXP__ (-37)
+#define __FLT_MIN_EXP__ (-125)
+#define __FLT_MIN__ 1.17549435e-38F
+#define __FLT_RADIX__ 2
+#define __FXSR__ 1
+#define __GCC_ASM_FLAG_OUTPUTS__ 1
+#define __GCC_ATOMIC_BOOL_LOCK_FREE 2
+#define __GCC_ATOMIC_CHAR16_T_LOCK_FREE 2
+#define __GCC_ATOMIC_CHAR32_T_LOCK_FREE 2
+#define __GCC_ATOMIC_CHAR_LOCK_FREE 2
+#define __GCC_ATOMIC_INT_LOCK_FREE 2
+#define __GCC_ATOMIC_LLONG_LOCK_FREE 2
+#define __GCC_ATOMIC_LONG_LOCK_FREE 2
+#define __GCC_ATOMIC_POINTER_LOCK_FREE 2
+#define __GCC_ATOMIC_SHORT_LOCK_FREE 2
+#define __GCC_ATOMIC_TEST_AND_SET_TRUEVAL 1
+#define __GCC_ATOMIC_WCHAR_T_LOCK_FREE 2
+#define __GCC_HAVE_SYNC_COMPARE_AND_SWAP_1 1
+#define __GCC_HAVE_SYNC_COMPARE_AND_SWAP_2 1
+#define __GCC_HAVE_SYNC_COMPARE_AND_SWAP_4 1
+#define __GCC_HAVE_SYNC_COMPARE_AND_SWAP_8 1
+#define __GNUC_MINOR__ 2
+#define __GNUC_PATCHLEVEL__ 1
+#define __GNUC_STDC_INLINE__ 1
+#define __GNUC__ 4
+#define __GXX_ABI_VERSION 1002
+#define __INT16_C_SUFFIX__ 
+#define __INT16_FMTd__ "hd"
+#define __INT16_FMTi__ "hi"
+#define __INT16_MAX__ 32767
+#define __INT16_TYPE__ short
+#define __INT32_C_SUFFIX__ 
+#define __INT32_FMTd__ "d"
+#define __INT32_FMTi__ "i"
+#define __INT32_MAX__ 2147483647
+#define __INT32_TYPE__ int
+#define __INT64_C_SUFFIX__ L
+#define __INT64_FMTd__ "ld"
+#define __INT64_FMTi__ "li"
+#define __INT64_MAX__ 9223372036854775807L
+#define __INT64_TYPE__ long int
+#define __INT8_C_SUFFIX__ 
+#define __INT8_FMTd__ "hhd"
+#define __INT8_FMTi__ "hhi"
+#define __INT8_MAX__ 127
+#define __INT8_TYPE__ signed char
+#define __INTMAX_C_SUFFIX__ L
+#define __INTMAX_FMTd__ "ld"
+#define __INTMAX_FMTi__ "li"
+#define __INTMAX_MAX__ 9223372036854775807L
+#define __INTMAX_TYPE__ long int
+#define __INTMAX_WIDTH__ 64
+#define __INTPTR_FMTd__ "ld"
+#define __INTPTR_FMTi__ "li"
+#define __INTPTR_MAX__ 9223372036854775807L
+#define __INTPTR_TYPE__ long int
+#define __INTPTR_WIDTH__ 64
+#define __INT_FAST16_FMTd__ "hd"
+#define __INT_FAST16_FMTi__ "hi"
+#define __INT_FAST16_MAX__ 32767
+#define __INT_FAST16_TYPE__ short
+#define __INT_FAST32_FMTd__ "d"
+#define __INT_FAST32_FMTi__ "i"
+#define __INT_FAST32_MAX__ 2147483647
+#define __INT_FAST32_TYPE__ int
+#define __INT_FAST64_FMTd__ "ld"
+#define __INT_FAST64_FMTi__ "li"
+#define __INT_FAST64_MAX__ 9223372036854775807L
+#define __INT_FAST64_TYPE__ long int
+#define __INT_FAST8_FMTd__ "hhd"
+#define __INT_FAST8_FMTi__ "hhi"
+#define __INT_FAST8_MAX__ 127
+#define __INT_FAST8_TYPE__ signed char
+#define __INT_LEAST16_FMTd__ "hd"
+#define __INT_LEAST16_FMTi__ "hi"
+#define __INT_LEAST16_MAX__ 32767
+#define __INT_LEAST16_TYPE__ short
+#define __INT_LEAST32_FMTd__ "d"
+#define __INT_LEAST32_FMTi__ "i"
+#define __INT_LEAST32_MAX__ 2147483647
+#define __INT_LEAST32_TYPE__ int
+#define __INT_LEAST64_FMTd__ "ld"
+#define __INT_LEAST64_FMTi__ "li"
+#define __INT_LEAST64_MAX__ 9223372036854775807L
+#define __INT_LEAST64_TYPE__ long int
+#define __INT_LEAST8_FMTd__ "hhd"
+#define __INT_LEAST8_FMTi__ "hhi"
+#define __INT_LEAST8_MAX__ 127
+#define __INT_LEAST8_TYPE__ signed char
+#define __INT_MAX__ 2147483647
+#define __LDBL_DECIMAL_DIG__ 21
+#define __LDBL_DENORM_MIN__ 3.64519953188247460253e-4951L
+#define __LDBL_DIG__ 18
+#define __LDBL_EPSILON__ 1.08420217248550443401e-19L
+#define __LDBL_HAS_DENORM__ 1
+#define __LDBL_HAS_INFINITY__ 1
+#define __LDBL_HAS_QUIET_NAN__ 1
+#define __LDBL_MANT_DIG__ 64
+#define __LDBL_MAX_10_EXP__ 4932
+#define __LDBL_MAX_EXP__ 16384
+#define __LDBL_MAX__ 1.18973149535723176502e+4932L
+#define __LDBL_MIN_10_EXP__ (-4931)
+#define __LDBL_MIN_EXP__ (-16381)
+#define __LDBL_MIN__ 3.36210314311209350626e-4932L
+#define __LITTLE_ENDIAN__ 1
+#define __LONG_LONG_MAX__ 9223372036854775807LL
+#define __LONG_MAX__ 9223372036854775807L
+#define __LP64__ 1
+#define __MMX__ 1
+#define __NO_INLINE__ 1
+#define __NO_MATH_INLINES 1
+#define __OBJC_BOOL_IS_BOOL 0
+#define __OPENCL_MEMORY_SCOPE_ALL_SVM_DEVICES 3
+#define __OPENCL_MEMORY_SCOPE_DEVICE 2
+#define __OPENCL_MEMORY_SCOPE_SUB_GROUP 4
+#define __OPENCL_MEMORY_SCOPE_WORK_GROUP 1
+#define __OPENCL_MEMORY_SCOPE_WORK_ITEM 0
+#define __ORDER_BIG_ENDIAN__ 4321
+#define __ORDER_LITTLE_ENDIAN__ 1234
+#define __ORDER_PDP_ENDIAN__ 3412
+#define __POINTER_WIDTH__ 64
+#define __PRAGMA_REDEFINE_EXTNAME 1
+#define __PTRDIFF_FMTd__ "ld"
+#define __PTRDIFF_FMTi__ "li"
+#define __PTRDIFF_MAX__ 9223372036854775807L
+#define __PTRDIFF_TYPE__ long int
+#define __PTRDIFF_WIDTH__ 64
+#define __REGISTER_PREFIX__ 
+#define __SCHAR_MAX__ 127
+#define __SEG_FS 1
+#define __SEG_GS 1
+#define __SHRT_MAX__ 32767
+#define __SIG_ATOMIC_MAX__ 2147483647
+#define __SIG_ATOMIC_WIDTH__ 32
+#define __SIZEOF_DOUBLE__ 8
+#define __SIZEOF_FLOAT128__ 16
+#define __SIZEOF_FLOAT__ 4
+#define __SIZEOF_INT128__ 16
+#define __SIZEOF_INT__ 4
+#define __SIZEOF_LONG_DOUBLE__ 16
+#define __SIZEOF_LONG_LONG__ 8
+#define __SIZEOF_LONG__ 8
+#define __SIZEOF_POINTER__ 8
+#define __SIZEOF_PTRDIFF_T__ 8
+#define __SIZEOF_SHORT__ 2
+#define __SIZEOF_SIZE_T__ 8
+#define __SIZEOF_WCHAR_T__ 4
+#define __SIZEOF_WINT_T__ 4
+#define __SIZE_FMTX__ "lX"
+#define __SIZE_FMTo__ "lo"
+#define __SIZE_FMTu__ "lu"
+#define __SIZE_FMTx__ "lx"
+#define __SIZE_MAX__ 18446744073709551615UL
+#define __SIZE_TYPE__ long unsigned int
+#define __SIZE_WIDTH__ 64
+#define __SSE2_MATH__ 1
+#define __SSE2__ 1
+#define __SSE_MATH__ 1
+#define __SSE__ 1
+#define __STDC_HOSTED__ 1
+#define __STDC_UTF_16__ 1
+#define __STDC_UTF_32__ 1
+#define __STDC_VERSION__ 201112L
+#define __STDC__ 1
+#define __UINT16_C_SUFFIX__ 
+#define __UINT16_FMTX__ "hX"
+#define __UINT16_FMTo__ "ho"
+#define __UINT16_FMTu__ "hu"
+#define __UINT16_FMTx__ "hx"
+#define __UINT16_MAX__ 65535
+#define __UINT16_TYPE__ unsigned short
+#define __UINT32_C_SUFFIX__ U
+#define __UINT32_FMTX__ "X"
+#define __UINT32_FMTo__ "o"
+#define __UINT32_FMTu__ "u"
+#define __UINT32_FMTx__ "x"
+#define __UINT32_MAX__ 4294967295U
+#define __UINT32_TYPE__ unsigned int
+#define __UINT64_C_SUFFIX__ UL
+#define __UINT64_FMTX__ "lX"
+#define __UINT64_FMTo__ "lo"
+#define __UINT64_FMTu__ "lu"
+#define __UINT64_FMTx__ "lx"
+#define __UINT64_MAX__ 18446744073709551615UL
+#define __UINT64_TYPE__ long unsigned int
+#define __UINT8_C_SUFFIX__ 
+#define __UINT8_FMTX__ "hhX"
+#define __UINT8_FMTo__ "hho"
+#define __UINT8_FMTu__ "hhu"
+#define __UINT8_FMTx__ "hhx"
+#define __UINT8_MAX__ 255
+#define __UINT8_TYPE__ unsigned char
+#define __UINTMAX_C_SUFFIX__ UL
+#define __UINTMAX_FMTX__ "lX"
+#define __UINTMAX_FMTo__ "lo"
+#define __UINTMAX_FMTu__ "lu"
+#define __UINTMAX_FMTx__ "lx"
+#define __UINTMAX_MAX__ 18446744073709551615UL
+#define __UINTMAX_TYPE__ long unsigned int
+#define __UINTMAX_WIDTH__ 64
+#define __UINTPTR_FMTX__ "lX"
+#define __UINTPTR_FMTo__ "lo"
+#define __UINTPTR_FMTu__ "lu"
+#define __UINTPTR_FMTx__ "lx"
+#define __UINTPTR_MAX__ 18446744073709551615UL
+#define __UINTPTR_TYPE__ long unsigned int
+#define __UINTPTR_WIDTH__ 64
+#define __UINT_FAST16_FMTX__ "hX"
+#define __UINT_FAST16_FMTo__ "ho"
+#define __UINT_FAST16_FMTu__ "hu"
+#define __UINT_FAST16_FMTx__ "hx"
+#define __UINT_FAST16_MAX__ 65535
+#define __UINT_FAST16_TYPE__ unsigned short
+#define __UINT_FAST32_FMTX__ "X"
+#define __UINT_FAST32_FMTo__ "o"
+#define __UINT_FAST32_FMTu__ "u"
+#define __UINT_FAST32_FMTx__ "x"
+#define __UINT_FAST32_MAX__ 4294967295U
+#define __UINT_FAST32_TYPE__ unsigned int
+#define __UINT_FAST64_FMTX__ "lX"
+#define __UINT_FAST64_FMTo__ "lo"
+#define __UINT_FAST64_FMTu__ "lu"
+#define __UINT_FAST64_FMTx__ "lx"
+#define __UINT_FAST64_MAX__ 18446744073709551615UL
+#define __UINT_FAST64_TYPE__ long unsigned int
+#define __UINT_FAST8_FMTX__ "hhX"
+#define __UINT_FAST8_FMTo__ "hho"
+#define __UINT_FAST8_FMTu__ "hhu"
+#define __UINT_FAST8_FMTx__ "hhx"
+#define __UINT_FAST8_MAX__ 255
+#define __UINT_FAST8_TYPE__ unsigned char
+#define __UINT_LEAST16_FMTX__ "hX"
+#define __UINT_LEAST16_FMTo__ "ho"
+#define __UINT_LEAST16_FMTu__ "hu"
+#define __UINT_LEAST16_FMTx__ "hx"
+#define __UINT_LEAST16_MAX__ 65535
+#define __UINT_LEAST16_TYPE__ unsigned short
+#define __UINT_LEAST32_FMTX__ "X"
+#define __UINT_LEAST32_FMTo__ "o"
+#define __UINT_LEAST32_FMTu__ "u"
+#define __UINT_LEAST32_FMTx__ "x"
+#define __UINT_LEAST32_MAX__ 4294967295U
+#define __UINT_LEAST32_TYPE__ unsigned int
+#define __UINT_LEAST64_FMTX__ "lX"
+#define __UINT_LEAST64_FMTo__ "lo"
+#define __UINT_LEAST64_FMTu__ "lu"
+#define __UINT_LEAST64_FMTx__ "lx"
+#define __UINT_LEAST64_MAX__ 18446744073709551615UL
+#define __UINT_LEAST64_TYPE__ long unsigned int
+#define __UINT_LEAST8_FMTX__ "hhX"
+#define __UINT_LEAST8_FMTo__ "hho"
+#define __UINT_LEAST8_FMTu__ "hhu"
+#define __UINT_LEAST8_FMTx__ "hhx"
+#define __UINT_LEAST8_MAX__ 255
+#define __UINT_LEAST8_TYPE__ unsigned char
+#define __USER_LABEL_PREFIX__ 
+#define __VERSION__ "Clang 9.0.0 (tags/RELEASE_900/final)"
+#define __WCHAR_MAX__ 2147483647
+#define __WCHAR_TYPE__ int
+#define __WCHAR_WIDTH__ 32
+#define __WINT_MAX__ 4294967295U
+#define __WINT_TYPE__ unsigned int
+#define __WINT_UNSIGNED__ 1
+#define __WINT_WIDTH__ 32
+#define __amd64 1
+#define __amd64__ 1
+#define __clang__ 1
+#define __clang_major__ 9
+#define __clang_minor__ 0
+#define __clang_patchlevel__ 0
+#define __clang_version__ "9.0.0 (tags/RELEASE_900/final)"
+#define __code_model_small_ 1
+#define __gnu_linux__ 1
+#define __k8 1
+#define __k8__ 1
+#define __linux 1
+#define __linux__ 1
+#define __llvm__ 1
+#define __seg_fs __attribute__((address_space(257)))
+#define __seg_gs __attribute__((address_space(256)))
+#define __tune_k8__ 1
+#define __unix 1
+#define __unix__ 1
+#define __x86_64 1
+#define __x86_64__ 1
+#define linux 1
+#define unix 1
+
+find program=['llvm-ar', 'ar'] paths=['/home/bhatasaka/.cargo/bin', '/home/bhatasaka/.local/bin', '/usr/local/sbin', '/usr/local/bin', '/usr/sbin', '/usr/bin', '/sbin', '/bin', '/usr/games', '/usr/local/games', '/mnt/c/Program Files (x86)/Python38-32/Scripts/', '/mnt/c/Program Files (x86)/Python38-32/', '/mnt/c/Python27/', '/mnt/c/Python27/Scripts', '/mnt/c/Program Files (x86)/Common Files/Oracle/Java/javapath', '/mnt/c/Windows/system32', '/mnt/c/Windows', '/mnt/c/Windows/System32/Wbem', '/mnt/c/Windows/System32/WindowsPowerShell/v1.0/', '/mnt/c/Windows/System32/OpenSSH/', '/mnt/c/Program Files/Microsoft VS Code/bin', '/mnt/c/Program Files/NVIDIA Corporation/NVIDIA NvDLISR', '/mnt/c/ProgramData/chocolatey/bin', '/mnt/c/Program Files (x86)/vim/vim80', '/mnt/c/Program Files/PuTTY/', '/mnt/c/Go/bin', '/mnt/c/Program Files (x86)/NVIDIA Corporation/PhysX/Common', '/mnt/c/Program Files/mingw-w64/x86_64-8.1.0-posix-seh-rt_v6-rev0/mingw64/bin', '/mnt/c/Program Files/dotnet/', '/mnt/c/Program Files/Microsoft SQL Server/130/Tools/Binn/', '/mnt/c/Program Files/Microsoft SQL Server/Client SDK/ODBC/170/Tools/Binn/', '/mnt/c/Program Files (x86)/Microsoft SQL Server/150/DTS/Binn/', '/mnt/c/WINDOWS/system32', '/mnt/c/WINDOWS', '/mnt/c/WINDOWS/System32/Wbem', '/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/', '/mnt/c/WINDOWS/System32/OpenSSH/', '/mnt/c/Program Files/Git/cmd', '/mnt/c/Program Files/Microsoft SQL Server/Client SDK/ODBC/130/Tools/Binn/', '/mnt/c/Program Files (x86)/Microsoft SQL Server/140/Tools/Binn/', '/mnt/c/Program Files/Microsoft SQL Server/140/Tools/Binn/', '/mnt/c/Program Files/Microsoft SQL Server/140/DTS/Binn/', '/mnt/c/Program Files/nodejs/', '/mnt/c/Users/Bryan/AppData/Local/Microsoft/WindowsApps', '/mnt/c/Program Files (x86)/Microsoft Visual Studio/2017/BuildTools/VC/Tools/MSVC/14.16.27023/bin/Hostx64/x64/cl.exe', '/mnt/c/Program Files (x86)/Microsoft Visual Studio/2017/BuildTools/MSBuild.exe', '/mnt/c/Users/Bryan/go/bin', '/mnt/c/ProgramData/chocolatey/lib/mingw/tools/install/mingw64/bin', '/mnt/c/Program Files/STLink/bin', '/mnt/c/Program Files (x86)/GnuWin32/bin', '/mnt/c/Program Files/avr8-gnu-toolchain/bin', '/mnt/c/Program Files (x86)/Arduino/hardware/tools/avr/bin', '/mnt/c/Users/Bryan/AppData/Roaming/npm', '/mnt/c/Users/Bryan/.dotnet/tools', '/snap/bin', '~/libs/bin'] var='AR' -> ['/usr/bin/ar']
+find program=['ar'] paths=['/home/bhatasaka/.cargo/bin', '/home/bhatasaka/.local/bin', '/usr/local/sbin', '/usr/local/bin', '/usr/sbin', '/usr/bin', '/sbin', '/bin', '/usr/games', '/usr/local/games', '/mnt/c/Program Files (x86)/Python38-32/Scripts/', '/mnt/c/Program Files (x86)/Python38-32/', '/mnt/c/Python27/', '/mnt/c/Python27/Scripts', '/mnt/c/Program Files (x86)/Common Files/Oracle/Java/javapath', '/mnt/c/Windows/system32', '/mnt/c/Windows', '/mnt/c/Windows/System32/Wbem', '/mnt/c/Windows/System32/WindowsPowerShell/v1.0/', '/mnt/c/Windows/System32/OpenSSH/', '/mnt/c/Program Files/Microsoft VS Code/bin', '/mnt/c/Program Files/NVIDIA Corporation/NVIDIA NvDLISR', '/mnt/c/ProgramData/chocolatey/bin', '/mnt/c/Program Files (x86)/vim/vim80', '/mnt/c/Program Files/PuTTY/', '/mnt/c/Go/bin', '/mnt/c/Program Files (x86)/NVIDIA Corporation/PhysX/Common', '/mnt/c/Program Files/mingw-w64/x86_64-8.1.0-posix-seh-rt_v6-rev0/mingw64/bin', '/mnt/c/Program Files/dotnet/', '/mnt/c/Program Files/Microsoft SQL Server/130/Tools/Binn/', '/mnt/c/Program Files/Microsoft SQL Server/Client SDK/ODBC/170/Tools/Binn/', '/mnt/c/Program Files (x86)/Microsoft SQL Server/150/DTS/Binn/', '/mnt/c/WINDOWS/system32', '/mnt/c/WINDOWS', '/mnt/c/WINDOWS/System32/Wbem', '/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/', '/mnt/c/WINDOWS/System32/OpenSSH/', '/mnt/c/Program Files/Git/cmd', '/mnt/c/Program Files/Microsoft SQL Server/Client SDK/ODBC/130/Tools/Binn/', '/mnt/c/Program Files (x86)/Microsoft SQL Server/140/Tools/Binn/', '/mnt/c/Program Files/Microsoft SQL Server/140/Tools/Binn/', '/mnt/c/Program Files/Microsoft SQL Server/140/DTS/Binn/', '/mnt/c/Program Files/nodejs/', '/mnt/c/Users/Bryan/AppData/Local/Microsoft/WindowsApps', '/mnt/c/Program Files (x86)/Microsoft Visual Studio/2017/BuildTools/VC/Tools/MSVC/14.16.27023/bin/Hostx64/x64/cl.exe', '/mnt/c/Program Files (x86)/Microsoft Visual Studio/2017/BuildTools/MSBuild.exe', '/mnt/c/Users/Bryan/go/bin', '/mnt/c/ProgramData/chocolatey/lib/mingw/tools/install/mingw64/bin', '/mnt/c/Program Files/STLink/bin', '/mnt/c/Program Files (x86)/GnuWin32/bin', '/mnt/c/Program Files/avr8-gnu-toolchain/bin', '/mnt/c/Program Files (x86)/Arduino/hardware/tools/avr/bin', '/mnt/c/Users/Bryan/AppData/Roaming/npm', '/mnt/c/Users/Bryan/.dotnet/tools', '/snap/bin', '~/libs/bin'] var='AR' -> ['/usr/bin/ar']
+clang++
+----------------------------------------
+Checking C++ compiler version
+9.0.0
+----------------------------------------
+Checking supported CXXFLAGS
+==>
+
+int main(int argc, char **argv) {
+	(void)argc; (void)argv;
+	return 0;
+}
+
+<==
+[1/2] Compiling [32mbuild/.conf_check_969f105fef1d48a96c85e509d967483b/test.cpp[0m
+
+['clang++', '-Werror', '-std=c++14', '../test.cpp', '-c', '-o/mnt/c/Users/Bryan/Google Drive/School/NDN/ndn-cxx/build/.conf_check_969f105fef1d48a96c85e509d967483b/testbuild/test.cpp.1.o']
+[2/2] Linking [33mbuild/.conf_check_969f105fef1d48a96c85e509d967483b/testbuild/testprog[0m
+
+['clang++', 'test.cpp.1.o', '-o/mnt/c/Users/Bryan/Google Drive/School/NDN/ndn-cxx/build/.conf_check_969f105fef1d48a96c85e509d967483b/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic']
+-std=c++14
+----------------------------------------
+Checking supported LINKFLAGS
+==>
+
+int main(int argc, char **argv) {
+	(void)argc; (void)argv;
+	return 0;
+}
+
+<==
+[1/2] Compiling [32mbuild/.conf_check_c4039597ac5cf302d7340f0945ee03bd/test.cpp[0m
+
+['clang++', '-std=c++14', '../test.cpp', '-c', '-o/mnt/c/Users/Bryan/Google Drive/School/NDN/ndn-cxx/build/.conf_check_c4039597ac5cf302d7340f0945ee03bd/testbuild/test.cpp.1.o']
+[2/2] Linking [33mbuild/.conf_check_c4039597ac5cf302d7340f0945ee03bd/testbuild/testprog[0m
+
+['clang++', '-Werror', '-fuse-ld=gold', 'test.cpp.1.o', '-o/mnt/c/Users/Bryan/Google Drive/School/NDN/ndn-cxx/build/.conf_check_c4039597ac5cf302d7340f0945ee03bd/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic']
+-fuse-ld=gold
+----------------------------------------
+Checking for std::to_string
+==>
+
+#include <string>
+int
+main()
+{
+  std::string s = std::to_string(0);
+  s = std::to_string(0l);
+  s = std::to_string(0ll);
+  s = std::to_string(0u);
+  s = std::to_string(0ul);
+  s = std::to_string(0ull);
+  s = std::to_string(0.0f);
+  s = std::to_string(0.0);
+  s = std::to_string(0.0l);
+  s.clear();
+}
+
+<==
+[1/2] Compiling [32mbuild/.conf_check_97335424dc88d5b301fc6c872e1c928b/test.cpp[0m
+
+['clang++', '-std=c++14', '../test.cpp', '-c', '-o/mnt/c/Users/Bryan/Google Drive/School/NDN/ndn-cxx/build/.conf_check_97335424dc88d5b301fc6c872e1c928b/testbuild/test.cpp.1.o']
+[2/2] Linking [33mbuild/.conf_check_97335424dc88d5b301fc6c872e1c928b/testbuild/testprog[0m
+
+['clang++', '-fuse-ld=gold', 'test.cpp.1.o', '-o/mnt/c/Users/Bryan/Google Drive/School/NDN/ndn-cxx/build/.conf_check_97335424dc88d5b301fc6c872e1c928b/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic']
+yes
+----------------------------------------
+Checking for program 'doxygen'
+not found
+find program=['doxygen'] paths=['/home/bhatasaka/.cargo/bin', '/home/bhatasaka/.local/bin', '/usr/local/sbin', '/usr/local/bin', '/usr/sbin', '/usr/bin', '/sbin', '/bin', '/usr/games', '/usr/local/games', '/mnt/c/Program Files (x86)/Python38-32/Scripts/', '/mnt/c/Program Files (x86)/Python38-32/', '/mnt/c/Python27/', '/mnt/c/Python27/Scripts', '/mnt/c/Program Files (x86)/Common Files/Oracle/Java/javapath', '/mnt/c/Windows/system32', '/mnt/c/Windows', '/mnt/c/Windows/System32/Wbem', '/mnt/c/Windows/System32/WindowsPowerShell/v1.0/', '/mnt/c/Windows/System32/OpenSSH/', '/mnt/c/Program Files/Microsoft VS Code/bin', '/mnt/c/Program Files/NVIDIA Corporation/NVIDIA NvDLISR', '/mnt/c/ProgramData/chocolatey/bin', '/mnt/c/Program Files (x86)/vim/vim80', '/mnt/c/Program Files/PuTTY/', '/mnt/c/Go/bin', '/mnt/c/Program Files (x86)/NVIDIA Corporation/PhysX/Common', '/mnt/c/Program Files/mingw-w64/x86_64-8.1.0-posix-seh-rt_v6-rev0/mingw64/bin', '/mnt/c/Program Files/dotnet/', '/mnt/c/Program Files/Microsoft SQL Server/130/Tools/Binn/', '/mnt/c/Program Files/Microsoft SQL Server/Client SDK/ODBC/170/Tools/Binn/', '/mnt/c/Program Files (x86)/Microsoft SQL Server/150/DTS/Binn/', '/mnt/c/WINDOWS/system32', '/mnt/c/WINDOWS', '/mnt/c/WINDOWS/System32/Wbem', '/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/', '/mnt/c/WINDOWS/System32/OpenSSH/', '/mnt/c/Program Files/Git/cmd', '/mnt/c/Program Files/Microsoft SQL Server/Client SDK/ODBC/130/Tools/Binn/', '/mnt/c/Program Files (x86)/Microsoft SQL Server/140/Tools/Binn/', '/mnt/c/Program Files/Microsoft SQL Server/140/Tools/Binn/', '/mnt/c/Program Files/Microsoft SQL Server/140/DTS/Binn/', '/mnt/c/Program Files/nodejs/', '/mnt/c/Users/Bryan/AppData/Local/Microsoft/WindowsApps', '/mnt/c/Program Files (x86)/Microsoft Visual Studio/2017/BuildTools/VC/Tools/MSVC/14.16.27023/bin/Hostx64/x64/cl.exe', '/mnt/c/Program Files (x86)/Microsoft Visual Studio/2017/BuildTools/MSBuild.exe', '/mnt/c/Users/Bryan/go/bin', '/mnt/c/ProgramData/chocolatey/lib/mingw/tools/install/mingw64/bin', '/mnt/c/Program Files/STLink/bin', '/mnt/c/Program Files (x86)/GnuWin32/bin', '/mnt/c/Program Files/avr8-gnu-toolchain/bin', '/mnt/c/Program Files (x86)/Arduino/hardware/tools/avr/bin', '/mnt/c/Users/Bryan/AppData/Roaming/npm', '/mnt/c/Users/Bryan/.dotnet/tools', '/snap/bin', '~/libs/bin'] var='DOXYGEN' -> None
+from /mnt/c/Users/Bryan/Google Drive/School/NDN/ndn-cxx: Could not find the program ['doxygen']
+----------------------------------------
+Checking for program 'tar'
+/bin/tar
+find program=['tar'] paths=['/home/bhatasaka/.cargo/bin', '/home/bhatasaka/.local/bin', '/usr/local/sbin', '/usr/local/bin', '/usr/sbin', '/usr/bin', '/sbin', '/bin', '/usr/games', '/usr/local/games', '/mnt/c/Program Files (x86)/Python38-32/Scripts/', '/mnt/c/Program Files (x86)/Python38-32/', '/mnt/c/Python27/', '/mnt/c/Python27/Scripts', '/mnt/c/Program Files (x86)/Common Files/Oracle/Java/javapath', '/mnt/c/Windows/system32', '/mnt/c/Windows', '/mnt/c/Windows/System32/Wbem', '/mnt/c/Windows/System32/WindowsPowerShell/v1.0/', '/mnt/c/Windows/System32/OpenSSH/', '/mnt/c/Program Files/Microsoft VS Code/bin', '/mnt/c/Program Files/NVIDIA Corporation/NVIDIA NvDLISR', '/mnt/c/ProgramData/chocolatey/bin', '/mnt/c/Program Files (x86)/vim/vim80', '/mnt/c/Program Files/PuTTY/', '/mnt/c/Go/bin', '/mnt/c/Program Files (x86)/NVIDIA Corporation/PhysX/Common', '/mnt/c/Program Files/mingw-w64/x86_64-8.1.0-posix-seh-rt_v6-rev0/mingw64/bin', '/mnt/c/Program Files/dotnet/', '/mnt/c/Program Files/Microsoft SQL Server/130/Tools/Binn/', '/mnt/c/Program Files/Microsoft SQL Server/Client SDK/ODBC/170/Tools/Binn/', '/mnt/c/Program Files (x86)/Microsoft SQL Server/150/DTS/Binn/', '/mnt/c/WINDOWS/system32', '/mnt/c/WINDOWS', '/mnt/c/WINDOWS/System32/Wbem', '/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/', '/mnt/c/WINDOWS/System32/OpenSSH/', '/mnt/c/Program Files/Git/cmd', '/mnt/c/Program Files/Microsoft SQL Server/Client SDK/ODBC/130/Tools/Binn/', '/mnt/c/Program Files (x86)/Microsoft SQL Server/140/Tools/Binn/', '/mnt/c/Program Files/Microsoft SQL Server/140/Tools/Binn/', '/mnt/c/Program Files/Microsoft SQL Server/140/DTS/Binn/', '/mnt/c/Program Files/nodejs/', '/mnt/c/Users/Bryan/AppData/Local/Microsoft/WindowsApps', '/mnt/c/Program Files (x86)/Microsoft Visual Studio/2017/BuildTools/VC/Tools/MSVC/14.16.27023/bin/Hostx64/x64/cl.exe', '/mnt/c/Program Files (x86)/Microsoft Visual Studio/2017/BuildTools/MSBuild.exe', '/mnt/c/Users/Bryan/go/bin', '/mnt/c/ProgramData/chocolatey/lib/mingw/tools/install/mingw64/bin', '/mnt/c/Program Files/STLink/bin', '/mnt/c/Program Files (x86)/GnuWin32/bin', '/mnt/c/Program Files/avr8-gnu-toolchain/bin', '/mnt/c/Program Files (x86)/Arduino/hardware/tools/avr/bin', '/mnt/c/Users/Bryan/AppData/Roaming/npm', '/mnt/c/Users/Bryan/.dotnet/tools', '/snap/bin', '~/libs/bin'] var='TAR' -> ['/bin/tar']
+----------------------------------------
+Checking for program 'sphinx-build'
+not found
+find program=['sphinx-build'] paths=['/home/bhatasaka/.cargo/bin', '/home/bhatasaka/.local/bin', '/usr/local/sbin', '/usr/local/bin', '/usr/sbin', '/usr/bin', '/sbin', '/bin', '/usr/games', '/usr/local/games', '/mnt/c/Program Files (x86)/Python38-32/Scripts/', '/mnt/c/Program Files (x86)/Python38-32/', '/mnt/c/Python27/', '/mnt/c/Python27/Scripts', '/mnt/c/Program Files (x86)/Common Files/Oracle/Java/javapath', '/mnt/c/Windows/system32', '/mnt/c/Windows', '/mnt/c/Windows/System32/Wbem', '/mnt/c/Windows/System32/WindowsPowerShell/v1.0/', '/mnt/c/Windows/System32/OpenSSH/', '/mnt/c/Program Files/Microsoft VS Code/bin', '/mnt/c/Program Files/NVIDIA Corporation/NVIDIA NvDLISR', '/mnt/c/ProgramData/chocolatey/bin', '/mnt/c/Program Files (x86)/vim/vim80', '/mnt/c/Program Files/PuTTY/', '/mnt/c/Go/bin', '/mnt/c/Program Files (x86)/NVIDIA Corporation/PhysX/Common', '/mnt/c/Program Files/mingw-w64/x86_64-8.1.0-posix-seh-rt_v6-rev0/mingw64/bin', '/mnt/c/Program Files/dotnet/', '/mnt/c/Program Files/Microsoft SQL Server/130/Tools/Binn/', '/mnt/c/Program Files/Microsoft SQL Server/Client SDK/ODBC/170/Tools/Binn/', '/mnt/c/Program Files (x86)/Microsoft SQL Server/150/DTS/Binn/', '/mnt/c/WINDOWS/system32', '/mnt/c/WINDOWS', '/mnt/c/WINDOWS/System32/Wbem', '/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/', '/mnt/c/WINDOWS/System32/OpenSSH/', '/mnt/c/Program Files/Git/cmd', '/mnt/c/Program Files/Microsoft SQL Server/Client SDK/ODBC/130/Tools/Binn/', '/mnt/c/Program Files (x86)/Microsoft SQL Server/140/Tools/Binn/', '/mnt/c/Program Files/Microsoft SQL Server/140/Tools/Binn/', '/mnt/c/Program Files/Microsoft SQL Server/140/DTS/Binn/', '/mnt/c/Program Files/nodejs/', '/mnt/c/Users/Bryan/AppData/Local/Microsoft/WindowsApps', '/mnt/c/Program Files (x86)/Microsoft Visual Studio/2017/BuildTools/VC/Tools/MSVC/14.16.27023/bin/Hostx64/x64/cl.exe', '/mnt/c/Program Files (x86)/Microsoft Visual Studio/2017/BuildTools/MSBuild.exe', '/mnt/c/Users/Bryan/go/bin', '/mnt/c/ProgramData/chocolatey/lib/mingw/tools/install/mingw64/bin', '/mnt/c/Program Files/STLink/bin', '/mnt/c/Program Files (x86)/GnuWin32/bin', '/mnt/c/Program Files/avr8-gnu-toolchain/bin', '/mnt/c/Program Files (x86)/Arduino/hardware/tools/avr/bin', '/mnt/c/Users/Bryan/AppData/Roaming/npm', '/mnt/c/Users/Bryan/.dotnet/tools', '/snap/bin', '~/libs/bin'] var='SPHINX_BUILD' -> None
+from /mnt/c/Users/Bryan/Google Drive/School/NDN/ndn-cxx: Could not find the program ['sphinx-build']
+----------------------------------------
+Checking for program 'sh'
+/bin/sh
+find program=['sh'] paths=['/home/bhatasaka/.cargo/bin', '/home/bhatasaka/.local/bin', '/usr/local/sbin', '/usr/local/bin', '/usr/sbin', '/usr/bin', '/sbin', '/bin', '/usr/games', '/usr/local/games', '/mnt/c/Program Files (x86)/Python38-32/Scripts/', '/mnt/c/Program Files (x86)/Python38-32/', '/mnt/c/Python27/', '/mnt/c/Python27/Scripts', '/mnt/c/Program Files (x86)/Common Files/Oracle/Java/javapath', '/mnt/c/Windows/system32', '/mnt/c/Windows', '/mnt/c/Windows/System32/Wbem', '/mnt/c/Windows/System32/WindowsPowerShell/v1.0/', '/mnt/c/Windows/System32/OpenSSH/', '/mnt/c/Program Files/Microsoft VS Code/bin', '/mnt/c/Program Files/NVIDIA Corporation/NVIDIA NvDLISR', '/mnt/c/ProgramData/chocolatey/bin', '/mnt/c/Program Files (x86)/vim/vim80', '/mnt/c/Program Files/PuTTY/', '/mnt/c/Go/bin', '/mnt/c/Program Files (x86)/NVIDIA Corporation/PhysX/Common', '/mnt/c/Program Files/mingw-w64/x86_64-8.1.0-posix-seh-rt_v6-rev0/mingw64/bin', '/mnt/c/Program Files/dotnet/', '/mnt/c/Program Files/Microsoft SQL Server/130/Tools/Binn/', '/mnt/c/Program Files/Microsoft SQL Server/Client SDK/ODBC/170/Tools/Binn/', '/mnt/c/Program Files (x86)/Microsoft SQL Server/150/DTS/Binn/', '/mnt/c/WINDOWS/system32', '/mnt/c/WINDOWS', '/mnt/c/WINDOWS/System32/Wbem', '/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/', '/mnt/c/WINDOWS/System32/OpenSSH/', '/mnt/c/Program Files/Git/cmd', '/mnt/c/Program Files/Microsoft SQL Server/Client SDK/ODBC/130/Tools/Binn/', '/mnt/c/Program Files (x86)/Microsoft SQL Server/140/Tools/Binn/', '/mnt/c/Program Files/Microsoft SQL Server/140/Tools/Binn/', '/mnt/c/Program Files/Microsoft SQL Server/140/DTS/Binn/', '/mnt/c/Program Files/nodejs/', '/mnt/c/Users/Bryan/AppData/Local/Microsoft/WindowsApps', '/mnt/c/Program Files (x86)/Microsoft Visual Studio/2017/BuildTools/VC/Tools/MSVC/14.16.27023/bin/Hostx64/x64/cl.exe', '/mnt/c/Program Files (x86)/Microsoft Visual Studio/2017/BuildTools/MSBuild.exe', '/mnt/c/Users/Bryan/go/bin', '/mnt/c/ProgramData/chocolatey/lib/mingw/tools/install/mingw64/bin', '/mnt/c/Program Files/STLink/bin', '/mnt/c/Program Files (x86)/GnuWin32/bin', '/mnt/c/Program Files/avr8-gnu-toolchain/bin', '/mnt/c/Program Files (x86)/Arduino/hardware/tools/avr/bin', '/mnt/c/Users/Bryan/AppData/Roaming/npm', '/mnt/c/Users/Bryan/.dotnet/tools', '/snap/bin', '~/libs/bin'] var='SH' -> ['/bin/sh']
+----------------------------------------
+Checking for library pthread
+==>
+
+int main(int argc, char **argv) {
+	(void)argc; (void)argv;
+	return 0;
+}
+
+<==
+[1/2] Compiling [32mbuild/.conf_check_005b626988b7a9fae9badb62cfc8aaac/test.cpp[0m
+
+['clang++', '-std=c++14', '-DHAVE_STD_TO_STRING=1', '../test.cpp', '-c', '-o/mnt/c/Users/Bryan/Google Drive/School/NDN/ndn-cxx/build/.conf_check_005b626988b7a9fae9badb62cfc8aaac/testbuild/test.cpp.1.o']
+[2/2] Linking [33mbuild/.conf_check_005b626988b7a9fae9badb62cfc8aaac/testbuild/testprog[0m
+
+['clang++', '-fuse-ld=gold', 'test.cpp.1.o', '-o/mnt/c/Users/Bryan/Google Drive/School/NDN/ndn-cxx/build/.conf_check_005b626988b7a9fae9badb62cfc8aaac/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic', '-lpthread']
+yes
+----------------------------------------
+Checking for library rt
+==>
+
+int main(int argc, char **argv) {
+	(void)argc; (void)argv;
+	return 0;
+}
+
+<==
+[1/2] Compiling [32mbuild/.conf_check_5f1ff6e03b7847b413bfc800c5aa8349/test.cpp[0m
+
+['clang++', '-std=c++14', '-DHAVE_STD_TO_STRING=1', '-DHAVE_PTHREAD=1', '../test.cpp', '-c', '-o/mnt/c/Users/Bryan/Google Drive/School/NDN/ndn-cxx/build/.conf_check_5f1ff6e03b7847b413bfc800c5aa8349/testbuild/test.cpp.1.o']
+[2/2] Linking [33mbuild/.conf_check_5f1ff6e03b7847b413bfc800c5aa8349/testbuild/testprog[0m
+
+['clang++', '-fuse-ld=gold', 'test.cpp.1.o', '-o/mnt/c/Users/Bryan/Google Drive/School/NDN/ndn-cxx/build/.conf_check_5f1ff6e03b7847b413bfc800c5aa8349/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic', '-lrt']
+yes
+----------------------------------------
+Checking for function getpass
+==>
+#include <unistd.h>
+                               int main() { getpass("Enter password"); }
+<==
+[1/2] Compiling [32mbuild/.conf_check_ae2196669c433e57abfa4d02db28098a/test.cpp[0m
+
+['clang++', '-std=c++14', '-DHAVE_STD_TO_STRING=1', '-DHAVE_PTHREAD=1', '-DHAVE_RT=1', '../test.cpp', '-c', '-o/mnt/c/Users/Bryan/Google Drive/School/NDN/ndn-cxx/build/.conf_check_ae2196669c433e57abfa4d02db28098a/testbuild/test.cpp.1.o']
+[2/2] Linking [33mbuild/.conf_check_ae2196669c433e57abfa4d02db28098a/testbuild/testprog[0m
+
+['clang++', '-fuse-ld=gold', 'test.cpp.1.o', '-o/mnt/c/Users/Bryan/Google Drive/School/NDN/ndn-cxx/build/.conf_check_ae2196669c433e57abfa4d02db28098a/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic']
+yes
+----------------------------------------
+Checking for netlink
+==>
+#include <linux/if_addr.h>
+#include <linux/if_link.h>
+#include <linux/netlink.h>
+#include <linux/rtnetlink.h>
+#include <linux/genetlink.h>
+
+int main(int argc, char **argv) {
+	(void)argc; (void)argv;
+	return 0;
+}
+
+<==
+[1/2] Compiling [32mbuild/.conf_check_519356c6393f4fb0009b0a69f58b9989/test.cpp[0m
+
+['clang++', '-std=c++14', '-DHAVE_STD_TO_STRING=1', '-DHAVE_PTHREAD=1', '-DHAVE_RT=1', '-DHAVE_GETPASS=1', '../test.cpp', '-c', '-o/mnt/c/Users/Bryan/Google Drive/School/NDN/ndn-cxx/build/.conf_check_519356c6393f4fb0009b0a69f58b9989/testbuild/test.cpp.1.o']
+[2/2] Linking [33mbuild/.conf_check_519356c6393f4fb0009b0a69f58b9989/testbuild/testprog[0m
+
+['clang++', '-fuse-ld=gold', 'test.cpp.1.o', '-o/mnt/c/Users/Bryan/Google Drive/School/NDN/ndn-cxx/build/.conf_check_519356c6393f4fb0009b0a69f58b9989/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic']
+yes
+----------------------------------------
+Checking for NETLINK_EXT_ACK
+==>
+#include <linux/netlink.h>
+                                   int main() { return NETLINK_EXT_ACK; }
+<==
+[1/2] Compiling [32mbuild/.conf_check_83a84fa657f4871fa952ea053a510979/test.cpp[0m
+
+['clang++', '-std=c++14', '-DHAVE_STD_TO_STRING=1', '-DHAVE_PTHREAD=1', '-DHAVE_RT=1', '-DHAVE_GETPASS=1', '-DHAVE_NETLINK=1', '../test.cpp', '-c', '-o/mnt/c/Users/Bryan/Google Drive/School/NDN/ndn-cxx/build/.conf_check_83a84fa657f4871fa952ea053a510979/testbuild/test.cpp.1.o']
+[2/2] Linking [33mbuild/.conf_check_83a84fa657f4871fa952ea053a510979/testbuild/testprog[0m
+
+['clang++', '-fuse-ld=gold', 'test.cpp.1.o', '-o/mnt/c/Users/Bryan/Google Drive/School/NDN/ndn-cxx/build/.conf_check_83a84fa657f4871fa952ea053a510979/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic']
+yes
+----------------------------------------
+Checking for IFA_FLAGS
+==>
+#include <linux/if_addr.h>
+                                   int main() { return IFA_FLAGS; }
+<==
+[1/2] Compiling [32mbuild/.conf_check_d53eca72a5a175639087541a1870a6e9/test.cpp[0m
+
+['clang++', '-std=c++14', '-DHAVE_STD_TO_STRING=1', '-DHAVE_PTHREAD=1', '-DHAVE_RT=1', '-DHAVE_GETPASS=1', '-DHAVE_NETLINK=1', '-DHAVE_NETLINK_EXT_ACK=1', '../test.cpp', '-c', '-o/mnt/c/Users/Bryan/Google Drive/School/NDN/ndn-cxx/build/.conf_check_d53eca72a5a175639087541a1870a6e9/testbuild/test.cpp.1.o']
+[2/2] Linking [33mbuild/.conf_check_d53eca72a5a175639087541a1870a6e9/testbuild/testprog[0m
+
+['clang++', '-fuse-ld=gold', 'test.cpp.1.o', '-o/mnt/c/Users/Bryan/Google Drive/School/NDN/ndn-cxx/build/.conf_check_d53eca72a5a175639087541a1870a6e9/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic']
+yes
+----------------------------------------
+Checking for program 'pkg-config'
+/usr/bin/pkg-config
+find program=['pkg-config'] paths=['/home/bhatasaka/.cargo/bin', '/home/bhatasaka/.local/bin', '/usr/local/sbin', '/usr/local/bin', '/usr/sbin', '/usr/bin', '/sbin', '/bin', '/usr/games', '/usr/local/games', '/mnt/c/Program Files (x86)/Python38-32/Scripts/', '/mnt/c/Program Files (x86)/Python38-32/', '/mnt/c/Python27/', '/mnt/c/Python27/Scripts', '/mnt/c/Program Files (x86)/Common Files/Oracle/Java/javapath', '/mnt/c/Windows/system32', '/mnt/c/Windows', '/mnt/c/Windows/System32/Wbem', '/mnt/c/Windows/System32/WindowsPowerShell/v1.0/', '/mnt/c/Windows/System32/OpenSSH/', '/mnt/c/Program Files/Microsoft VS Code/bin', '/mnt/c/Program Files/NVIDIA Corporation/NVIDIA NvDLISR', '/mnt/c/ProgramData/chocolatey/bin', '/mnt/c/Program Files (x86)/vim/vim80', '/mnt/c/Program Files/PuTTY/', '/mnt/c/Go/bin', '/mnt/c/Program Files (x86)/NVIDIA Corporation/PhysX/Common', '/mnt/c/Program Files/mingw-w64/x86_64-8.1.0-posix-seh-rt_v6-rev0/mingw64/bin', '/mnt/c/Program Files/dotnet/', '/mnt/c/Program Files/Microsoft SQL Server/130/Tools/Binn/', '/mnt/c/Program Files/Microsoft SQL Server/Client SDK/ODBC/170/Tools/Binn/', '/mnt/c/Program Files (x86)/Microsoft SQL Server/150/DTS/Binn/', '/mnt/c/WINDOWS/system32', '/mnt/c/WINDOWS', '/mnt/c/WINDOWS/System32/Wbem', '/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/', '/mnt/c/WINDOWS/System32/OpenSSH/', '/mnt/c/Program Files/Git/cmd', '/mnt/c/Program Files/Microsoft SQL Server/Client SDK/ODBC/130/Tools/Binn/', '/mnt/c/Program Files (x86)/Microsoft SQL Server/140/Tools/Binn/', '/mnt/c/Program Files/Microsoft SQL Server/140/Tools/Binn/', '/mnt/c/Program Files/Microsoft SQL Server/140/DTS/Binn/', '/mnt/c/Program Files/nodejs/', '/mnt/c/Users/Bryan/AppData/Local/Microsoft/WindowsApps', '/mnt/c/Program Files (x86)/Microsoft Visual Studio/2017/BuildTools/VC/Tools/MSVC/14.16.27023/bin/Hostx64/x64/cl.exe', '/mnt/c/Program Files (x86)/Microsoft Visual Studio/2017/BuildTools/MSBuild.exe', '/mnt/c/Users/Bryan/go/bin', '/mnt/c/ProgramData/chocolatey/lib/mingw/tools/install/mingw64/bin', '/mnt/c/Program Files/STLink/bin', '/mnt/c/Program Files (x86)/GnuWin32/bin', '/mnt/c/Program Files/avr8-gnu-toolchain/bin', '/mnt/c/Program Files (x86)/Arduino/hardware/tools/avr/bin', '/mnt/c/Users/Bryan/AppData/Roaming/npm', '/mnt/c/Users/Bryan/.dotnet/tools', '/snap/bin', '~/libs/bin'] var='PKGCONFIG' -> ['/usr/bin/pkg-config']
+----------------------------------------
+Checking for 'sqlite3'
+['/usr/bin/pkg-config', '--cflags', '--libs', 'sqlite3']
+out: -lsqlite3
+
+yes
+----------------------------------------
+Checking for OpenSSL version
+"OpenSSL 1.1.1c  28 May 2019"
+----------------------------------------
+Checking if OpenSSL library works
+==>
+
+int main(int argc, char **argv) {
+	(void)argc; (void)argv;
+	return 0;
+}
+
+<==
+[1/2] Compiling [32mbuild/.conf_check_d09aa6a19cb934e972b4a5186e2f5408/test.cpp[0m
+
+['clang++', '-std=c++14', '-I/usr/include', '-DHAVE_STD_TO_STRING=1', '-DHAVE_PTHREAD=1', '-DHAVE_RT=1', '-DHAVE_GETPASS=1', '-DHAVE_NETLINK=1', '-DHAVE_NETLINK_EXT_ACK=1', '-DHAVE_IFA_FLAGS=1', '-DHAVE_SQLITE3=1', '../test.cpp', '-c', '-o/mnt/c/Users/Bryan/Google Drive/School/NDN/ndn-cxx/build/.conf_check_d09aa6a19cb934e972b4a5186e2f5408/testbuild/test.cpp.1.o']
+[2/2] Linking [33mbuild/.conf_check_d09aa6a19cb934e972b4a5186e2f5408/testbuild/testprog[0m
+
+['clang++', '-fuse-ld=gold', 'test.cpp.1.o', '-o/mnt/c/Users/Bryan/Google Drive/School/NDN/ndn-cxx/build/.conf_check_d09aa6a19cb934e972b4a5186e2f5408/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic', '-L/usr/lib', '-lcrypto']
+yes
+----------------------------------------
+Checking for program 'dpkg-architecture'
+/usr/bin/dpkg-architecture
+find program=['dpkg-architecture'] paths=['/home/bhatasaka/.cargo/bin', '/home/bhatasaka/.local/bin', '/usr/local/sbin', '/usr/local/bin', '/usr/sbin', '/usr/bin', '/sbin', '/bin', '/usr/games', '/usr/local/games', '/mnt/c/Program Files (x86)/Python38-32/Scripts/', '/mnt/c/Program Files (x86)/Python38-32/', '/mnt/c/Python27/', '/mnt/c/Python27/Scripts', '/mnt/c/Program Files (x86)/Common Files/Oracle/Java/javapath', '/mnt/c/Windows/system32', '/mnt/c/Windows', '/mnt/c/Windows/System32/Wbem', '/mnt/c/Windows/System32/WindowsPowerShell/v1.0/', '/mnt/c/Windows/System32/OpenSSH/', '/mnt/c/Program Files/Microsoft VS Code/bin', '/mnt/c/Program Files/NVIDIA Corporation/NVIDIA NvDLISR', '/mnt/c/ProgramData/chocolatey/bin', '/mnt/c/Program Files (x86)/vim/vim80', '/mnt/c/Program Files/PuTTY/', '/mnt/c/Go/bin', '/mnt/c/Program Files (x86)/NVIDIA Corporation/PhysX/Common', '/mnt/c/Program Files/mingw-w64/x86_64-8.1.0-posix-seh-rt_v6-rev0/mingw64/bin', '/mnt/c/Program Files/dotnet/', '/mnt/c/Program Files/Microsoft SQL Server/130/Tools/Binn/', '/mnt/c/Program Files/Microsoft SQL Server/Client SDK/ODBC/170/Tools/Binn/', '/mnt/c/Program Files (x86)/Microsoft SQL Server/150/DTS/Binn/', '/mnt/c/WINDOWS/system32', '/mnt/c/WINDOWS', '/mnt/c/WINDOWS/System32/Wbem', '/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/', '/mnt/c/WINDOWS/System32/OpenSSH/', '/mnt/c/Program Files/Git/cmd', '/mnt/c/Program Files/Microsoft SQL Server/Client SDK/ODBC/130/Tools/Binn/', '/mnt/c/Program Files (x86)/Microsoft SQL Server/140/Tools/Binn/', '/mnt/c/Program Files/Microsoft SQL Server/140/Tools/Binn/', '/mnt/c/Program Files/Microsoft SQL Server/140/DTS/Binn/', '/mnt/c/Program Files/nodejs/', '/mnt/c/Users/Bryan/AppData/Local/Microsoft/WindowsApps', '/mnt/c/Program Files (x86)/Microsoft Visual Studio/2017/BuildTools/VC/Tools/MSVC/14.16.27023/bin/Hostx64/x64/cl.exe', '/mnt/c/Program Files (x86)/Microsoft Visual Studio/2017/BuildTools/MSBuild.exe', '/mnt/c/Users/Bryan/go/bin', '/mnt/c/ProgramData/chocolatey/lib/mingw/tools/install/mingw64/bin', '/mnt/c/Program Files/STLink/bin', '/mnt/c/Program Files (x86)/GnuWin32/bin', '/mnt/c/Program Files/avr8-gnu-toolchain/bin', '/mnt/c/Program Files (x86)/Arduino/hardware/tools/avr/bin', '/mnt/c/Users/Bryan/AppData/Roaming/npm', '/mnt/c/Users/Bryan/.dotnet/tools', '/snap/bin', '~/libs/bin'] var='DPKG_ARCHITECTURE' -> ['/usr/bin/dpkg-architecture']
+['/usr/bin/dpkg-architecture', '-qDEB_HOST_MULTIARCH']
+out: x86_64-linux-gnu
+
+----------------------------------------
+Checking boost includes
+1.67.0
+----------------------------------------
+Checking boost libs
+Found the boost path in /usr/lib/x86_64-linux-gnu with the libraries:
+    /usr/lib/x86_64-linux-gnu/libboost_atomic.a
+    /usr/lib/x86_64-linux-gnu/libboost_atomic.so
+    /usr/lib/x86_64-linux-gnu/libboost_atomic.so.1.67.0
+    /usr/lib/x86_64-linux-gnu/libboost_chrono.a
+    /usr/lib/x86_64-linux-gnu/libboost_chrono.so
+    /usr/lib/x86_64-linux-gnu/libboost_chrono.so.1.67.0
+    /usr/lib/x86_64-linux-gnu/libboost_container.a
+    /usr/lib/x86_64-linux-gnu/libboost_container.so
+    /usr/lib/x86_64-linux-gnu/libboost_container.so.1.67.0
+    /usr/lib/x86_64-linux-gnu/libboost_context.a
+    /usr/lib/x86_64-linux-gnu/libboost_context.so
+    /usr/lib/x86_64-linux-gnu/libboost_context.so.1.67.0
+    /usr/lib/x86_64-linux-gnu/libboost_coroutine.a
+    /usr/lib/x86_64-linux-gnu/libboost_coroutine.so
+    /usr/lib/x86_64-linux-gnu/libboost_coroutine.so.1.67.0
+    /usr/lib/x86_64-linux-gnu/libboost_date_time.a
+    /usr/lib/x86_64-linux-gnu/libboost_date_time.so
+    /usr/lib/x86_64-linux-gnu/libboost_date_time.so.1.67.0
+    /usr/lib/x86_64-linux-gnu/libboost_exception.a
+    /usr/lib/x86_64-linux-gnu/libboost_fiber.a
+    /usr/lib/x86_64-linux-gnu/libboost_fiber.so
+    /usr/lib/x86_64-linux-gnu/libboost_fiber.so.1.67.0
+    /usr/lib/x86_64-linux-gnu/libboost_filesystem.a
+    /usr/lib/x86_64-linux-gnu/libboost_filesystem.so
+    /usr/lib/x86_64-linux-gnu/libboost_filesystem.so.1.67.0
+    /usr/lib/x86_64-linux-gnu/libboost_graph.a
+    /usr/lib/x86_64-linux-gnu/libboost_graph.so
+    /usr/lib/x86_64-linux-gnu/libboost_graph.so.1.67.0
+    /usr/lib/x86_64-linux-gnu/libboost_graph_parallel.a
+    /usr/lib/x86_64-linux-gnu/libboost_graph_parallel.so
+    /usr/lib/x86_64-linux-gnu/libboost_graph_parallel.so.1.67.0
+    /usr/lib/x86_64-linux-gnu/libboost_iostreams.a
+    /usr/lib/x86_64-linux-gnu/libboost_iostreams.so
+    /usr/lib/x86_64-linux-gnu/libboost_iostreams.so.1.67.0
+    /usr/lib/x86_64-linux-gnu/libboost_locale.a
+    /usr/lib/x86_64-linux-gnu/libboost_locale.so
+    /usr/lib/x86_64-linux-gnu/libboost_locale.so.1.67.0
+    /usr/lib/x86_64-linux-gnu/libboost_log.a
+    /usr/lib/x86_64-linux-gnu/libboost_log.so
+    /usr/lib/x86_64-linux-gnu/libboost_log.so.1.67.0
+    /usr/lib/x86_64-linux-gnu/libboost_log_setup.a
+    /usr/lib/x86_64-linux-gnu/libboost_log_setup.so
+    /usr/lib/x86_64-linux-gnu/libboost_log_setup.so.1.67.0
+    /usr/lib/x86_64-linux-gnu/libboost_math_c99.a
+    /usr/lib/x86_64-linux-gnu/libboost_math_c99.so
+    /usr/lib/x86_64-linux-gnu/libboost_math_c99.so.1.67.0
+    /usr/lib/x86_64-linux-gnu/libboost_math_c99f.a
+    /usr/lib/x86_64-linux-gnu/libboost_math_c99f.so
+    /usr/lib/x86_64-linux-gnu/libboost_math_c99f.so.1.67.0
+    /usr/lib/x86_64-linux-gnu/libboost_math_c99l.a
+    /usr/lib/x86_64-linux-gnu/libboost_math_c99l.so
+    /usr/lib/x86_64-linux-gnu/libboost_math_c99l.so.1.67.0
+    /usr/lib/x86_64-linux-gnu/libboost_math_tr1.a
+    /usr/lib/x86_64-linux-gnu/libboost_math_tr1.so
+    /usr/lib/x86_64-linux-gnu/libboost_math_tr1.so.1.67.0
+    /usr/lib/x86_64-linux-gnu/libboost_math_tr1f.a
+    /usr/lib/x86_64-linux-gnu/libboost_math_tr1f.so
+    /usr/lib/x86_64-linux-gnu/libboost_math_tr1f.so.1.67.0
+    /usr/lib/x86_64-linux-gnu/libboost_math_tr1l.a
+    /usr/lib/x86_64-linux-gnu/libboost_math_tr1l.so
+    /usr/lib/x86_64-linux-gnu/libboost_math_tr1l.so.1.67.0
+    /usr/lib/x86_64-linux-gnu/libboost_mpi.a
+    /usr/lib/x86_64-linux-gnu/libboost_mpi.so
+    /usr/lib/x86_64-linux-gnu/libboost_mpi.so.1.67.0
+    /usr/lib/x86_64-linux-gnu/libboost_mpi_python.a
+    /usr/lib/x86_64-linux-gnu/libboost_mpi_python.so
+    /usr/lib/x86_64-linux-gnu/libboost_mpi_python27.a
+    /usr/lib/x86_64-linux-gnu/libboost_mpi_python27.so
+    /usr/lib/x86_64-linux-gnu/libboost_mpi_python27.so.1.67.0
+    /usr/lib/x86_64-linux-gnu/libboost_mpi_python3-py37.a
+    /usr/lib/x86_64-linux-gnu/libboost_mpi_python3-py37.so
+    /usr/lib/x86_64-linux-gnu/libboost_mpi_python3.a
+    /usr/lib/x86_64-linux-gnu/libboost_mpi_python3.so
+    /usr/lib/x86_64-linux-gnu/libboost_mpi_python37.a
+    /usr/lib/x86_64-linux-gnu/libboost_mpi_python37.so
+    /usr/lib/x86_64-linux-gnu/libboost_mpi_python37.so.1.67.0
+    /usr/lib/x86_64-linux-gnu/libboost_numpy.a
+    /usr/lib/x86_64-linux-gnu/libboost_numpy.so
+    /usr/lib/x86_64-linux-gnu/libboost_numpy27.a
+    /usr/lib/x86_64-linux-gnu/libboost_numpy27.so
+    /usr/lib/x86_64-linux-gnu/libboost_numpy27.so.1.67.0
+    /usr/lib/x86_64-linux-gnu/libboost_numpy3.a
+    /usr/lib/x86_64-linux-gnu/libboost_numpy3.so
+    /usr/lib/x86_64-linux-gnu/libboost_numpy37.a
+    /usr/lib/x86_64-linux-gnu/libboost_numpy37.so
+    /usr/lib/x86_64-linux-gnu/libboost_numpy37.so.1.67.0
+    /usr/lib/x86_64-linux-gnu/libboost_prg_exec_monitor.a
+    /usr/lib/x86_64-linux-gnu/libboost_prg_exec_monitor.so
+    /usr/lib/x86_64-linux-gnu/libboost_prg_exec_monitor.so.1.67.0
+    /usr/lib/x86_64-linux-gnu/libboost_program_options.a
+    /usr/lib/x86_64-linux-gnu/libboost_program_options.so
+    /usr/lib/x86_64-linux-gnu/libboost_program_options.so.1.67.0
+    /usr/lib/x86_64-linux-gnu/libboost_python.a
+    /usr/lib/x86_64-linux-gnu/libboost_python.so
+    /usr/lib/x86_64-linux-gnu/libboost_python27.a
+    /usr/lib/x86_64-linux-gnu/libboost_python27.so
+    /usr/lib/x86_64-linux-gnu/libboost_python27.so.1.67.0
+    /usr/lib/x86_64-linux-gnu/libboost_python3-py37.a
+    /usr/lib/x86_64-linux-gnu/libboost_python3-py37.so
+    /usr/lib/x86_64-linux-gnu/libboost_python3.a
+    /usr/lib/x86_64-linux-gnu/libboost_python3.so
+    /usr/lib/x86_64-linux-gnu/libboost_python37.a
+    /usr/lib/x86_64-linux-gnu/libboost_python37.so
+    /usr/lib/x86_64-linux-gnu/libboost_python37.so.1.67.0
+    /usr/lib/x86_64-linux-gnu/libboost_random.a
+    /usr/lib/x86_64-linux-gnu/libboost_random.so
+    /usr/lib/x86_64-linux-gnu/libboost_random.so.1.67.0
+    /usr/lib/x86_64-linux-gnu/libboost_regex.a
+    /usr/lib/x86_64-linux-gnu/libboost_regex.so
+    /usr/lib/x86_64-linux-gnu/libboost_regex.so.1.67.0
+    /usr/lib/x86_64-linux-gnu/libboost_serialization.a
+    /usr/lib/x86_64-linux-gnu/libboost_serialization.so
+    /usr/lib/x86_64-linux-gnu/libboost_serialization.so.1.67.0
+    /usr/lib/x86_64-linux-gnu/libboost_signals.a
+    /usr/lib/x86_64-linux-gnu/libboost_signals.so
+    /usr/lib/x86_64-linux-gnu/libboost_signals.so.1.67.0
+    /usr/lib/x86_64-linux-gnu/libboost_stacktrace_addr2line.a
+    /usr/lib/x86_64-linux-gnu/libboost_stacktrace_addr2line.so
+    /usr/lib/x86_64-linux-gnu/libboost_stacktrace_addr2line.so.1.67.0
+    /usr/lib/x86_64-linux-gnu/libboost_stacktrace_backtrace.a
+    /usr/lib/x86_64-linux-gnu/libboost_stacktrace_backtrace.so
+    /usr/lib/x86_64-linux-gnu/libboost_stacktrace_backtrace.so.1.67.0
+    /usr/lib/x86_64-linux-gnu/libboost_stacktrace_basic.a
+    /usr/lib/x86_64-linux-gnu/libboost_stacktrace_basic.so
+    /usr/lib/x86_64-linux-gnu/libboost_stacktrace_basic.so.1.67.0
+    /usr/lib/x86_64-linux-gnu/libboost_stacktrace_noop.a
+    /usr/lib/x86_64-linux-gnu/libboost_stacktrace_noop.so
+    /usr/lib/x86_64-linux-gnu/libboost_stacktrace_noop.so.1.67.0
+    /usr/lib/x86_64-linux-gnu/libboost_system.a
+    /usr/lib/x86_64-linux-gnu/libboost_system.so
+    /usr/lib/x86_64-linux-gnu/libboost_system.so.1.67.0
+    /usr/lib/x86_64-linux-gnu/libboost_test_exec_monitor.a
+    /usr/lib/x86_64-linux-gnu/libboost_thread.a
+    /usr/lib/x86_64-linux-gnu/libboost_thread.so
+    /usr/lib/x86_64-linux-gnu/libboost_thread.so.1.67.0
+    /usr/lib/x86_64-linux-gnu/libboost_timer.a
+    /usr/lib/x86_64-linux-gnu/libboost_timer.so
+    /usr/lib/x86_64-linux-gnu/libboost_timer.so.1.67.0
+    /usr/lib/x86_64-linux-gnu/libboost_type_erasure.a
+    /usr/lib/x86_64-linux-gnu/libboost_type_erasure.so
+    /usr/lib/x86_64-linux-gnu/libboost_type_erasure.so.1.67.0
+    /usr/lib/x86_64-linux-gnu/libboost_unit_test_framework.a
+    /usr/lib/x86_64-linux-gnu/libboost_unit_test_framework.so
+    /usr/lib/x86_64-linux-gnu/libboost_unit_test_framework.so.1.67.0
+    /usr/lib/x86_64-linux-gnu/libboost_wave.a
+    /usr/lib/x86_64-linux-gnu/libboost_wave.so
+    /usr/lib/x86_64-linux-gnu/libboost_wave.so.1.67.0
+    /usr/lib/x86_64-linux-gnu/libboost_wserialization.a
+    /usr/lib/x86_64-linux-gnu/libboost_wserialization.so
+    /usr/lib/x86_64-linux-gnu/libboost_wserialization.so.1.67.0
+Trying pattern boost_stacktrace_backtrace(-clang[0-9]{0,3})-mt-1_67.so$
+Trying pattern boost_stacktrace_backtrace-mt-1_67.so$
+Trying pattern boost_stacktrace_backtrace(-clang[0-9]{0,3})-mt.so$
+Trying pattern boost_stacktrace_backtrace-mt.so$
+Trying pattern boost_stacktrace_backtrace.so$
+Found boost lib /usr/lib/x86_64-linux-gnu/libboost_stacktrace_backtrace.so
+boost_stacktrace_backtrace
+----------------------------------------
+Checking for boost linkage
+ok
+----------------------------------------
+Checking boost libs
+Found the boost path in /usr/lib/x86_64-linux-gnu with the libraries:
+    /usr/lib/x86_64-linux-gnu/libboost_atomic.a
+    /usr/lib/x86_64-linux-gnu/libboost_atomic.so
+    /usr/lib/x86_64-linux-gnu/libboost_atomic.so.1.67.0
+    /usr/lib/x86_64-linux-gnu/libboost_chrono.a
+    /usr/lib/x86_64-linux-gnu/libboost_chrono.so
+    /usr/lib/x86_64-linux-gnu/libboost_chrono.so.1.67.0
+    /usr/lib/x86_64-linux-gnu/libboost_container.a
+    /usr/lib/x86_64-linux-gnu/libboost_container.so
+    /usr/lib/x86_64-linux-gnu/libboost_container.so.1.67.0
+    /usr/lib/x86_64-linux-gnu/libboost_context.a
+    /usr/lib/x86_64-linux-gnu/libboost_context.so
+    /usr/lib/x86_64-linux-gnu/libboost_context.so.1.67.0
+    /usr/lib/x86_64-linux-gnu/libboost_coroutine.a
+    /usr/lib/x86_64-linux-gnu/libboost_coroutine.so
+    /usr/lib/x86_64-linux-gnu/libboost_coroutine.so.1.67.0
+    /usr/lib/x86_64-linux-gnu/libboost_date_time.a
+    /usr/lib/x86_64-linux-gnu/libboost_date_time.so
+    /usr/lib/x86_64-linux-gnu/libboost_date_time.so.1.67.0
+    /usr/lib/x86_64-linux-gnu/libboost_exception.a
+    /usr/lib/x86_64-linux-gnu/libboost_fiber.a
+    /usr/lib/x86_64-linux-gnu/libboost_fiber.so
+    /usr/lib/x86_64-linux-gnu/libboost_fiber.so.1.67.0
+    /usr/lib/x86_64-linux-gnu/libboost_filesystem.a
+    /usr/lib/x86_64-linux-gnu/libboost_filesystem.so
+    /usr/lib/x86_64-linux-gnu/libboost_filesystem.so.1.67.0
+    /usr/lib/x86_64-linux-gnu/libboost_graph.a
+    /usr/lib/x86_64-linux-gnu/libboost_graph.so
+    /usr/lib/x86_64-linux-gnu/libboost_graph.so.1.67.0
+    /usr/lib/x86_64-linux-gnu/libboost_graph_parallel.a
+    /usr/lib/x86_64-linux-gnu/libboost_graph_parallel.so
+    /usr/lib/x86_64-linux-gnu/libboost_graph_parallel.so.1.67.0
+    /usr/lib/x86_64-linux-gnu/libboost_iostreams.a
+    /usr/lib/x86_64-linux-gnu/libboost_iostreams.so
+    /usr/lib/x86_64-linux-gnu/libboost_iostreams.so.1.67.0
+    /usr/lib/x86_64-linux-gnu/libboost_locale.a
+    /usr/lib/x86_64-linux-gnu/libboost_locale.so
+    /usr/lib/x86_64-linux-gnu/libboost_locale.so.1.67.0
+    /usr/lib/x86_64-linux-gnu/libboost_log.a
+    /usr/lib/x86_64-linux-gnu/libboost_log.so
+    /usr/lib/x86_64-linux-gnu/libboost_log.so.1.67.0
+    /usr/lib/x86_64-linux-gnu/libboost_log_setup.a
+    /usr/lib/x86_64-linux-gnu/libboost_log_setup.so
+    /usr/lib/x86_64-linux-gnu/libboost_log_setup.so.1.67.0
+    /usr/lib/x86_64-linux-gnu/libboost_math_c99.a
+    /usr/lib/x86_64-linux-gnu/libboost_math_c99.so
+    /usr/lib/x86_64-linux-gnu/libboost_math_c99.so.1.67.0
+    /usr/lib/x86_64-linux-gnu/libboost_math_c99f.a
+    /usr/lib/x86_64-linux-gnu/libboost_math_c99f.so
+    /usr/lib/x86_64-linux-gnu/libboost_math_c99f.so.1.67.0
+    /usr/lib/x86_64-linux-gnu/libboost_math_c99l.a
+    /usr/lib/x86_64-linux-gnu/libboost_math_c99l.so
+    /usr/lib/x86_64-linux-gnu/libboost_math_c99l.so.1.67.0
+    /usr/lib/x86_64-linux-gnu/libboost_math_tr1.a
+    /usr/lib/x86_64-linux-gnu/libboost_math_tr1.so
+    /usr/lib/x86_64-linux-gnu/libboost_math_tr1.so.1.67.0
+    /usr/lib/x86_64-linux-gnu/libboost_math_tr1f.a
+    /usr/lib/x86_64-linux-gnu/libboost_math_tr1f.so
+    /usr/lib/x86_64-linux-gnu/libboost_math_tr1f.so.1.67.0
+    /usr/lib/x86_64-linux-gnu/libboost_math_tr1l.a
+    /usr/lib/x86_64-linux-gnu/libboost_math_tr1l.so
+    /usr/lib/x86_64-linux-gnu/libboost_math_tr1l.so.1.67.0
+    /usr/lib/x86_64-linux-gnu/libboost_mpi.a
+    /usr/lib/x86_64-linux-gnu/libboost_mpi.so
+    /usr/lib/x86_64-linux-gnu/libboost_mpi.so.1.67.0
+    /usr/lib/x86_64-linux-gnu/libboost_mpi_python.a
+    /usr/lib/x86_64-linux-gnu/libboost_mpi_python.so
+    /usr/lib/x86_64-linux-gnu/libboost_mpi_python27.a
+    /usr/lib/x86_64-linux-gnu/libboost_mpi_python27.so
+    /usr/lib/x86_64-linux-gnu/libboost_mpi_python27.so.1.67.0
+    /usr/lib/x86_64-linux-gnu/libboost_mpi_python3-py37.a
+    /usr/lib/x86_64-linux-gnu/libboost_mpi_python3-py37.so
+    /usr/lib/x86_64-linux-gnu/libboost_mpi_python3.a
+    /usr/lib/x86_64-linux-gnu/libboost_mpi_python3.so
+    /usr/lib/x86_64-linux-gnu/libboost_mpi_python37.a
+    /usr/lib/x86_64-linux-gnu/libboost_mpi_python37.so
+    /usr/lib/x86_64-linux-gnu/libboost_mpi_python37.so.1.67.0
+    /usr/lib/x86_64-linux-gnu/libboost_numpy.a
+    /usr/lib/x86_64-linux-gnu/libboost_numpy.so
+    /usr/lib/x86_64-linux-gnu/libboost_numpy27.a
+    /usr/lib/x86_64-linux-gnu/libboost_numpy27.so
+    /usr/lib/x86_64-linux-gnu/libboost_numpy27.so.1.67.0
+    /usr/lib/x86_64-linux-gnu/libboost_numpy3.a
+    /usr/lib/x86_64-linux-gnu/libboost_numpy3.so
+    /usr/lib/x86_64-linux-gnu/libboost_numpy37.a
+    /usr/lib/x86_64-linux-gnu/libboost_numpy37.so
+    /usr/lib/x86_64-linux-gnu/libboost_numpy37.so.1.67.0
+    /usr/lib/x86_64-linux-gnu/libboost_prg_exec_monitor.a
+    /usr/lib/x86_64-linux-gnu/libboost_prg_exec_monitor.so
+    /usr/lib/x86_64-linux-gnu/libboost_prg_exec_monitor.so.1.67.0
+    /usr/lib/x86_64-linux-gnu/libboost_program_options.a
+    /usr/lib/x86_64-linux-gnu/libboost_program_options.so
+    /usr/lib/x86_64-linux-gnu/libboost_program_options.so.1.67.0
+    /usr/lib/x86_64-linux-gnu/libboost_python.a
+    /usr/lib/x86_64-linux-gnu/libboost_python.so
+    /usr/lib/x86_64-linux-gnu/libboost_python27.a
+    /usr/lib/x86_64-linux-gnu/libboost_python27.so
+    /usr/lib/x86_64-linux-gnu/libboost_python27.so.1.67.0
+    /usr/lib/x86_64-linux-gnu/libboost_python3-py37.a
+    /usr/lib/x86_64-linux-gnu/libboost_python3-py37.so
+    /usr/lib/x86_64-linux-gnu/libboost_python3.a
+    /usr/lib/x86_64-linux-gnu/libboost_python3.so
+    /usr/lib/x86_64-linux-gnu/libboost_python37.a
+    /usr/lib/x86_64-linux-gnu/libboost_python37.so
+    /usr/lib/x86_64-linux-gnu/libboost_python37.so.1.67.0
+    /usr/lib/x86_64-linux-gnu/libboost_random.a
+    /usr/lib/x86_64-linux-gnu/libboost_random.so
+    /usr/lib/x86_64-linux-gnu/libboost_random.so.1.67.0
+    /usr/lib/x86_64-linux-gnu/libboost_regex.a
+    /usr/lib/x86_64-linux-gnu/libboost_regex.so
+    /usr/lib/x86_64-linux-gnu/libboost_regex.so.1.67.0
+    /usr/lib/x86_64-linux-gnu/libboost_serialization.a
+    /usr/lib/x86_64-linux-gnu/libboost_serialization.so
+    /usr/lib/x86_64-linux-gnu/libboost_serialization.so.1.67.0
+    /usr/lib/x86_64-linux-gnu/libboost_signals.a
+    /usr/lib/x86_64-linux-gnu/libboost_signals.so
+    /usr/lib/x86_64-linux-gnu/libboost_signals.so.1.67.0
+    /usr/lib/x86_64-linux-gnu/libboost_stacktrace_addr2line.a
+    /usr/lib/x86_64-linux-gnu/libboost_stacktrace_addr2line.so
+    /usr/lib/x86_64-linux-gnu/libboost_stacktrace_addr2line.so.1.67.0
+    /usr/lib/x86_64-linux-gnu/libboost_stacktrace_backtrace.a
+    /usr/lib/x86_64-linux-gnu/libboost_stacktrace_backtrace.so
+    /usr/lib/x86_64-linux-gnu/libboost_stacktrace_backtrace.so.1.67.0
+    /usr/lib/x86_64-linux-gnu/libboost_stacktrace_basic.a
+    /usr/lib/x86_64-linux-gnu/libboost_stacktrace_basic.so
+    /usr/lib/x86_64-linux-gnu/libboost_stacktrace_basic.so.1.67.0
+    /usr/lib/x86_64-linux-gnu/libboost_stacktrace_noop.a
+    /usr/lib/x86_64-linux-gnu/libboost_stacktrace_noop.so
+    /usr/lib/x86_64-linux-gnu/libboost_stacktrace_noop.so.1.67.0
+    /usr/lib/x86_64-linux-gnu/libboost_system.a
+    /usr/lib/x86_64-linux-gnu/libboost_system.so
+    /usr/lib/x86_64-linux-gnu/libboost_system.so.1.67.0
+    /usr/lib/x86_64-linux-gnu/libboost_test_exec_monitor.a
+    /usr/lib/x86_64-linux-gnu/libboost_thread.a
+    /usr/lib/x86_64-linux-gnu/libboost_thread.so
+    /usr/lib/x86_64-linux-gnu/libboost_thread.so.1.67.0
+    /usr/lib/x86_64-linux-gnu/libboost_timer.a
+    /usr/lib/x86_64-linux-gnu/libboost_timer.so
+    /usr/lib/x86_64-linux-gnu/libboost_timer.so.1.67.0
+    /usr/lib/x86_64-linux-gnu/libboost_type_erasure.a
+    /usr/lib/x86_64-linux-gnu/libboost_type_erasure.so
+    /usr/lib/x86_64-linux-gnu/libboost_type_erasure.so.1.67.0
+    /usr/lib/x86_64-linux-gnu/libboost_unit_test_framework.a
+    /usr/lib/x86_64-linux-gnu/libboost_unit_test_framework.so
+    /usr/lib/x86_64-linux-gnu/libboost_unit_test_framework.so.1.67.0
+    /usr/lib/x86_64-linux-gnu/libboost_wave.a
+    /usr/lib/x86_64-linux-gnu/libboost_wave.so
+    /usr/lib/x86_64-linux-gnu/libboost_wave.so.1.67.0
+    /usr/lib/x86_64-linux-gnu/libboost_wserialization.a
+    /usr/lib/x86_64-linux-gnu/libboost_wserialization.so
+    /usr/lib/x86_64-linux-gnu/libboost_wserialization.so.1.67.0
+Trying pattern boost_system(-clang[0-9]{0,3})-mt-1_67.so$
+Trying pattern boost_system-mt-1_67.so$
+Trying pattern boost_system(-clang[0-9]{0,3})-mt.so$
+Trying pattern boost_system-mt.so$
+Trying pattern boost_system.so$
+Found boost lib /usr/lib/x86_64-linux-gnu/libboost_system.so
+Trying pattern boost_program_options(-clang[0-9]{0,3})-mt-1_67.so$
+Trying pattern boost_program_options-mt-1_67.so$
+Trying pattern boost_program_options(-clang[0-9]{0,3})-mt.so$
+Trying pattern boost_program_options-mt.so$
+Trying pattern boost_program_options.so$
+Found boost lib /usr/lib/x86_64-linux-gnu/libboost_program_options.so
+Trying pattern boost_chrono(-clang[0-9]{0,3})-mt-1_67.so$
+Trying pattern boost_chrono-mt-1_67.so$
+Trying pattern boost_chrono(-clang[0-9]{0,3})-mt.so$
+Trying pattern boost_chrono-mt.so$
+Trying pattern boost_chrono.so$
+Found boost lib /usr/lib/x86_64-linux-gnu/libboost_chrono.so
+Trying pattern boost_date_time(-clang[0-9]{0,3})-mt-1_67.so$
+Trying pattern boost_date_time-mt-1_67.so$
+Trying pattern boost_date_time(-clang[0-9]{0,3})-mt.so$
+Trying pattern boost_date_time-mt.so$
+Trying pattern boost_date_time.so$
+Found boost lib /usr/lib/x86_64-linux-gnu/libboost_date_time.so
+Trying pattern boost_filesystem(-clang[0-9]{0,3})-mt-1_67.so$
+Trying pattern boost_filesystem-mt-1_67.so$
+Trying pattern boost_filesystem(-clang[0-9]{0,3})-mt.so$
+Trying pattern boost_filesystem-mt.so$
+Trying pattern boost_filesystem.so$
+Found boost lib /usr/lib/x86_64-linux-gnu/libboost_filesystem.so
+Trying pattern boost_thread(-clang[0-9]{0,3})-mt-1_67.so$
+Trying pattern boost_thread-mt-1_67.so$
+Trying pattern boost_thread(-clang[0-9]{0,3})-mt.so$
+Trying pattern boost_thread-mt.so$
+Trying pattern boost_thread.so$
+Found boost lib /usr/lib/x86_64-linux-gnu/libboost_thread.so
+Trying pattern boost_log(-clang[0-9]{0,3})-mt-1_67.so$
+Trying pattern boost_log-mt-1_67.so$
+Trying pattern boost_log(-clang[0-9]{0,3})-mt.so$
+Trying pattern boost_log-mt.so$
+Trying pattern boost_log.so$
+Found boost lib /usr/lib/x86_64-linux-gnu/libboost_log.so
+Trying pattern boost_stacktrace_backtrace(-clang[0-9]{0,3})-mt-1_67.so$
+Trying pattern boost_stacktrace_backtrace-mt-1_67.so$
+Trying pattern boost_stacktrace_backtrace(-clang[0-9]{0,3})-mt.so$
+Trying pattern boost_stacktrace_backtrace-mt.so$
+Trying pattern boost_stacktrace_backtrace.so$
+Found boost lib /usr/lib/x86_64-linux-gnu/libboost_stacktrace_backtrace.so
+boost_system boost_program_options boost_chrono boost_date_time boost_filesystem boost_thread boost_log boost_stacktrace_backtrace
+-----------------------------------------
+Checking the flags needed to use pthreads
+[1/2] Compiling [32mbuild/.conf_check_61547235bc147f4364c805b0b32536c3/test.cpp[0m
+
+['clang++', '-std=c++14', '-I/usr/include', '-DHAVE_STD_TO_STRING=1', '-DHAVE_PTHREAD=1', '-DHAVE_RT=1', '-DHAVE_GETPASS=1', '-DHAVE_NETLINK=1', '-DHAVE_NETLINK_EXT_ACK=1', '-DHAVE_IFA_FLAGS=1', '-DHAVE_SQLITE3=1', '-DHAVE_OPENSSL=1', '-DBOOST_STACKTRACE_DYN_LINK', '../test.cpp', '-c', '-o/mnt/c/Users/Bryan/Google Drive/School/NDN/ndn-cxx/build/.conf_check_61547235bc147f4364c805b0b32536c3/testbuild/test.cpp.1.o']
+[2/2] Linking [33mbuild/.conf_check_61547235bc147f4364c805b0b32536c3/testbuild/testprog[0m
+
+['clang++', '-fuse-ld=gold', 'test.cpp.1.o', '-o/mnt/c/Users/Bryan/Google Drive/School/NDN/ndn-cxx/build/.conf_check_61547235bc147f4364c805b0b32536c3/testbuild/testprog', '-Wl,-Bstatic', '-L/usr/lib/x86_64-linux-gnu', '-Wl,-Bdynamic', '-L/usr/lib/x86_64-linux-gnu', '-lboost_system', '-lboost_program_options', '-lboost_chrono', '-lboost_date_time', '-lboost_filesystem', '-lboost_thread', '-lboost_log', '-lboost_stacktrace_backtrace']
+err: test.cpp.1.o:test.cpp:function main: error: undefined reference to 'pthread_create'
+test.cpp.1.o:test.cpp:function main: error: undefined reference to 'pthread_join'
+clang: error: linker command failed with exit code 1 (use -v to see invocation)
+
+from /mnt/c/Users/Bryan/Google Drive/School/NDN/ndn-cxx: Test does not build: Traceback (most recent call last):
+  File "/mnt/c/Users/Bryan/Google Drive/School/NDN/ndn-cxx/.waf-2.0.14-a8a9afc5d151494252697f8fa4ba3fbc/waflib/Configure.py", line 325, in run_build
+    bld.compile()
+  File "/mnt/c/Users/Bryan/Google Drive/School/NDN/ndn-cxx/.waf-2.0.14-a8a9afc5d151494252697f8fa4ba3fbc/waflib/Build.py", line 176, in compile
+    raise Errors.BuildError(self.producer.error)
+BuildError: Build failed
+ -> task in 'testprog' failed with exit status 1 (run with -v to display more information)
+
+from /mnt/c/Users/Bryan/Google Drive/School/NDN/ndn-cxx: The configuration failed
+[1/2] Compiling [32mbuild/.conf_check_61547235bc147f4364c805b0b32536c3/test.cpp[0m
+
+['clang++', '-std=c++14', '-lpthreads', '-I/usr/include', '-DHAVE_STD_TO_STRING=1', '-DHAVE_PTHREAD=1', '-DHAVE_RT=1', '-DHAVE_GETPASS=1', '-DHAVE_NETLINK=1', '-DHAVE_NETLINK_EXT_ACK=1', '-DHAVE_IFA_FLAGS=1', '-DHAVE_SQLITE3=1', '-DHAVE_OPENSSL=1', '-DBOOST_STACKTRACE_DYN_LINK', '../test.cpp', '-c', '-o/mnt/c/Users/Bryan/Google Drive/School/NDN/ndn-cxx/build/.conf_check_61547235bc147f4364c805b0b32536c3/testbuild/test.cpp.1.o']
+err: clang: warning: -lpthreads: 'linker' input unused [-Wunused-command-line-argument]
+
+[2/2] Linking [33mbuild/.conf_check_61547235bc147f4364c805b0b32536c3/testbuild/testprog[0m
+
+['clang++', '-fuse-ld=gold', '-lpthreads', 'test.cpp.1.o', '-o/mnt/c/Users/Bryan/Google Drive/School/NDN/ndn-cxx/build/.conf_check_61547235bc147f4364c805b0b32536c3/testbuild/testprog', '-Wl,-Bstatic', '-L/usr/lib/x86_64-linux-gnu', '-Wl,-Bdynamic', '-L/usr/lib/x86_64-linux-gnu', '-lboost_system', '-lboost_program_options', '-lboost_chrono', '-lboost_date_time', '-lboost_filesystem', '-lboost_thread', '-lboost_log', '-lboost_stacktrace_backtrace']
+err: /usr/bin/ld.gold: error: cannot find -lpthreads
+test.cpp.1.o:test.cpp:function main: error: undefined reference to 'pthread_create'
+test.cpp.1.o:test.cpp:function main: error: undefined reference to 'pthread_join'
+clang: error: linker command failed with exit code 1 (use -v to see invocation)
+
+from /mnt/c/Users/Bryan/Google Drive/School/NDN/ndn-cxx: Test does not build: Traceback (most recent call last):
+  File "/mnt/c/Users/Bryan/Google Drive/School/NDN/ndn-cxx/.waf-2.0.14-a8a9afc5d151494252697f8fa4ba3fbc/waflib/Configure.py", line 325, in run_build
+    bld.compile()
+  File "/mnt/c/Users/Bryan/Google Drive/School/NDN/ndn-cxx/.waf-2.0.14-a8a9afc5d151494252697f8fa4ba3fbc/waflib/Build.py", line 176, in compile
+    raise Errors.BuildError(self.producer.error)
+BuildError: Build failed
+ -> task in 'testprog' failed with exit status 1 (run with -v to display more information)
+
+from /mnt/c/Users/Bryan/Google Drive/School/NDN/ndn-cxx: The configuration failed
+[1/2] Compiling [32mbuild/.conf_check_61547235bc147f4364c805b0b32536c3/test.cpp[0m
+
+['clang++', '-std=c++14', '-Kthread', '-I/usr/include', '-DHAVE_STD_TO_STRING=1', '-DHAVE_PTHREAD=1', '-DHAVE_RT=1', '-DHAVE_GETPASS=1', '-DHAVE_NETLINK=1', '-DHAVE_NETLINK_EXT_ACK=1', '-DHAVE_IFA_FLAGS=1', '-DHAVE_SQLITE3=1', '-DHAVE_OPENSSL=1', '-DBOOST_STACKTRACE_DYN_LINK', '../test.cpp', '-c', '-o/mnt/c/Users/Bryan/Google Drive/School/NDN/ndn-cxx/build/.conf_check_61547235bc147f4364c805b0b32536c3/testbuild/test.cpp.1.o']
+err: clang: error: unknown argument '-Kthread'; did you mean '-pthread'?
+
+from /mnt/c/Users/Bryan/Google Drive/School/NDN/ndn-cxx: Test does not build: Traceback (most recent call last):
+  File "/mnt/c/Users/Bryan/Google Drive/School/NDN/ndn-cxx/.waf-2.0.14-a8a9afc5d151494252697f8fa4ba3fbc/waflib/Configure.py", line 325, in run_build
+    bld.compile()
+  File "/mnt/c/Users/Bryan/Google Drive/School/NDN/ndn-cxx/.waf-2.0.14-a8a9afc5d151494252697f8fa4ba3fbc/waflib/Build.py", line 176, in compile
+    raise Errors.BuildError(self.producer.error)
+BuildError: Build failed
+ -> task in 'testprog' failed with exit status 1 (run with -v to display more information)
+
+from /mnt/c/Users/Bryan/Google Drive/School/NDN/ndn-cxx: The configuration failed
+[1/2] Compiling [32mbuild/.conf_check_61547235bc147f4364c805b0b32536c3/test.cpp[0m
+
+['clang++', '-std=c++14', '-kthread', '-I/usr/include', '-DHAVE_STD_TO_STRING=1', '-DHAVE_PTHREAD=1', '-DHAVE_RT=1', '-DHAVE_GETPASS=1', '-DHAVE_NETLINK=1', '-DHAVE_NETLINK_EXT_ACK=1', '-DHAVE_IFA_FLAGS=1', '-DHAVE_SQLITE3=1', '-DHAVE_OPENSSL=1', '-DBOOST_STACKTRACE_DYN_LINK', '../test.cpp', '-c', '-o/mnt/c/Users/Bryan/Google Drive/School/NDN/ndn-cxx/build/.conf_check_61547235bc147f4364c805b0b32536c3/testbuild/test.cpp.1.o']
+err: clang: error: unknown argument '-kthread'; did you mean '-pthread'?
+
+from /mnt/c/Users/Bryan/Google Drive/School/NDN/ndn-cxx: Test does not build: Traceback (most recent call last):
+  File "/mnt/c/Users/Bryan/Google Drive/School/NDN/ndn-cxx/.waf-2.0.14-a8a9afc5d151494252697f8fa4ba3fbc/waflib/Configure.py", line 325, in run_build
+    bld.compile()
+  File "/mnt/c/Users/Bryan/Google Drive/School/NDN/ndn-cxx/.waf-2.0.14-a8a9afc5d151494252697f8fa4ba3fbc/waflib/Build.py", line 176, in compile
+    raise Errors.BuildError(self.producer.error)
+BuildError: Build failed
+ -> task in 'testprog' failed with exit status 1 (run with -v to display more information)
+
+from /mnt/c/Users/Bryan/Google Drive/School/NDN/ndn-cxx: The configuration failed
+[1/2] Compiling [32mbuild/.conf_check_61547235bc147f4364c805b0b32536c3/test.cpp[0m
+
+['clang++', '-std=c++14', '-llthread', '-I/usr/include', '-DHAVE_STD_TO_STRING=1', '-DHAVE_PTHREAD=1', '-DHAVE_RT=1', '-DHAVE_GETPASS=1', '-DHAVE_NETLINK=1', '-DHAVE_NETLINK_EXT_ACK=1', '-DHAVE_IFA_FLAGS=1', '-DHAVE_SQLITE3=1', '-DHAVE_OPENSSL=1', '-DBOOST_STACKTRACE_DYN_LINK', '../test.cpp', '-c', '-o/mnt/c/Users/Bryan/Google Drive/School/NDN/ndn-cxx/build/.conf_check_61547235bc147f4364c805b0b32536c3/testbuild/test.cpp.1.o']
+err: clang: warning: -llthread: 'linker' input unused [-Wunused-command-line-argument]
+
+[2/2] Linking [33mbuild/.conf_check_61547235bc147f4364c805b0b32536c3/testbuild/testprog[0m
+
+['clang++', '-fuse-ld=gold', '-llthread', 'test.cpp.1.o', '-o/mnt/c/Users/Bryan/Google Drive/School/NDN/ndn-cxx/build/.conf_check_61547235bc147f4364c805b0b32536c3/testbuild/testprog', '-Wl,-Bstatic', '-L/usr/lib/x86_64-linux-gnu', '-Wl,-Bdynamic', '-L/usr/lib/x86_64-linux-gnu', '-lboost_system', '-lboost_program_options', '-lboost_chrono', '-lboost_date_time', '-lboost_filesystem', '-lboost_thread', '-lboost_log', '-lboost_stacktrace_backtrace']
+err: /usr/bin/ld.gold: error: cannot find -llthread
+test.cpp.1.o:test.cpp:function main: error: undefined reference to 'pthread_create'
+test.cpp.1.o:test.cpp:function main: error: undefined reference to 'pthread_join'
+clang: error: linker command failed with exit code 1 (use -v to see invocation)
+
+from /mnt/c/Users/Bryan/Google Drive/School/NDN/ndn-cxx: Test does not build: Traceback (most recent call last):
+  File "/mnt/c/Users/Bryan/Google Drive/School/NDN/ndn-cxx/.waf-2.0.14-a8a9afc5d151494252697f8fa4ba3fbc/waflib/Configure.py", line 325, in run_build
+    bld.compile()
+  File "/mnt/c/Users/Bryan/Google Drive/School/NDN/ndn-cxx/.waf-2.0.14-a8a9afc5d151494252697f8fa4ba3fbc/waflib/Build.py", line 176, in compile
+    raise Errors.BuildError(self.producer.error)
+BuildError: Build failed
+ -> task in 'testprog' failed with exit status 1 (run with -v to display more information)
+
+from /mnt/c/Users/Bryan/Google Drive/School/NDN/ndn-cxx: The configuration failed
+[1/2] Compiling [32mbuild/.conf_check_61547235bc147f4364c805b0b32536c3/test.cpp[0m
+
+['clang++', '-std=c++14', '-pthread', '-I/usr/include', '-DHAVE_STD_TO_STRING=1', '-DHAVE_PTHREAD=1', '-DHAVE_RT=1', '-DHAVE_GETPASS=1', '-DHAVE_NETLINK=1', '-DHAVE_NETLINK_EXT_ACK=1', '-DHAVE_IFA_FLAGS=1', '-DHAVE_SQLITE3=1', '-DHAVE_OPENSSL=1', '-DBOOST_STACKTRACE_DYN_LINK', '../test.cpp', '-c', '-o/mnt/c/Users/Bryan/Google Drive/School/NDN/ndn-cxx/build/.conf_check_61547235bc147f4364c805b0b32536c3/testbuild/test.cpp.1.o']
+[2/2] Linking [33mbuild/.conf_check_61547235bc147f4364c805b0b32536c3/testbuild/testprog[0m
+
+['clang++', '-fuse-ld=gold', '-pthread', 'test.cpp.1.o', '-o/mnt/c/Users/Bryan/Google Drive/School/NDN/ndn-cxx/build/.conf_check_61547235bc147f4364c805b0b32536c3/testbuild/testprog', '-Wl,-Bstatic', '-L/usr/lib/x86_64-linux-gnu', '-Wl,-Bdynamic', '-L/usr/lib/x86_64-linux-gnu', '-lboost_system', '-lboost_program_options', '-lboost_chrono', '-lboost_date_time', '-lboost_filesystem', '-lboost_thread', '-lboost_log', '-lboost_stacktrace_backtrace']
+-pthread
+-----------------------------------------
+Checking for boost linkage
+==>
+
+#include <boost/system/error_code.hpp>
+int main() { boost::system::error_code c; }
+
+<==
+[1/2] Compiling [32mbuild/.conf_check_91b97d792b17585f6d801ed5707f95c6/test.cpp[0m
+
+['clang++', '-std=c++14', '-pthread', '-I/usr/include', '-DHAVE_STD_TO_STRING=1', '-DHAVE_PTHREAD=1', '-DHAVE_RT=1', '-DHAVE_GETPASS=1', '-DHAVE_NETLINK=1', '-DHAVE_NETLINK_EXT_ACK=1', '-DHAVE_IFA_FLAGS=1', '-DHAVE_SQLITE3=1', '-DHAVE_OPENSSL=1', '-DBOOST_STACKTRACE_DYN_LINK', '../test.cpp', '-c', '-o/mnt/c/Users/Bryan/Google Drive/School/NDN/ndn-cxx/build/.conf_check_91b97d792b17585f6d801ed5707f95c6/testbuild/test.cpp.1.o']
+[2/2] Linking [33mbuild/.conf_check_91b97d792b17585f6d801ed5707f95c6/testbuild/testprog[0m
+
+['clang++', '-fuse-ld=gold', '-pthread', 'test.cpp.1.o', '-o/mnt/c/Users/Bryan/Google Drive/School/NDN/ndn-cxx/build/.conf_check_91b97d792b17585f6d801ed5707f95c6/testbuild/testprog', '-Wl,-Bstatic', '-L/usr/lib/x86_64-linux-gnu', '-Wl,-Bdynamic', '-L/usr/lib/x86_64-linux-gnu', '-lboost_system', '-lboost_program_options', '-lboost_chrono', '-lboost_date_time', '-lboost_filesystem', '-lboost_thread', '-lboost_log', '-lboost_stacktrace_backtrace']
+==>
+
+#include <boost/thread.hpp>
+int main() { boost::thread t; }
+
+<==
+[1/2] Compiling [32mbuild/.conf_check_85e91d2d7cb6f9424943f8395033d2e2/test.cpp[0m
+
+['clang++', '-std=c++14', '-pthread', '-I/usr/include', '-DHAVE_STD_TO_STRING=1', '-DHAVE_PTHREAD=1', '-DHAVE_RT=1', '-DHAVE_GETPASS=1', '-DHAVE_NETLINK=1', '-DHAVE_NETLINK_EXT_ACK=1', '-DHAVE_IFA_FLAGS=1', '-DHAVE_SQLITE3=1', '-DHAVE_OPENSSL=1', '-DBOOST_STACKTRACE_DYN_LINK', '../test.cpp', '-c', '-o/mnt/c/Users/Bryan/Google Drive/School/NDN/ndn-cxx/build/.conf_check_85e91d2d7cb6f9424943f8395033d2e2/testbuild/test.cpp.1.o']
+[2/2] Linking [33mbuild/.conf_check_85e91d2d7cb6f9424943f8395033d2e2/testbuild/testprog[0m
+
+['clang++', '-fuse-ld=gold', '-pthread', 'test.cpp.1.o', '-o/mnt/c/Users/Bryan/Google Drive/School/NDN/ndn-cxx/build/.conf_check_85e91d2d7cb6f9424943f8395033d2e2/testbuild/testprog', '-Wl,-Bstatic', '-L/usr/lib/x86_64-linux-gnu', '-Wl,-Bdynamic', '-L/usr/lib/x86_64-linux-gnu', '-lboost_system', '-lboost_program_options', '-lboost_chrono', '-lboost_date_time', '-lboost_filesystem', '-lboost_thread', '-lboost_log', '-lboost_stacktrace_backtrace']
+==>
+
+#include <boost/log/trivial.hpp>
+int main() { BOOST_LOG_TRIVIAL(info) << "boost_log is working"; }
+
+<==
+[1/2] Compiling [32mbuild/.conf_check_a4659e59f844ebeed23ee75295f27ff2/test.cpp[0m
+
+['clang++', '-std=c++14', '-pthread', '-I/usr/include', '-DHAVE_STD_TO_STRING=1', '-DHAVE_PTHREAD=1', '-DHAVE_RT=1', '-DHAVE_GETPASS=1', '-DHAVE_NETLINK=1', '-DHAVE_NETLINK_EXT_ACK=1', '-DHAVE_IFA_FLAGS=1', '-DHAVE_SQLITE3=1', '-DHAVE_OPENSSL=1', '-DBOOST_STACKTRACE_DYN_LINK', '-DBOOST_LOG_DYN_LINK', '../test.cpp', '-c', '-o/mnt/c/Users/Bryan/Google Drive/School/NDN/ndn-cxx/build/.conf_check_a4659e59f844ebeed23ee75295f27ff2/testbuild/test.cpp.1.o']
+[2/2] Linking [33mbuild/.conf_check_a4659e59f844ebeed23ee75295f27ff2/testbuild/testprog[0m
+
+['clang++', '-fuse-ld=gold', '-pthread', 'test.cpp.1.o', '-o/mnt/c/Users/Bryan/Google Drive/School/NDN/ndn-cxx/build/.conf_check_a4659e59f844ebeed23ee75295f27ff2/testbuild/testprog', '-Wl,-Bstatic', '-L/usr/lib/x86_64-linux-gnu', '-Wl,-Bdynamic', '-L/usr/lib/x86_64-linux-gnu', '-lboost_system', '-lboost_program_options', '-lboost_chrono', '-lboost_date_time', '-lboost_filesystem', '-lboost_thread', '-lboost_log', '-lboost_stacktrace_backtrace']
+ok
+-----------------------------------------
+Checking supported CXXFLAGS
+==>
+
+int main(int argc, char **argv) {
+	(void)argc; (void)argv;
+	return 0;
+}
+
+<==
+[1/2] Compiling [32mbuild/.conf_check_c0b4080687fc7be39f9746df44f7e5fb/test.cpp[0m
+
+['clang++', '-std=c++14', '-Werror', '-O2', '-DHAVE_STD_TO_STRING=1', '-DHAVE_PTHREAD=1', '-DHAVE_RT=1', '-DHAVE_GETPASS=1', '-DHAVE_NETLINK=1', '-DHAVE_NETLINK_EXT_ACK=1', '-DHAVE_IFA_FLAGS=1', '-DHAVE_SQLITE3=1', '-DHAVE_OPENSSL=1', '../test.cpp', '-c', '-o/mnt/c/Users/Bryan/Google Drive/School/NDN/ndn-cxx/build/.conf_check_c0b4080687fc7be39f9746df44f7e5fb/testbuild/test.cpp.1.o']
+[2/2] Linking [33mbuild/.conf_check_c0b4080687fc7be39f9746df44f7e5fb/testbuild/testprog[0m
+
+['clang++', '-fuse-ld=gold', 'test.cpp.1.o', '-o/mnt/c/Users/Bryan/Google Drive/School/NDN/ndn-cxx/build/.conf_check_c0b4080687fc7be39f9746df44f7e5fb/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic']
+==>
+
+int main(int argc, char **argv) {
+	(void)argc; (void)argv;
+	return 0;
+}
+
+<==
+[1/2] Compiling [32mbuild/.conf_check_b2afa55cc3f9b11b7e07e097dcc5919f/test.cpp[0m
+
+['clang++', '-std=c++14', '-Werror', '-g', '-DHAVE_STD_TO_STRING=1', '-DHAVE_PTHREAD=1', '-DHAVE_RT=1', '-DHAVE_GETPASS=1', '-DHAVE_NETLINK=1', '-DHAVE_NETLINK_EXT_ACK=1', '-DHAVE_IFA_FLAGS=1', '-DHAVE_SQLITE3=1', '-DHAVE_OPENSSL=1', '../test.cpp', '-c', '-o/mnt/c/Users/Bryan/Google Drive/School/NDN/ndn-cxx/build/.conf_check_b2afa55cc3f9b11b7e07e097dcc5919f/testbuild/test.cpp.1.o']
+[2/2] Linking [33mbuild/.conf_check_b2afa55cc3f9b11b7e07e097dcc5919f/testbuild/testprog[0m
+
+['clang++', '-fuse-ld=gold', 'test.cpp.1.o', '-o/mnt/c/Users/Bryan/Google Drive/School/NDN/ndn-cxx/build/.conf_check_b2afa55cc3f9b11b7e07e097dcc5919f/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic']
+==>
+
+int main(int argc, char **argv) {
+	(void)argc; (void)argv;
+	return 0;
+}
+
+<==
+[1/2] Compiling [32mbuild/.conf_check_04576de1d27f6e822c3bf0e6c0cc6531/test.cpp[0m
+
+['clang++', '-std=c++14', '-Werror', '-pedantic', '-DHAVE_STD_TO_STRING=1', '-DHAVE_PTHREAD=1', '-DHAVE_RT=1', '-DHAVE_GETPASS=1', '-DHAVE_NETLINK=1', '-DHAVE_NETLINK_EXT_ACK=1', '-DHAVE_IFA_FLAGS=1', '-DHAVE_SQLITE3=1', '-DHAVE_OPENSSL=1', '../test.cpp', '-c', '-o/mnt/c/Users/Bryan/Google Drive/School/NDN/ndn-cxx/build/.conf_check_04576de1d27f6e822c3bf0e6c0cc6531/testbuild/test.cpp.1.o']
+[2/2] Linking [33mbuild/.conf_check_04576de1d27f6e822c3bf0e6c0cc6531/testbuild/testprog[0m
+
+['clang++', '-fuse-ld=gold', 'test.cpp.1.o', '-o/mnt/c/Users/Bryan/Google Drive/School/NDN/ndn-cxx/build/.conf_check_04576de1d27f6e822c3bf0e6c0cc6531/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic']
+==>
+
+int main(int argc, char **argv) {
+	(void)argc; (void)argv;
+	return 0;
+}
+
+<==
+[1/2] Compiling [32mbuild/.conf_check_4e79169cde9fb46845d492678fa5f7f2/test.cpp[0m
+
+['clang++', '-std=c++14', '-Werror', '-Wall', '-DHAVE_STD_TO_STRING=1', '-DHAVE_PTHREAD=1', '-DHAVE_RT=1', '-DHAVE_GETPASS=1', '-DHAVE_NETLINK=1', '-DHAVE_NETLINK_EXT_ACK=1', '-DHAVE_IFA_FLAGS=1', '-DHAVE_SQLITE3=1', '-DHAVE_OPENSSL=1', '../test.cpp', '-c', '-o/mnt/c/Users/Bryan/Google Drive/School/NDN/ndn-cxx/build/.conf_check_4e79169cde9fb46845d492678fa5f7f2/testbuild/test.cpp.1.o']
+[2/2] Linking [33mbuild/.conf_check_4e79169cde9fb46845d492678fa5f7f2/testbuild/testprog[0m
+
+['clang++', '-fuse-ld=gold', 'test.cpp.1.o', '-o/mnt/c/Users/Bryan/Google Drive/School/NDN/ndn-cxx/build/.conf_check_4e79169cde9fb46845d492678fa5f7f2/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic']
+==>
+
+int main(int argc, char **argv) {
+	(void)argc; (void)argv;
+	return 0;
+}
+
+<==
+[1/2] Compiling [32mbuild/.conf_check_02881968e0f046d0c00f752352c59329/test.cpp[0m
+
+['clang++', '-std=c++14', '-Werror', '-Wextra', '-DHAVE_STD_TO_STRING=1', '-DHAVE_PTHREAD=1', '-DHAVE_RT=1', '-DHAVE_GETPASS=1', '-DHAVE_NETLINK=1', '-DHAVE_NETLINK_EXT_ACK=1', '-DHAVE_IFA_FLAGS=1', '-DHAVE_SQLITE3=1', '-DHAVE_OPENSSL=1', '../test.cpp', '-c', '-o/mnt/c/Users/Bryan/Google Drive/School/NDN/ndn-cxx/build/.conf_check_02881968e0f046d0c00f752352c59329/testbuild/test.cpp.1.o']
+[2/2] Linking [33mbuild/.conf_check_02881968e0f046d0c00f752352c59329/testbuild/testprog[0m
+
+['clang++', '-fuse-ld=gold', 'test.cpp.1.o', '-o/mnt/c/Users/Bryan/Google Drive/School/NDN/ndn-cxx/build/.conf_check_02881968e0f046d0c00f752352c59329/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic']
+==>
+
+int main(int argc, char **argv) {
+	(void)argc; (void)argv;
+	return 0;
+}
+
+<==
+[1/2] Compiling [32mbuild/.conf_check_d6bf9db05e717f8bf7b2a0c6436b6e1c/test.cpp[0m
+
+['clang++', '-std=c++14', '-Werror', '-Wnon-virtual-dtor', '-DHAVE_STD_TO_STRING=1', '-DHAVE_PTHREAD=1', '-DHAVE_RT=1', '-DHAVE_GETPASS=1', '-DHAVE_NETLINK=1', '-DHAVE_NETLINK_EXT_ACK=1', '-DHAVE_IFA_FLAGS=1', '-DHAVE_SQLITE3=1', '-DHAVE_OPENSSL=1', '../test.cpp', '-c', '-o/mnt/c/Users/Bryan/Google Drive/School/NDN/ndn-cxx/build/.conf_check_d6bf9db05e717f8bf7b2a0c6436b6e1c/testbuild/test.cpp.1.o']
+[2/2] Linking [33mbuild/.conf_check_d6bf9db05e717f8bf7b2a0c6436b6e1c/testbuild/testprog[0m
+
+['clang++', '-fuse-ld=gold', 'test.cpp.1.o', '-o/mnt/c/Users/Bryan/Google Drive/School/NDN/ndn-cxx/build/.conf_check_d6bf9db05e717f8bf7b2a0c6436b6e1c/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic']
+==>
+
+int main(int argc, char **argv) {
+	(void)argc; (void)argv;
+	return 0;
+}
+
+<==
+[1/2] Compiling [32mbuild/.conf_check_98c093f8a4008a776b872287786053a1/test.cpp[0m
+
+['clang++', '-std=c++14', '-Werror', '-Wno-unused-parameter', '-DHAVE_STD_TO_STRING=1', '-DHAVE_PTHREAD=1', '-DHAVE_RT=1', '-DHAVE_GETPASS=1', '-DHAVE_NETLINK=1', '-DHAVE_NETLINK_EXT_ACK=1', '-DHAVE_IFA_FLAGS=1', '-DHAVE_SQLITE3=1', '-DHAVE_OPENSSL=1', '../test.cpp', '-c', '-o/mnt/c/Users/Bryan/Google Drive/School/NDN/ndn-cxx/build/.conf_check_98c093f8a4008a776b872287786053a1/testbuild/test.cpp.1.o']
+[2/2] Linking [33mbuild/.conf_check_98c093f8a4008a776b872287786053a1/testbuild/testprog[0m
+
+['clang++', '-fuse-ld=gold', 'test.cpp.1.o', '-o/mnt/c/Users/Bryan/Google Drive/School/NDN/ndn-cxx/build/.conf_check_98c093f8a4008a776b872287786053a1/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic']
+==>
+
+int main(int argc, char **argv) {
+	(void)argc; (void)argv;
+	return 0;
+}
+
+<==
+[1/2] Compiling [32mbuild/.conf_check_0a63d438ad0ff71c509d0bf6d5691a5a/test.cpp[0m
+
+['clang++', '-std=c++14', '-Werror', '-fcolor-diagnostics', '-DHAVE_STD_TO_STRING=1', '-DHAVE_PTHREAD=1', '-DHAVE_RT=1', '-DHAVE_GETPASS=1', '-DHAVE_NETLINK=1', '-DHAVE_NETLINK_EXT_ACK=1', '-DHAVE_IFA_FLAGS=1', '-DHAVE_SQLITE3=1', '-DHAVE_OPENSSL=1', '../test.cpp', '-c', '-o/mnt/c/Users/Bryan/Google Drive/School/NDN/ndn-cxx/build/.conf_check_0a63d438ad0ff71c509d0bf6d5691a5a/testbuild/test.cpp.1.o']
+[2/2] Linking [33mbuild/.conf_check_0a63d438ad0ff71c509d0bf6d5691a5a/testbuild/testprog[0m
+
+['clang++', '-fuse-ld=gold', 'test.cpp.1.o', '-o/mnt/c/Users/Bryan/Google Drive/School/NDN/ndn-cxx/build/.conf_check_0a63d438ad0ff71c509d0bf6d5691a5a/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic']
+==>
+
+int main(int argc, char **argv) {
+	(void)argc; (void)argv;
+	return 0;
+}
+
+<==
+[1/2] Compiling [32mbuild/.conf_check_e7b779c94d615b39b714d03c8be19047/test.cpp[0m
+
+['clang++', '-std=c++14', '-Werror', '-Wextra-semi', '-DHAVE_STD_TO_STRING=1', '-DHAVE_PTHREAD=1', '-DHAVE_RT=1', '-DHAVE_GETPASS=1', '-DHAVE_NETLINK=1', '-DHAVE_NETLINK_EXT_ACK=1', '-DHAVE_IFA_FLAGS=1', '-DHAVE_SQLITE3=1', '-DHAVE_OPENSSL=1', '../test.cpp', '-c', '-o/mnt/c/Users/Bryan/Google Drive/School/NDN/ndn-cxx/build/.conf_check_e7b779c94d615b39b714d03c8be19047/testbuild/test.cpp.1.o']
+[2/2] Linking [33mbuild/.conf_check_e7b779c94d615b39b714d03c8be19047/testbuild/testprog[0m
+
+['clang++', '-fuse-ld=gold', 'test.cpp.1.o', '-o/mnt/c/Users/Bryan/Google Drive/School/NDN/ndn-cxx/build/.conf_check_e7b779c94d615b39b714d03c8be19047/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic']
+==>
+
+int main(int argc, char **argv) {
+	(void)argc; (void)argv;
+	return 0;
+}
+
+<==
+[1/2] Compiling [32mbuild/.conf_check_2219682f3545125c8e79ad21268138fb/test.cpp[0m
+
+['clang++', '-std=c++14', '-Werror', '-Wundefined-func-template', '-DHAVE_STD_TO_STRING=1', '-DHAVE_PTHREAD=1', '-DHAVE_RT=1', '-DHAVE_GETPASS=1', '-DHAVE_NETLINK=1', '-DHAVE_NETLINK_EXT_ACK=1', '-DHAVE_IFA_FLAGS=1', '-DHAVE_SQLITE3=1', '-DHAVE_OPENSSL=1', '../test.cpp', '-c', '-o/mnt/c/Users/Bryan/Google Drive/School/NDN/ndn-cxx/build/.conf_check_2219682f3545125c8e79ad21268138fb/testbuild/test.cpp.1.o']
+[2/2] Linking [33mbuild/.conf_check_2219682f3545125c8e79ad21268138fb/testbuild/testprog[0m
+
+['clang++', '-fuse-ld=gold', 'test.cpp.1.o', '-o/mnt/c/Users/Bryan/Google Drive/School/NDN/ndn-cxx/build/.conf_check_2219682f3545125c8e79ad21268138fb/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic']
+==>
+
+int main(int argc, char **argv) {
+	(void)argc; (void)argv;
+	return 0;
+}
+
+<==
+[1/2] Compiling [32mbuild/.conf_check_35eb74f72381a0409fcbfaa19b810614/test.cpp[0m
+
+['clang++', '-std=c++14', '-Werror', '-Wno-unused-local-typedef', '-DHAVE_STD_TO_STRING=1', '-DHAVE_PTHREAD=1', '-DHAVE_RT=1', '-DHAVE_GETPASS=1', '-DHAVE_NETLINK=1', '-DHAVE_NETLINK_EXT_ACK=1', '-DHAVE_IFA_FLAGS=1', '-DHAVE_SQLITE3=1', '-DHAVE_OPENSSL=1', '../test.cpp', '-c', '-o/mnt/c/Users/Bryan/Google Drive/School/NDN/ndn-cxx/build/.conf_check_35eb74f72381a0409fcbfaa19b810614/testbuild/test.cpp.1.o']
+[2/2] Linking [33mbuild/.conf_check_35eb74f72381a0409fcbfaa19b810614/testbuild/testprog[0m
+
+['clang++', '-fuse-ld=gold', 'test.cpp.1.o', '-o/mnt/c/Users/Bryan/Google Drive/School/NDN/ndn-cxx/build/.conf_check_35eb74f72381a0409fcbfaa19b810614/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic']
+-O2 -g -pedantic -Wall -Wextra -Wnon-virtual-dtor -Wno-unused-parameter -fcolor-diagnostics -Wextra-semi -Wundefined-func-template -Wno-unused-local-typedef
+-----------------------------------------
+Checking supported LINKFLAGS
+==>
+
+int main(int argc, char **argv) {
+	(void)argc; (void)argv;
+	return 0;
+}
+
+<==
+[1/2] Compiling [32mbuild/.conf_check_612a63b8c1c9b4dac19a8a673c5ed655/test.cpp[0m
+
+['clang++', '-O2', '-g', '-pedantic', '-Wall', '-Wextra', '-Wnon-virtual-dtor', '-Wno-unused-parameter', '-fcolor-diagnostics', '-Wextra-semi', '-Wundefined-func-template', '-Wno-unused-local-typedef', '-std=c++14', '-DHAVE_STD_TO_STRING=1', '-DHAVE_PTHREAD=1', '-DHAVE_RT=1', '-DHAVE_GETPASS=1', '-DHAVE_NETLINK=1', '-DHAVE_NETLINK_EXT_ACK=1', '-DHAVE_IFA_FLAGS=1', '-DHAVE_SQLITE3=1', '-DHAVE_OPENSSL=1', '../test.cpp', '-c', '-o/mnt/c/Users/Bryan/Google Drive/School/NDN/ndn-cxx/build/.conf_check_612a63b8c1c9b4dac19a8a673c5ed655/testbuild/test.cpp.1.o']
+[2/2] Linking [33mbuild/.conf_check_612a63b8c1c9b4dac19a8a673c5ed655/testbuild/testprog[0m
+
+['clang++', '-fuse-ld=gold', '-Werror', '-Wl,-O1', 'test.cpp.1.o', '-o/mnt/c/Users/Bryan/Google Drive/School/NDN/ndn-cxx/build/.conf_check_612a63b8c1c9b4dac19a8a673c5ed655/testbuild/testprog', '-Wl,-Bstatic', '-Wl,-Bdynamic']
+-Wl,-O1

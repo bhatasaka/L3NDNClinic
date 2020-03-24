@@ -26,7 +26,7 @@
 #include "face.hpp"
 #include "generic-link-service.hpp"
 #include "common/global.hpp"
-#include "../../lora_libs/libraries/arduPiLoRa/arduPiLoRa.h"
+#include "../../../libraries/arduPiLoRa/arduPiLoRa.h"
 #include "lora-transport.hpp"
 #include "lora-channel.hpp"
 
@@ -47,13 +47,11 @@ LoRaChannel::createFace( const FaceParams& params,
                        const FaceCreatedCallback& onFaceCreated)
 {
   shared_ptr<Face> face;
-
+  setup();
   auto linkService = make_unique<GenericLinkService>();
   auto transport = make_unique<LoRaTransport>();
   face = make_shared<Face>(std::move(linkService), std::move(transport));
-
   m_channelFaces["default"] = face;
-  setup();
 
   // Need to invoke the callback regardless of whether or not we have already created
   // the face so that control responses and such can be sent.
