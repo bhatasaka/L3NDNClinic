@@ -29,6 +29,7 @@
 #ifndef NDN_TOOLS_CHUNKS_CATCHUNKS_DISCOVER_VERSION_HPP
 #define NDN_TOOLS_CHUNKS_CATCHUNKS_DISCOVER_VERSION_HPP
 
+#include "core/common.hpp"
 #include "options.hpp"
 
 namespace ndn {
@@ -37,12 +38,12 @@ namespace chunks {
 class DataFetcher;
 
 /**
- * @brief Service for discovering the latest Data version.
+ * @brief Base class of services for discovering the latest Data version
  *
  * DiscoverVersion's user is notified once after identifying the latest retrievable version or
  * on failure to find any Data version.
  */
-class DiscoverVersion
+class DiscoverVersion : virtual protected Options, noncopyable
 {
 public: // signals
   /**
@@ -56,7 +57,10 @@ public: // signals
   signal::Signal<DiscoverVersion, std::string> onDiscoveryFailure;
 
 public:
-  DiscoverVersion(Face& face, const Name& prefix, const Options& options);
+  /**
+   * @brief create a DiscoverVersion service
+   */
+  DiscoverVersion(const Name& prefix, Face& face, const Options& options);
 
   /**
    * @brief identify the latest Data version published.
@@ -69,9 +73,8 @@ private:
   handleData(const Interest& interest, const Data& data);
 
 private:
-  Face& m_face;
   const Name m_prefix;
-  const Options& m_options;
+  Face& m_face;
   shared_ptr<DataFetcher> m_fetcher;
 };
 

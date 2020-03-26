@@ -20,8 +20,6 @@
 #include "ndndump.hpp"
 #include "core/version.hpp"
 
-#include <ndn-cxx/util/ostream-joiner.hpp>
-
 #include <sstream>
 
 namespace ndn {

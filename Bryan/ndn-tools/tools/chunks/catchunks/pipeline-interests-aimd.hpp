@@ -37,10 +37,11 @@ namespace chunks {
 /**
  * @brief Implements AIMD window increase and decrease.
  */
-class PipelineInterestsAimd final : public PipelineInterestsAdaptive
+class PipelineInterestsAimd : public PipelineInterestsAdaptive
 {
 public:
-  PipelineInterestsAimd(Face& face, RttEstimatorWithStats& rttEstimator, const Options& opts);
+  PipelineInterestsAimd(Face& face, RttEstimatorWithStats& rttEstimator,
+                        const Options& options = Options());
 
 private:
   void

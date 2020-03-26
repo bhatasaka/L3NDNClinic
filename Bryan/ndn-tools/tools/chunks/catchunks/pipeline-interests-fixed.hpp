@@ -30,12 +30,27 @@
 #ifndef NDN_TOOLS_CHUNKS_CATCHUNKS_PIPELINE_INTERESTS_FIXED_HPP
 #define NDN_TOOLS_CHUNKS_CATCHUNKS_PIPELINE_INTERESTS_FIXED_HPP
 
+#include "options.hpp"
 #include "pipeline-interests.hpp"
 
 namespace ndn {
 namespace chunks {
 
 class DataFetcher;
+
+class PipelineInterestsFixedOptions : public Options
+{
+public:
+  explicit
+  PipelineInterestsFixedOptions(const Options& options = Options())
+    : Options(options)
+    , maxPipelineSize(1)
+  {
+  }
+
+public:
+  size_t maxPipelineSize;
+};
 
 /**
  * @brief Service for retrieving Data via an Interest pipeline
@@ -47,10 +62,20 @@ class DataFetcher;
  * No guarantees are made as to the order in which segments are fetched or callbacks are invoked,
  * i.e. out-of-order delivery is possible.
  */
-class PipelineInterestsFixed final : public PipelineInterests
+class PipelineInterestsFixed : public PipelineInterests
 {
 public:
-  PipelineInterestsFixed(Face& face, const Options& opts);
+  typedef PipelineInterestsFixedOptions Options;
+
+public:
+  /**
+   * @brief create a PipelineInterestsFixed service
+   *
+   * Configures the pipelining service without specifying the retrieval namespace. After this
+   * configuration the method run must be called to start the Pipeline.
+   */
+  explicit
+  PipelineInterestsFixed(Face& face, const Options& options = Options());
 
   ~PipelineInterestsFixed() final;
 
@@ -82,13 +107,14 @@ private:
   handleFail(const std::string& reason, size_t pipeNo);
 
 private:
+  const Options m_options;
   std::vector<std::pair<shared_ptr<DataFetcher>, uint64_t>> m_segmentFetchers;
 
   /**
    * true if one or more segment fetchers encountered an error; if m_hasFinalBlockId
    * is false, this is usually not a fatal error for the pipeline
    */
-  bool m_hasFailure = false;
+  bool m_hasFailure;
 };
 
 } // namespace chunks

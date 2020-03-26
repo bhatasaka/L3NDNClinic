@@ -1,6 +1,6 @@
 /* -*- Mode:C++; c-file-style:"gnu"; indent-tabs-mode:nil; -*- */
-/*
- * Copyright (c) 2014-2019,  Regents of the University of California,
+/**
+ * Copyright (c) 2014-2015,  Regents of the University of California,
  *                           Arizona Board of Regents,
  *                           Colorado State University,
  *                           University Pierre & Marie Curie, Sorbonne University,
@@ -23,6 +23,7 @@
  * ndn-tools, e.g., in COPYING.md file.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#define BOOST_TEST_MODULE ndn-tools Unit Tests
+#define BOOST_TEST_MAIN 1
+#define BOOST_TEST_DYN_LINK 1
 
 #include "boost-test.hpp"

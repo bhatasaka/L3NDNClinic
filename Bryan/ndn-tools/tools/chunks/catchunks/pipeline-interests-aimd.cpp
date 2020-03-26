@@ -34,11 +34,11 @@ namespace ndn {
 namespace chunks {
 
 PipelineInterestsAimd::PipelineInterestsAimd(Face& face, RttEstimatorWithStats& rttEstimator,
-                                             const Options& opts)
-  : PipelineInterestsAdaptive(face, rttEstimator, opts)
+                                             const Options& options)
+  : PipelineInterestsAdaptive(face, rttEstimator, options)
 {
-  if (m_options.isVerbose) {
-    printOptions();
+  if (options.isVerbose) {
+    std::cerr << options;
   }
 }
 

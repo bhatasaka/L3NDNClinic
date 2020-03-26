@@ -1,6 +1,6 @@
 /* -*- Mode:C++; c-file-style:"gnu"; indent-tabs-mode:nil; -*- */
 /*
- * Copyright (c) 2014-2020, University of Memphis,
+ * Copyright (c) 2014-2019, University of Memphis,
  *                          University Pierre & Marie Curie, Sorbonne University.
  *
  * This file is part of ndn-tools (Named Data Networking Essential Tools).
@@ -30,11 +30,6 @@
 #include <netinet/udp.h>
 
 #include <boost/endian/conversion.hpp>
-#if BOOST_VERSION >= 105900
-#include <boost/test/tools/output_test_stream.hpp>
-#else
-#include <boost/test/output_test_stream.hpp>
-#endif
 
 #include <ndn-cxx/encoding/encoding-buffer.hpp>
 #include <ndn-cxx/lp/packet.hpp>
@@ -172,35 +167,25 @@ BOOST_FIXTURE_TEST_SUITE(TestNdnDump, NdnDumpFixture)
 
 BOOST_AUTO_TEST_CASE(Interest)
 {
-  auto interest = makeInterest("/test", false, DEFAULT_INTEREST_LIFETIME, 1);
-  this->receive(*interest);
-  BOOST_CHECK(output.is_equal("0.000000 Ethernet, INTEREST: /test?Nonce=00000001\n"));
-  this->receive(interest->setCanBePrefix(true));
-  BOOST_CHECK(output.is_equal("0.000000 Ethernet, INTEREST: /test?CanBePrefix&Nonce=00000001\n"));
-  this->receive(interest->setInterestLifetime(50_ms));
-  BOOST_CHECK(output.is_equal("0.000000 Ethernet, INTEREST: /test?CanBePrefix&Nonce=00000001&Lifetime=50\n"));
+  this->receive(*makeInterest("/test", true, DEFAULT_INTEREST_LIFETIME, 1));
+  BOOST_CHECK(output.is_equal("0.000000 Ethernet, INTEREST: /test?ndn.Nonce=1\n"));
 }
 
 BOOST_AUTO_TEST_CASE(Data)
 {
-  auto data = makeData("/test");
-  this->receive(*data);
-  BOOST_CHECK(output.is_equal("0.000000 Ethernet, DATA: /test\n"));
-  this->receive(data->setContentType(tlv::ContentType_Key));
-  BOOST_CHECK(output.is_equal("0.000000 Ethernet, DATA: /test\n"));
-  this->receive(data->setFreshnessPeriod(42_h));
+  this->receive(*makeData("/test"));
   BOOST_CHECK(output.is_equal("0.000000 Ethernet, DATA: /test\n"));
 }
 
 BOOST_AUTO_TEST_CASE(Nack)
 {
-  auto interest = makeInterest("/test", false, DEFAULT_INTEREST_LIFETIME, 1);
+  auto interest = makeInterest("/test", true, DEFAULT_INTEREST_LIFETIME, 1);
   auto nack = makeNack(*interest, lp::NackReason::DUPLICATE);
   lp::Packet lpPacket(interest->wireEncode());
   lpPacket.add<lp::NackField>(nack.getHeader());
 
   this->receive(lpPacket);
-  BOOST_CHECK(output.is_equal("0.000000 Ethernet, NDNLPv2, NACK (Duplicate): /test?Nonce=00000001\n"));
+  BOOST_CHECK(output.is_equal("0.000000 Ethernet, NDNLPv2, NACK (Duplicate): /test?ndn.Nonce=1\n"));
 }
 
 BOOST_AUTO_TEST_CASE(LpFragment)
@@ -417,9 +402,8 @@ BOOST_AUTO_TEST_CASE(UnrecognizedLpField)
   dump.wantTimestamp = false;
   this->readFile("tests/dump/unrecognized-lp-field.pcap");
 
-  const std::string expected =
-    "IP 128.196.203.36 > 128.187.81.12, TCP, length 800, "
-    "NDNLPv2 invalid packet: unrecognized field 4 cannot be ignored\n";
+  const std::string expected = "IP 128.196.203.36 > 128.187.81.12, TCP, length 800, "
+                               "NDNLPv2 invalid packet: unrecognized field 4 cannot be ignored\n";
   BOOST_CHECK(output.is_equal(expected));
 }
 
@@ -439,10 +423,32 @@ BOOST_AUTO_TEST_CASE(FromFile)
   this->readFile("tests/dump/nack.pcap");
 
   const std::string expected =
-    "1571091605.129263 IP 127.0.0.1 > 127.0.0.1, TCP, length 36, "
-    "INTEREST: /producer/nack/no-route?Nonce=827bcac4\n"
-    "1571091605.129702 IP 127.0.0.1 > 127.0.0.1, TCP, length 49, "
-    "NDNLPv2, NACK (NoRoute): /producer/nack/no-route?Nonce=827bcac4\n";
+    "1456768916.467099 IP 1.0.0.1 > 1.0.0.2, UDP, length 42, "
+    "INTEREST: /producer/nack/congestion?ndn.MustBeFresh=1&ndn.Nonce=2581361680\n"
+    "1456768916.567099 IP 1.0.0.1 > 1.0.0.2, UDP, length 41, "
+    "INTEREST: /producer/nack/duplicate?ndn.MustBeFresh=1&ndn.Nonce=4138343109\n"
+    "1456768916.667099 IP 1.0.0.1 > 1.0.0.2, UDP, length 41, "
+    "INTEREST: /producer/nack/no-reason?ndn.MustBeFresh=1&ndn.Nonce=4034910304\n"
+    "1456768916.767099 IP 1.0.0.2 > 1.0.0.1, UDP, length 55, "
+    "NDNLPv2, NACK (Congestion): /producer/nack/congestion?ndn.MustBeFresh=1&ndn.Nonce=2581361680\n"
+    "1456768916.867099 IP 1.0.0.2 > 1.0.0.1, UDP, length 54, "
+    "NDNLPv2, NACK (Duplicate): /producer/nack/duplicate?ndn.MustBeFresh=1&ndn.Nonce=4138343109\n"
+    "1456768916.967099 IP 1.0.0.2 > 1.0.0.1, UDP, length 54, "
+    "NDNLPv2, NACK (None): /producer/nack/no-reason?ndn.MustBeFresh=1&ndn.Nonce=4034910304\n"
+    "1456768917.067099 IP 1.0.0.1 > 1.0.0.2, TCP, length 42, "
+    "INTEREST: /producer/nack/congestion?ndn.MustBeFresh=1&ndn.Nonce=3192497423\n"
+    "1456768917.267099 IP 1.0.0.2 > 1.0.0.1, TCP, length 55, "
+    "NDNLPv2, NACK (Congestion): /producer/nack/congestion?ndn.MustBeFresh=1&ndn.Nonce=3192497423\n"
+    "1456768917.367099 IP 1.0.0.1 > 1.0.0.2, TCP, length 82, "
+    "INTEREST: /producer/nack/duplicate?ndn.MustBeFresh=1&ndn.Nonce=522390724\n"
+    "1456768917.567099 IP 1.0.0.2 > 1.0.0.1, TCP, length 54, "
+    "NDNLPv2, NACK (Duplicate): /producer/nack/duplicate?ndn.MustBeFresh=1&ndn.Nonce=522390724\n"
+    "1456768917.767099 IP 1.0.0.2 > 1.0.0.1, TCP, length 54, "
+    "NDNLPv2, NACK (None): /producer/nack/no-reason?ndn.MustBeFresh=1&ndn.Nonce=2002441365\n"
+    "1456768917.967099 IP 1.0.0.1 > 1.0.0.2, TCP, length 41, "
+    "INTEREST: /producer/nack/no-reason?ndn.MustBeFresh=1&ndn.Nonce=3776824408\n"
+    "1456768918.067099 IP 1.0.0.2 > 1.0.0.1, TCP, length 54, "
+    "NDNLPv2, NACK (None): /producer/nack/no-reason?ndn.MustBeFresh=1&ndn.Nonce=3776824408\n";
   BOOST_CHECK(output.is_equal(expected));
 }
 
@@ -452,8 +458,16 @@ BOOST_AUTO_TEST_CASE(LinuxSllTcp4)
   this->readFile("tests/dump/linux-sll-tcp4.pcap");
 
   const std::string expected =
-    "IP 162.211.64.84 > 131.179.196.46, TCP, length 41, INTEREST: /ndn/edu/arizona/ping/8202?Nonce=cf062c3f\n"
-    "IP 131.179.196.46 > 162.211.64.84, TCP, length 403, DATA: /ndn/edu/arizona/ping/8202\n";
+    "IP 162.211.64.84 > 131.179.196.46, TCP, length 57, "
+    "INTEREST: /ndn/edu/ucla/ping/4436024701616433461?ndn.MustBeFresh=1&ndn.Nonce=1827520902\n"
+    "IP 162.211.64.84 > 131.179.196.46, TCP, length 41, "
+    "INTEREST: /ndn/edu/arizona/ping/8202?ndn.Nonce=1059849935\n"
+    "IP 131.179.196.46 > 162.211.64.84, TCP, length 403, "
+    "DATA: /ndn/edu/arizona/ping/8202\n"
+    "IP 131.179.196.46 > 162.211.64.84, TCP, length 57, "
+    "INTEREST: /ndn/edu/ucla/ping/4436024701616433462?ndn.MustBeFresh=1&ndn.Nonce=4082468009\n"
+    "IP 162.211.64.84 > 131.179.196.46, TCP, length 57, "
+    "INTEREST: /ndn/edu/ucla/ping/4436024701616433462?ndn.MustBeFresh=1&ndn.Nonce=4082468009\n";
   BOOST_CHECK(output.is_equal(expected));
 }
 
@@ -463,8 +477,10 @@ BOOST_AUTO_TEST_CASE(LinuxSllUdp4)
   this->readFile("tests/dump/linux-sll-udp4.pcap");
 
   const std::string expected =
-    "IP 162.211.64.84 > 131.179.196.46, UDP, length 42, INTEREST: /ndn/edu/arizona/ping/31044?Nonce=f33c0bbd\n"
-    "IP 131.179.196.46 > 162.211.64.84, UDP, length 404, DATA: /ndn/edu/arizona/ping/31044\n";
+    "IP 162.211.64.84 > 131.179.196.46, UDP, length 42, "
+    "INTEREST: /ndn/edu/arizona/ping/31044?ndn.Nonce=3171630323\n"
+    "IP 131.179.196.46 > 162.211.64.84, UDP, length 404, "
+    "DATA: /ndn/edu/arizona/ping/31044\n";
   BOOST_CHECK(output.is_equal(expected));
 }
 
@@ -475,11 +491,11 @@ BOOST_AUTO_TEST_CASE(LinuxSllTcp6)
 
   const std::string expected =
     "IP6 2602:fff6:d:b317::39f8 > 2001:660:3302:282c:160::163, TCP, length 42, "
-    "INTEREST: /ndn/edu/arizona/ping/19573?Nonce=7b9e5b2e\n"
+    "INTEREST: /ndn/edu/arizona/ping/19573?ndn.Nonce=777756283\n"
     "IP6 2001:660:3302:282c:160::163 > 2602:fff6:d:b317::39f8, TCP, length 404, "
     "DATA: /ndn/edu/arizona/ping/19573\n"
     "IP6 2001:660:3302:282c:160::163 > 2602:fff6:d:b317::39f8, TCP, length 56, "
-    "invalid network packet: Unrecognized element of critical type 9\n";
+    "INTEREST: /ndn/fr/lip6/ping/7847878851635149046?ndn.MustBeFresh=1&ndn.Nonce=1836363210\n";
   BOOST_CHECK(output.is_equal(expected));
 }
 
@@ -490,11 +506,11 @@ BOOST_AUTO_TEST_CASE(LinuxSllUdp6)
 
   const std::string expected =
     "IP6 2602:fff6:d:b317::39f8 > 2001:660:3302:282c:160::163, UDP, length 39, "
-    "INTEREST: /ndn/edu/arizona/ping/18?Nonce=7e351222\n"
+    "INTEREST: /ndn/edu/arizona/ping/18?ndn.Nonce=571618686\n"
     "IP6 2001:660:3302:282c:160::163 > 2602:fff6:d:b317::39f8, UDP, length 401, "
     "DATA: /ndn/edu/arizona/ping/18\n"
     "IP6 2001:660:3302:282c:160::163 > 2602:fff6:d:b317::39f8, UDP, length 56, "
-    "invalid network packet: Unrecognized element of critical type 9\n";
+    "INTEREST: /ndn/fr/lip6/ping/7847878851635149038?ndn.MustBeFresh=1&ndn.Nonce=192371114\n";
   BOOST_CHECK(output.is_equal(expected));
 }
 

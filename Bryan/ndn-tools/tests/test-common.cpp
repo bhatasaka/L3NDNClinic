@@ -1,6 +1,6 @@
 /* -*- Mode:C++; c-file-style:"gnu"; indent-tabs-mode:nil; -*- */
 /*
- * Copyright (c) 2014-2020,  Regents of the University of California,
+ * Copyright (c) 2014-2018,  Regents of the University of California,
  *                           Arizona Board of Regents,
  *                           Colorado State University,
  *                           University Pierre & Marie Curie, Sorbonne University,
@@ -24,7 +24,6 @@
  */
 
 #include "test-common.hpp"
-
 #include <ndn-cxx/security/signature-sha256-with-rsa.hpp>
 
 namespace ndn {
@@ -76,12 +75,13 @@ UnitTestTimeFixture::advanceClocks(boost::asio::io_service& io,
 }
 
 shared_ptr<Interest>
-makeInterest(const Name& name, bool canBePrefix, time::milliseconds lifetime,
-             optional<Interest::Nonce> nonce)
+makeInterest(const Name& name, bool canBePrefix, time::milliseconds lifetime, uint32_t nonce)
 {
   auto interest = make_shared<Interest>(name, lifetime);
   interest->setCanBePrefix(canBePrefix);
-  interest->setNonce(nonce);
+  if (nonce != 0) {
+    interest->setNonce(nonce);
+  }
   return interest;
 }
 
@@ -103,9 +103,9 @@ signData(Data& data)
 }
 
 lp::Nack
-makeNack(Interest interest, lp::NackReason reason)
+makeNack(const Interest& interest, lp::NackReason reason)
 {
-  lp::Nack nack(std::move(interest));
+  lp::Nack nack(interest);
   nack.setReason(reason);
   return nack;
 }

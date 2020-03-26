@@ -34,40 +34,40 @@
 namespace ndn {
 namespace chunks {
 
-DiscoverVersion::DiscoverVersion(Face& face, const Name& prefix, const Options& options)
-  : m_face(face)
+DiscoverVersion::DiscoverVersion(const Name& prefix, Face& face, const Options& options)
+  : chunks::Options(options)
   , m_prefix(prefix)
-  , m_options(options)
+  , m_face(face)
 {
 }
 
 void
 DiscoverVersion::run()
 {
-  if (m_options.disableVersionDiscovery || (!m_prefix.empty() && m_prefix[-1].isVersion())) {
+  if (!m_prefix.empty() && m_prefix[-1].isVersion()) {
     onDiscoverySuccess(m_prefix);
     return;
   }
 
   Interest interest = MetadataObject::makeDiscoveryInterest(m_prefix)
-                      .setInterestLifetime(m_options.interestLifetime);
+                                      .setInterestLifetime(interestLifetime);
 
   m_fetcher = DataFetcher::fetch(m_face, interest,
-                                 m_options.maxRetriesOnTimeoutOrNack, m_options.maxRetriesOnTimeoutOrNack,
+                                 maxRetriesOnTimeoutOrNack, maxRetriesOnTimeoutOrNack,
                                  bind(&DiscoverVersion::handleData, this, _1, _2),
-                                 [this] (const Interest&, const std::string& reason) {
+                                 [this] (const Interest& interest, const std::string& reason) {
                                    onDiscoveryFailure(reason);
                                  },
-                                 [this] (const Interest&, const std::string& reason) {
+                                 [this] (const Interest& interest, const std::string& reason) {
                                    onDiscoveryFailure(reason);
                                  },
-                                 m_options.isVerbose);
+                                 isVerbose);
 }
 
 void
 DiscoverVersion::handleData(const Interest& interest, const Data& data)
 {
-  if (m_options.isVerbose)
+  if (isVerbose)
     std::cerr << "Data: " << data << std::endl;
 
   // make a metadata object from received metadata packet
@@ -85,7 +85,7 @@ DiscoverVersion::handleData(const Interest& interest, const Data& data)
     return;
   }
 
-  if (m_options.isVerbose) {
+  if (isVerbose) {
     std::cerr << "Discovered Data version: " << mobject.getVersionedName()[-1] << std::endl;
   }
 
