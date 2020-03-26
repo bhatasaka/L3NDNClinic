@@ -31,7 +31,6 @@
 
 #include "consumer.hpp"
 #include "discover-version.hpp"
-#include "options.hpp"
 #include "pipeline-interests-aimd.hpp"
 #include "pipeline-interests-cubic.hpp"
 #include "pipeline-interests-fixed.hpp"
@@ -48,18 +47,12 @@ static int
 main(int argc, char* argv[])
 {
   std::string programName(argv[0]);
-  Options options;
-  std::string pipelineType("cubic");
-  size_t maxPipelineSize(1);
-  std::string uri;
 
-  // congestion control parameters
-  bool disableCwa(false), resetCwndToInit(false),
-       ignoreCongMarks(false), enableFastConv(false);
-  int initCwnd(1), initSsthresh(std::numeric_limits<int>::max()), k(8);
-  double aiStep(1.0), rtoAlpha(0.125), rtoBeta(0.25), aimdBeta(0.5), cubicBeta(0.7);
+  Options options;
+  std::string uri, pipelineType("cubic"), cwndPath, rttPath;
   time::milliseconds::rep minRto(200), maxRto(60000);
-  std::string cwndPath, rttPath;
+  double rtoAlpha(0.125), rtoBeta(0.25);
+  int rtoK(8);
 
   namespace po = boost::program_options;
   po::options_description basicDesc("Basic Options");
@@ -67,11 +60,14 @@ main(int argc, char* argv[])
     ("help,h",      "print this help message and exit")
     ("pipeline-type,p", po::value<std::string>(&pipelineType)->default_value(pipelineType),
                         "type of Interest pipeline to use; valid values are: 'fixed', 'aimd', 'cubic'")
-    ("fresh,f",     po::bool_switch(&options.mustBeFresh), "only return fresh content")
+    ("fresh,f",     po::bool_switch(&options.mustBeFresh),
+                    "only return fresh content (set MustBeFresh on all outgoing Interests)")
     ("lifetime,l",  po::value<time::milliseconds::rep>()->default_value(options.interestLifetime.count()),
                     "lifetime of expressed Interests, in milliseconds")
     ("retries,r",   po::value<int>(&options.maxRetriesOnTimeoutOrNack)->default_value(options.maxRetriesOnTimeoutOrNack),
                     "maximum number of retries in case of Nack or timeout (-1 = no limit)")
+    ("no-version-discovery,D", po::bool_switch(&options.disableVersionDiscovery),
+                    "skip version discovery, even if the supplied name does not end with a version component")
     ("quiet,q",     po::bool_switch(&options.isQuiet), "suppress all diagnostic output, except fatal errors")
     ("verbose,v",   po::bool_switch(&options.isVerbose), "turn on verbose output (per segment information")
     ("version,V",   "print program version and exit")
@@ -79,33 +75,33 @@ main(int argc, char* argv[])
 
   po::options_description fixedPipeDesc("Fixed pipeline options");
   fixedPipeDesc.add_options()
-    ("pipeline-size,s", po::value<size_t>(&maxPipelineSize)->default_value(maxPipelineSize),
+    ("pipeline-size,s", po::value<size_t>(&options.maxPipelineSize)->default_value(options.maxPipelineSize),
                         "size of the Interest pipeline")
     ;
 
   po::options_description adaptivePipeDesc("Adaptive pipeline options (AIMD & CUBIC)");
   adaptivePipeDesc.add_options()
-    ("ignore-marks", po::bool_switch(&ignoreCongMarks),
-                     "do not decrease the window after receiving a congestion mark")
-    ("disable-cwa",  po::bool_switch(&disableCwa),
+    ("ignore-marks", po::bool_switch(&options.ignoreCongMarks),
+                     "do not reduce the window after receiving a congestion mark")
+    ("disable-cwa",  po::bool_switch(&options.disableCwa),
                      "disable Conservative Window Adaptation, i.e., reduce the window on "
                      "each timeout or congestion mark instead of at most once per RTT")
-    ("reset-cwnd-to-init", po::bool_switch(&resetCwndToInit),
+    ("reset-cwnd-to-init", po::bool_switch(&options.resetCwndToInit),
                            "after a timeout or congestion mark, reset the window "
                            "to the initial value instead of resetting to ssthresh")
-    ("init-cwnd",     po::value<int>(&initCwnd)->default_value(initCwnd),
+    ("init-cwnd",     po::value<double>(&options.initCwnd)->default_value(options.initCwnd),
                       "initial congestion window in segments")
-    ("init-ssthresh", po::value<int>(&initSsthresh),
+    ("init-ssthresh", po::value<double>(&options.initSsthresh),
                       "initial slow start threshold in segments (defaults to infinity)")
-    ("aimd-step", po::value<double>(&aiStep)->default_value(aiStep),
+    ("aimd-step", po::value<double>(&options.aiStep)->default_value(options.aiStep),
                   "additive-increase step")
-    ("aimd-beta", po::value<double>(&aimdBeta)->default_value(aimdBeta),
+    ("aimd-beta", po::value<double>(&options.mdCoef)->default_value(options.mdCoef),
                   "multiplicative decrease factor (AIMD)")
     ("rto-alpha", po::value<double>(&rtoAlpha)->default_value(rtoAlpha),
                   "alpha value for RTO calculation")
     ("rto-beta",  po::value<double>(&rtoBeta)->default_value(rtoBeta),
                   "beta value for RTO calculation")
-    ("rto-k",     po::value<int>(&k)->default_value(k),
+    ("rto-k",     po::value<int>(&rtoK)->default_value(rtoK),
                   "k value for RTO calculation")
     ("min-rto",   po::value<time::milliseconds::rep>(&minRto)->default_value(minRto),
                   "minimum RTO value, in milliseconds")
@@ -117,9 +113,8 @@ main(int argc, char* argv[])
 
   po::options_description cubicPipeDesc("CUBIC pipeline options");
   cubicPipeDesc.add_options()
-    ("fast-conv",  po::bool_switch(&enableFastConv), "enable cubic fast convergence")
-    ("cubic-beta", po::value<double>(&cubicBeta),
-                   "window decrease factor for CUBIC (defaults to 0.7)")
+    ("cubic-beta", po::value<double>(&options.cubicBeta), "window decrease factor (defaults to 0.7)")
+    ("fast-conv",  po::bool_switch(&options.enableFastConv), "enable fast convergence")
     ;
 
   po::options_description visibleDesc;
@@ -169,7 +164,7 @@ main(int argc, char* argv[])
     return 2;
   }
 
-  if (maxPipelineSize < 1 || maxPipelineSize > 1024) {
+  if (options.maxPipelineSize < 1 || options.maxPipelineSize > 1024) {
     std::cerr << "ERROR: pipeline size must be between 1 and 1024" << std::endl;
     return 2;
   }
@@ -192,7 +187,7 @@ main(int argc, char* argv[])
 
   try {
     Face face;
-    auto discover = make_unique<DiscoverVersion>(Name(uri), face, options);
+    auto discover = make_unique<DiscoverVersion>(face, Name(uri), options);
     unique_ptr<PipelineInterests> pipeline;
     unique_ptr<StatisticsCollector> statsCollector;
     unique_ptr<RttEstimatorWithStats> rttEstimator;
@@ -200,15 +195,13 @@ main(int argc, char* argv[])
     std::ofstream statsFileRtt;
 
     if (pipelineType == "fixed") {
-      PipelineInterestsFixed::Options optionsPipeline(options);
-      optionsPipeline.maxPipelineSize = maxPipelineSize;
-      pipeline = make_unique<PipelineInterestsFixed>(face, optionsPipeline);
+      pipeline = make_unique<PipelineInterestsFixed>(face, options);
     }
     else if (pipelineType == "aimd" || pipelineType == "cubic") {
       auto optionsRttEst = make_shared<RttEstimatorWithStats::Options>();
       optionsRttEst->alpha = rtoAlpha;
       optionsRttEst->beta = rtoBeta;
-      optionsRttEst->k = k;
+      optionsRttEst->k = rtoK;
       optionsRttEst->initialRto = 1_s;
       optionsRttEst->minRto = time::milliseconds(minRto);
       optionsRttEst->maxRto = time::milliseconds(maxRto);
@@ -226,24 +219,12 @@ main(int argc, char* argv[])
       }
       rttEstimator = make_unique<RttEstimatorWithStats>(std::move(optionsRttEst));
 
-      PipelineInterestsAdaptive::Options optionsPipeline(options);
-      optionsPipeline.disableCwa = disableCwa;
-      optionsPipeline.resetCwndToInit = resetCwndToInit;
-      optionsPipeline.initCwnd = initCwnd;
-      optionsPipeline.initSsthresh = initSsthresh;
-      optionsPipeline.aiStep = aiStep;
-      optionsPipeline.mdCoef = aimdBeta;
-      optionsPipeline.ignoreCongMarks = ignoreCongMarks;
-
       unique_ptr<PipelineInterestsAdaptive> adaptivePipeline;
       if (pipelineType == "aimd") {
-        adaptivePipeline = make_unique<PipelineInterestsAimd>(face, *rttEstimator, optionsPipeline);
+        adaptivePipeline = make_unique<PipelineInterestsAimd>(face, *rttEstimator, options);
       }
       else {
-        PipelineInterestsCubic::Options optionsCubic(optionsPipeline);
-        optionsCubic.enableFastConv = enableFastConv;
-        optionsCubic.cubicBeta = cubicBeta;
-        adaptivePipeline = make_unique<PipelineInterestsCubic>(face, *rttEstimator, optionsCubic);
+        adaptivePipeline = make_unique<PipelineInterestsCubic>(face, *rttEstimator, options);
       }
 
       if (!cwndPath.empty() || !rttPath.empty()) {

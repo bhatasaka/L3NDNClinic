@@ -33,13 +33,14 @@ namespace chunks {
 constexpr double CUBIC_C = 0.4;
 
 PipelineInterestsCubic::PipelineInterestsCubic(Face& face, RttEstimatorWithStats& rttEstimator,
-                                               const Options& options)
-  : PipelineInterestsAdaptive(face, rttEstimator, options)
-  , m_cubicOptions(options)
+                                               const Options& opts)
+  : PipelineInterestsAdaptive(face, rttEstimator, opts)
   , m_lastDecrease(time::steady_clock::now())
 {
-  if (options.isVerbose) {
-    std::cerr << options;
+  if (m_options.isVerbose) {
+    printOptions();
+    std::cerr << "\tCubic beta = " << m_options.cubicBeta << "\n"
+              << "\tFast convergence = " << (m_options.enableFastConv ? "yes" : "no") << "\n";
   }
 }
 
@@ -64,15 +65,15 @@ PipelineInterestsCubic::increaseWindow()
     // 2. Time it takes to increase the window to m_wmax = the cwnd right before the last
     // window decrease.
     // K = cubic_root(wmax*(1-beta_cubic)/C) (Eq. 2)
-    const double k = std::cbrt(m_wmax * (1 - m_cubicOptions.cubicBeta) / CUBIC_C);
+    const double k = std::cbrt(m_wmax * (1 - m_options.cubicBeta) / CUBIC_C);
 
     // 3. Target: W_cubic(t) = C*(t-K)^3 + wmax (Eq. 1)
     const double wCubic = CUBIC_C * std::pow(t - k, 3) + m_wmax;
 
-    // 4. Estimate of Reno Increase (Currently Disabled)
-    // const double rtt = m_rtt->GetCurrentEstimate().GetSeconds();
-    // const double w_est = wmax*m_beta + (3*(1-m_beta)/(1+m_beta)) * (t/rtt);
-    const double wEst = 0.0;
+    // 4. Estimate of Reno Increase (Eq. 4)
+    const double rtt = m_rttEstimator.getSmoothedRtt().count() / 1e9;
+    const double wEst = m_wmax * m_options.cubicBeta +
+                        (3 * (1 - m_options.cubicBeta) / (1 + m_options.cubicBeta)) * (t / rtt);
 
     // Actual adaptation
     double cubicIncrement = std::max(wCubic, wEst) - m_cwnd;
@@ -93,9 +94,9 @@ PipelineInterestsCubic::decreaseWindow()
   // before it updates wmax for the current congestion event.
 
   // Current wmax < last_wmax
-  if (m_cubicOptions.enableFastConv && m_cwnd < m_lastWmax) {
+  if (m_options.enableFastConv && m_cwnd < m_lastWmax) {
     m_lastWmax = m_cwnd;
-    m_wmax = m_cwnd * (1.0 + m_cubicOptions.cubicBeta) / 2.0;
+    m_wmax = m_cwnd * (1.0 + m_options.cubicBeta) / 2.0;
   }
   else {
     // Save old cwnd as wmax
@@ -103,21 +104,11 @@ PipelineInterestsCubic::decreaseWindow()
     m_wmax = m_cwnd;
   }
 
-  m_ssthresh = std::max(m_options.initCwnd, m_cwnd * m_cubicOptions.cubicBeta);
+  m_ssthresh = std::max(m_options.initCwnd, m_cwnd * m_options.cubicBeta);
   m_cwnd = m_ssthresh;
   m_lastDecrease = time::steady_clock::now();
 
   emitSignal(afterCwndChange, time::steady_clock::now() - getStartTime(), m_cwnd);
-}
-
-std::ostream&
-operator<<(std::ostream& os, const PipelineInterestsCubicOptions& options)
-{
-  os << static_cast<const PipelineInterestsAdaptiveOptions&>(options)
-     << "Cubic pipeline parameters:\n"
-     << "\tFast convergence = " << (options.enableFastConv ? "yes" : "no") << "\n"
-     << "\tCubic beta = " << options.cubicBeta << "\n";
-  return os;
 }
 
 } // namespace chunks
