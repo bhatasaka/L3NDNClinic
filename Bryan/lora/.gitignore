@@ -1,0 +1,3 @@
+arduPi-api/*.o
+arduPi/*.o
+libraries/arduPiLoRa/*.o
