@@ -15,7 +15,7 @@
 #include "pcap-helper.hpp"
 
 // Include the SX1272 and SPI library:
-#include "../../../libraries/arduPiLoRa/arduPiLoRa.h"
+#include "../../lora_libs/libraries/arduPiLoRa/arduPiLoRa.h"
 
 namespace nfd
 {
@@ -58,7 +58,7 @@ private:
    * @brief Sends the specified TLV block on the network wrapped in an Ethernet frame
    */
     void
-    sendPacket(const ndn::Block &block);
+    sendPacket();
 
     void
     asyncRead();
@@ -85,6 +85,8 @@ private:
 
     // Block to store stuff in
     const Block *store_packet;
+    ndn::encoding::EncodingBuffer *sendBuffer;
+
 
 public:
     LoRaTransport();

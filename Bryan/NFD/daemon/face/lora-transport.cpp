@@ -3,7 +3,6 @@
  */
 
 #include "lora-transport.hpp"
-
 namespace nfd {
 
 namespace face {
@@ -30,7 +29,7 @@ LoRaTransport::LoRaTransport() {
     pthread_t receive;
     int rc;
 
-    void (LoRaTransport::*transmit_and_recieve)();
+    // void (LoRaTransport::*transmit_and_recieve)();
 
     rc = pthread_create(&receive, NULL, &LoRaTransport::transmit_and_receive_helper, this);
     if(rc) {
@@ -46,40 +45,63 @@ void LoRaTransport::doClose() {
 }
 
 void LoRaTransport::doSend(const Block &packet, const EndpointId& endpoint) {
-  NFD_LOG_FACE_TRACE(__func__);
+  NFD_LOG_FACE_TRACE("\n\n" << __func__);
 
   // Set the flag high that we have a packet to transmit, and grab the data to send
   pthread_mutex_lock(&threadLock);
-  store_packet = &packet;
+  // store_packet = &packet;
+  sendBuffer = new ndn::EncodingBuffer(packet);
   toSend = true;
+  NFD_LOG_TRACE("2");
   pthread_mutex_unlock(&threadLock);
-  NFD_LOG_ERROR(__func__);
-  NFD_LOG_ERROR("2");
+
+  NFD_LOG_TRACE(__func__);
 }
 
-void LoRaTransport::sendPacket(const ndn::Block &block) {
-  ndn::EncodingBuffer buffer(block);
-
-  if (block.size() <= 0) {
-    NFD_LOG_FACE_ERROR("Trying to send a packet with no size");
+void LoRaTransport::sendPacket()
+{
+  int bufSize = sendBuffer->size();
+  if (bufSize <= 0)
+  {
+    NFD_LOG_ERROR("Trying to send a packet with no size");
+    return;
   }
 
   // copy the buffer into a cstr so we can send it
-  char *cstr = new char[buffer.size() + 1];
-  uint8_t *buff = buffer.buf();
-  for (size_t i = 0; i < buffer.size(); i++) {
-    cstr[i] = buff[i];
+  char * cstr = new char[bufSize];
+  int i = 0;
+  for (auto ptr : *sendBuffer)
+  {
+    cstr[i++] = ptr;
+    if(ptr == NULL)
+      NFD_LOG_ERROR("Found null in send packet at idx: " << i);
   }
-  if ((e = sx1272.sendPacketTimeout(0, cstr)) != 0) {
-      handleError("Send operation failed: " + std::to_string(e));
-  }  
-  else
-    // print block size because we don't want to count the padding in buffer
-    NFD_LOG_FACE_TRACE("Successfully sent: " << block.size() << " bytes");
 
-  // After sending enter recieve mode again
-  sx1272.receive();
-  free(cstr);
+  if (i != bufSize)
+    NFD_LOG_ERROR("Sizes different. i: " << i << " bufSize: " << bufSize);
+
+  auto sentStuff = std::string();
+  for(int idx = 0; idx < bufSize; idx++)
+  {
+    sentStuff += to_string((int)cstr[idx]) + ", ";
+  }
+  NFD_LOG_INFO("Message that was to be sent: " << sentStuff);
+
+  if ((nfd::face::LoRaTransport::e = sx1272.sendPacketTimeout(0, cstr, bufSize)) != 0)
+  {
+    NFD_LOG_ERROR("Send operation failed: " + std::to_string(e));
+  }
+  else
+  {
+    // print block size because we don't want to count the padding in buffer
+    NFD_LOG_INFO("Supposedly sent: " << bufSize << " bytes");
+    NFD_LOG_INFO("LoRa actually sent: " << sx1272._payloadlength << " _payloadlength bytes");
+
+  }
+
+  // Have to free all of this stuff
+  delete[] cstr;
+  delete sendBuffer; 
 }
 
 /*
@@ -92,33 +114,12 @@ void *LoRaTransport::transmit_and_recieve()
       pthread_mutex_lock(&threadLock);
       // Check and see if there is something to send
       if (toSend) {
-          NFD_LOG_ERROR("toSend is true");
-          ndn::EncodingBuffer buffer(*store_packet);
-          NFD_LOG_ERROR("toSend after allocate buffer");
-          if (buffer.size() <= 0) {
-
-            NFD_LOG_ERROR("Trying to send a packet with no size");
-          }
-
-          // copy the buffer into a cstr so we can send it
-          char *cstr = new char[buffer.size() + 1];
-          uint8_t *buff = buffer.buf();
-          for (size_t i = 0; i < buffer.size(); i++) {
-            cstr[i] = buff[i];
-          }
-          if ((nfd::face::LoRaTransport::e = sx1272.sendPacketTimeout(0, cstr)) != 0) {
-              NFD_LOG_ERROR("Send operation failed: " + std::to_string(e));
-          }  
-          else
-          {
-            // print block size because we don't want to count the padding in buffer
-            NFD_LOG_INFO("Successfully sent: " << buffer.size() << " bytes");
-            toSend = false;
-          }
+          NFD_LOG_INFO("toSend is true");
+          sendPacket();
+          toSend = false;
 
           // After sending enter recieve mode again
           sx1272.receive();
-          free(cstr);
           pthread_mutex_unlock(&threadLock);
       }
       // Otherwise check and see if there is available data
@@ -136,43 +137,56 @@ void *LoRaTransport::transmit_and_recieve()
 }
 
 void LoRaTransport::handleRead() {
-    bool dataToConsume = true;
-    size_t i;
-    while (dataToConsume) {
-      e = sx1272.getPacket();
-      if (e == 0) {
-        NFD_LOG_ERROR("Data available to receive");
-        uint8_t packetLength = sx1272.getCurrentPacketLength();
-        for (i = 0; i < packetLength; i++)
-        {
-            my_packet[i] = (char)sx1272.packet_received.data[i];
-        }
+  
+  bool dataToConsume = true;
+  int i;
 
-        // Reset null terminator
-        my_packet[i] = '\0';
-
-        NFD_LOG_ERROR("Received packet: ");
-        NFD_LOG_ERROR(my_packet);
+  while (dataToConsume) {
+    e = sx1272.getPacket();
+    sx1272.getPayloadLength();
+    if (e == 0) {
+      NFD_LOG_INFO("\n\nData available to receive");
+      int packetLength = (int)sx1272.getCurrentPacketLength();
+      for (i = 0; i < packetLength; i++)
+      {
+          my_packet[i] = (char)sx1272.packet_received.data[i];
       }
-      else {
-        NFD_LOG_ERROR("Unable to get packet data: " + std::to_string(e));
-      }
-      dataToConsume = sx1272.checkForData();
-    }
 
-    bool isOk = false;
-    Block element;
-
-    // Convert my_packet char [] --> const uint8_t*
-    const uint8_t* buffer_ptr = (uint8_t*)my_packet;
-    std::tie(isOk, element) = Block::fromBuffer(buffer_ptr, i);
-    if (!isOk) {
-      NFD_LOG_ERROR("Failed to parse incoming packet");
-      // This packet won't extend the face lifetime
-      return;
+      // Reset null terminator
+      my_packet[i] = '\0';
+      packetLength = i;
+      NFD_LOG_INFO("Received packet:" << my_packet);
+      NFD_LOG_INFO("With length:" << packetLength);
     }
+    else {
+      NFD_LOG_ERROR("Unable to get packet data: " + std::to_string(e));
+    }
+    dataToConsume = sx1272.checkForData();
+  }
+
+  NFD_LOG_INFO("i:" + std::to_string(i));
+  NFD_LOG_INFO("Full packet:" << my_packet);
+  auto gotStuff = std::string();
+  for(int idx = 0; idx < i; idx++)
+  {
+    gotStuff += to_string((int)my_packet[idx]);
+  }
+  NFD_LOG_INFO("Packet ascii:" << gotStuff);
+
+  try
+  {
+    NFD_LOG_INFO("Creating block");
+    ndn::Block element = ndn::Block((uint8_t*)my_packet, i);
+    NFD_LOG_INFO("Created block I spose");
     this->receive(element);
+    NFD_LOG_INFO("Called receive with blockz");
+  }
+  catch(const std::exception& e)
+  {
+    NFD_LOG_ERROR("Block create exception: " << e.what());
+  }
 } 
+
 
 void LoRaTransport::handleError(const std::string &errorMessage) {
   if (getPersistency() == ndn::nfd::FACE_PERSISTENCY_PERMANENT) {
